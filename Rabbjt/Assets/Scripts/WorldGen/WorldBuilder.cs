@@ -40,6 +40,10 @@ public class WorldBuilder : MonoBehaviour {
         GenerateFloor();
 	}
 
+    public void TestGen()
+    {
+    }
+
     public void GenerateFloor()
     {
         rooms = new Room[floorSizeX * floorSizeY];
@@ -61,5 +65,62 @@ public class WorldBuilder : MonoBehaviour {
 
         //Seed end room
 
+    }
+
+    static int Calc_W(int index)
+    {
+        int newIndex = 0;
+
+        if(index % floorSizeX == 0)
+        {
+            newIndex = index + floorSizeX - 1;
+        } else
+        {
+            newIndex = index - 1;
+        }
+
+        return newIndex;
+    }
+
+    static int Calc_N(int index)
+    {
+        int newIndex = 0;
+        if (index + floorSizeX > (floorSizeX * floorSizeY - 1))
+        {
+            newIndex = index + floorSizeX - (floorSizeX * floorSizeY);
+        }
+        else newIndex = index + floorSizeX;
+
+        return newIndex;
+    }
+
+    static int Calc_E(int index)
+    {
+        int newIndex = 0;
+
+        if ((index - (floorSizeX - 1)) % floorSizeX == 0)
+        {
+            newIndex = index - (floorSizeX - 1);
+        } else
+        {
+            newIndex = index + 1;
+        }
+
+        return newIndex;
+    }
+
+    static int Calc_S(int index)
+    {
+        int newIndex = 0;
+
+        if(index - floorSizeX < 0)
+        {
+            newIndex = (floorSizeX * floorSizeY - 1) - Mathf.Abs(index - floorSizeX);
+        } else
+        {
+            newIndex = index - floorSizeX;
+
+        }
+        return newIndex;
     }
 }
