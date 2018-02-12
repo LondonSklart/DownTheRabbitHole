@@ -17,63 +17,119 @@ public class WorldBuilder : MonoBehaviour {
         WonderLand
     };
 
-    int levelSeed;
+    int runSeed; //Used to seed entire run.
+    int[] floorSeed = new int[7]; //Used for predictable seeding of floor sets. (Maybe overkill)
+
+    public FloorGen[] floors = new FloorGen[7];
+
+    private System.Random sr;
+    private System.Random sfr;
 
     [SerializeField]
     private int currentFloor;
     
     private int startRoom; //To be generated within the first 
     private int endRoom;
+    List<int> invalidIndex = new List<int>();
 
     //Floor Size
     public static int floorSizeX = 5;
     public static int floorSizeY = 5;
 
     [SerializeField]
-    private Room[] rooms; //Holds rooms on current floor
+    public Room[] rooms; //Holds rooms on current floor
 
     // Use this for initialization
     void Start () {
-        levelSeed = Random.Range(int.MinValue, int.MaxValue); //Level Seed Stuff
-        GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<Text>().text = "Seed: " + levelSeed;
+        runSeed = Random.Range(int.MinValue, int.MaxValue); //Level Seed Stuff
+        GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<Text>().text = "Seed: " + runSeed;
+        sr = new System.Random(runSeed);
+
+        for(int i = 0; i < floorSeed.Length; i++)
+        {
+            floorSeed[i] = sr.Next();
+            //Debug.Log("Floor "+i+": "+floorSeed[i]);
+        }
 
         GenerateFloor();
 	}
 
     public void TestGen()
     {
+        for (int x = 0; x < floorSizeX; x++)
+        {
+            for(int y = 0; y< floorSizeY; y++)
+            {
+
+            }
+        }
     }
 
     public void GenerateFloor()
     {
+        
+        sfr = new System.Random(floorSeed[currentFloor]); //Gets random seed based on current floor
         rooms = new Room[floorSizeX * floorSizeY];
-
+        Debug.Log("Amount of rooms: "+rooms.Length);
         //Creates empty floor (Probably exists a better solution)
         for(int i = 0; i < rooms.Length; i++)
         {
-            rooms[i] = ScriptableObject.CreateInstance<Room>();
+            //Debug.Log("Room made");
+            rooms[i] = new Room(Room.RoomType.Empty);
+
         }
 
-        System.Random sr = new System.Random(levelSeed);
-        int startIndex = sr.Next(0, floorSizeX * floorSizeY - 1);
-        rooms[startIndex].roomType = Room.RoomType.Start;
-        rooms[startIndex].name = "Start Room"; //Debug purpose
-        
         //Seed start room
+        startRoom = sfr.Next(0, floorSizeX * floorSizeY - 1);
+        rooms[startRoom].roomType = Room.RoomType.Start;
+        rooms[startRoom].name = "Start Room";
+
+        InvalidIndex(startRoom);
+
+
         int RoomTypeCount = System.Enum.GetNames(typeof(Room.RoomType)).Length;
 
+        //Seed Shop
+
+
+        //Seed Healing Fountain
 
         //Seed end room
 
+        for(int i = 0; i < rooms.Length; i++)
+        {
+            Debug.Log(i +": "+rooms[i].name);
+        }
     }
 
-    static int Calc_W(int index)
+    public void InvalidIndex(int index)
+    { //Sets a cross of invalid indexes around the startindex(This should be updated for looping floors later on but requires a rewrite of the Calc_[dir] functions)
+        invalidIndex.Add(index);
+        invalidIndex.Add(Calc_N(index));
+        invalidIndex.Add(Calc_E(index));
+        invalidIndex.Add(Calc_S(index));
+        invalidIndex.Add(Calc_W(index));
+
+    }
+
+    public static int randomDir(int index, bool looping = false)
+    {
+        int indexDir = 0;
+        
+
+
+        return indexDir;
+    }
+
+    public static int Calc_W(int index)
     {
         int newIndex = 0;
 
-        if(index % floorSizeX == 0)
+        if(index % floorSizeX == 0) //Checks if index is along left wall of Grid
         {
             newIndex = index + floorSizeX - 1;
+            
+
         } else
         {
             newIndex = index - 1;
@@ -82,7 +138,7 @@ public class WorldBuilder : MonoBehaviour {
         return newIndex;
     }
 
-    static int Calc_N(int index)
+    public static int Calc_N(int index)
     {
         int newIndex = 0;
         if (index + floorSizeX > (floorSizeX * floorSizeY - 1))
@@ -94,7 +150,7 @@ public class WorldBuilder : MonoBehaviour {
         return newIndex;
     }
 
-    static int Calc_E(int index)
+    public static int Calc_E(int index)
     {
         int newIndex = 0;
 
@@ -109,7 +165,7 @@ public class WorldBuilder : MonoBehaviour {
         return newIndex;
     }
 
-    static int Calc_S(int index)
+    public static int Calc_S(int index)
     {
         int newIndex = 0;
 
