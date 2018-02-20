@@ -12,5 +12,7 @@ public class FloorGen : ScriptableObject {
     public int floorSizeX = 5;
     public int floorSizeY = 5;
 
+    public int maxDifficulty = 5;
+
     public int[] itemList;
 }

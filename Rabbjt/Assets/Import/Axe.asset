@@ -8,11 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40f1748ddd114744f88839a9d0d47ba0, type: 3}
-  m_Name: Floor_TeaParty
-  m_EditorClassIdentifier: 
-  floorName: 
-  loopingFloor: 0
-  floorSizeX: 5
-  floorSizeY: 5
-  itemList: 
+  m_Script: {fileID: 0}
+  m_Name: Axe
+  m_EditorClassIdentifier: Assembly-CSharp::Weapon
+  name: Axe01
+  attackDamage: 2
+  Effect: none
+  AOE: 010101

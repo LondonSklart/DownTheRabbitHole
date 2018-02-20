@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2537f43b1fd315b4f8d595ac07351b22
+timeCreated: 1519060247
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemyUIIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - enemyTexture: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
