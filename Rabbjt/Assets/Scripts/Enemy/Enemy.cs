@@ -6,14 +6,21 @@ public class Enemy<T> where T : Enemy
 {
     public GameObject gameObj;
     public T scriptComponent;
+
+    public Enemy(string name)
+    {
+        gameObj = new GameObject(name);
+        scriptComponent = gameObj.AddComponent<T>();
+    }
 }
 
-public abstract class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour {
 
-    public Sprite enemyUIIcon;
-    public Sprite enemyTexture;
-
-    string name;
+    //UI related stuff
+    public Sprite enemyUIIcon; //Minimap icon
+    public Sprite enemyTexture; //Enemy main sprite
+    
+    //Generic stats for all enemy types
 
     float startingHealth;
     float currentHealth;
@@ -22,6 +29,10 @@ public abstract class Enemy : MonoBehaviour {
     float haste;
     float initiative;
 
+    public virtual void OnAwake()
+    {
+
+    }
 
     public virtual void Attack()
     {

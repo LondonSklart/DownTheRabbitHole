@@ -1,11 +1,13 @@
 fileFormatVersion: 2
 guid: 51ac559f61f2f7647b749d0edf1da49b
-timeCreated: 1518982550
+timeCreated: 1519500612
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemyUIIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - enemyTexture: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
