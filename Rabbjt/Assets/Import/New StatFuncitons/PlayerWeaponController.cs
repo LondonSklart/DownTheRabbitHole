@@ -10,6 +10,9 @@ public class PlayerWeaponController : MonoBehaviour
     public GameObject playerHead;
     public GameObject EquipedHelmet { get; set; }
 
+    public Weapon EquipedOldWeapon { get; set; }
+
+
     CharacterStats characterStat;
     GameObject location;
 
@@ -57,6 +60,12 @@ public class PlayerWeaponController : MonoBehaviour
 
         characterStat.AddStatBonus(itemToEquip.Stats);
     }
+
+
+
+
+
+
     public void UnEquipItem(Item itemToUnequip)
     {
         switch (itemToUnequip.ItemType)

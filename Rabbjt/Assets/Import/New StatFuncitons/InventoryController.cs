@@ -5,15 +5,17 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     PlayerWeaponController weaponController;
+    PlayerController playerController;
     public Item sword;
     public Item helmet;
 
     private void Start()
     {
         weaponController = gameObject.GetComponent<PlayerWeaponController>();
+        playerController = FindObjectOfType<PlayerController>();
         List<BaseStat> swordStats = new List<BaseStat>();
-        swordStats.Add(new BaseStat(6, "Power", "Your power level"));
-        swordStats.Add(new BaseStat(6, "Health", "Your health level"));
+        swordStats.Add(new BaseStat(1, "Power", "Your power level"));
+        swordStats.Add(new BaseStat(1, "Health", "Your health level"));
         sword = new Item(swordStats, "sword","Weapon");
 
         List<BaseStat> helmetStats = new List<BaseStat>();
