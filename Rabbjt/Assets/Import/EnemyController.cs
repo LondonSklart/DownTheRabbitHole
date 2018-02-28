@@ -88,7 +88,6 @@ public class EnemyController : MonoBehaviour
     }
     public void Attack(float damage)
     {
-        Debug.Log(string.Format("{0} is attacking ({1} haste, {2} initiative)", name, turnController.haste, turnController.initiative));
         PlayerController player;
         player = FindObjectOfType<PlayerController>();
         if (player != null)

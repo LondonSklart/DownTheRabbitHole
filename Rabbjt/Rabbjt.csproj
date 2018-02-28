@@ -285,6 +285,14 @@
     <Compile Include="Assets\Import\DamagePrint.cs" />
     <Compile Include="Assets\Import\EnemyController.cs" />
     <Compile Include="Assets\Import\EnemyScriptableObject.cs" />
+    <Compile Include="Assets\Import\New StatFuncitons\BaseStat.cs" />
+    <Compile Include="Assets\Import\New StatFuncitons\CharacterStats.cs" />
+    <Compile Include="Assets\Import\New StatFuncitons\InventoryController.cs" />
+    <Compile Include="Assets\Import\New StatFuncitons\Item.cs" />
+    <Compile Include="Assets\Import\New StatFuncitons\IWeapon.cs" />
+    <Compile Include="Assets\Import\New StatFuncitons\PlayerWeaponController.cs" />
+    <Compile Include="Assets\Import\New StatFuncitons\StatBonus.cs" />
+    <Compile Include="Assets\Import\New StatFuncitons\Sword.cs" />
     <Compile Include="Assets\Import\PlayerController.cs" />
     <Compile Include="Assets\Import\RoomManager.cs" />
     <Compile Include="Assets\Import\TextController.cs" />

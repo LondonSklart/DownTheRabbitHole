@@ -7,6 +7,7 @@ public class TurnController : MonoBehaviour
     private bool myTurn = false;
     EnemyController enemy;
     PlayerController player;
+    CharacterStats Chstats;
     public float initiative;
     public float Startinghaste;
     public float haste = 0;
@@ -14,6 +15,8 @@ public class TurnController : MonoBehaviour
 
     private void Awake()
     {
+
+
         if (initiative <= 0)
         {
             initiative = Random.Range(16,420);
