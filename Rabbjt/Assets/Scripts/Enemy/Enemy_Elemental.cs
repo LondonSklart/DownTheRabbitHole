@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Enemy_Elemental : Enemy {
 
-    string name = "Elemental";
+    new string name = "Elemental";
+
+    float damage = 1f;
 
 
 

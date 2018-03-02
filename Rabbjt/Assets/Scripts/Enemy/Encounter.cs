@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EncounterData", menuName = "Enemy Encounter/new Encounter", order = 1)]
 public class Encounter : ScriptableObject {
 
-    public string name;
+    new public string name;
 
     public List<GameObject> enemiesInRoom;
     
