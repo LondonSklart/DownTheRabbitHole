@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1029844598413354, guid: a09891a4f3458db4a923eefaf5034cd8, type: 2}
+  testEncounter: {fileID: 11400000, guid: 7fb7467e742c3934d822720181ede2aa, type: 2}
   allCharactersList: []
   spawnPositions:
   - {fileID: 1440852216}

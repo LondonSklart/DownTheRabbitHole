@@ -11,7 +11,8 @@ public class RoomManager : MonoBehaviour
     TurnManager turnManager;
     EnemyController[] enemiesList;
 
-
+    [SerializeField]
+    Encounter testEncounter;
 
     public List<GameObject> allCharactersList = new List<GameObject>();
 
@@ -21,35 +22,39 @@ public class RoomManager : MonoBehaviour
     private void Start()
     {
         turnManager = FindObjectOfType<TurnManager>();
-        OnRoomLoad(3);
+        OnRoomLoad(testEncounter);
 
 
     }
 
 
-    public void OnRoomLoad(int enemies)
+    public void OnRoomLoad(Encounter encounter)
     {
-        switch (enemies)
+        for(int i = 0; i < encounter.enemiesInRoom.Count(); i++)
         {
-            case 1:
-                Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
-                break;
-            case 2:
-                Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
-                Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation);
-                break;
-            case 3:
-                Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation).name = "E1";
-                Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation).name = "E2";
-                Instantiate(enemy, spawnPositions[2].transform.position, spawnPositions[2].transform.rotation).name = "E3";
-                break;
-            case 4:
-                Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
-                Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation);
-                Instantiate(enemy, spawnPositions[2].transform.position, spawnPositions[2].transform.rotation);
-                Instantiate(enemy, spawnPositions[3].transform.position, spawnPositions[3].transform.rotation);
-                break;
+            Instantiate(encounter.enemiesInRoom[i], spawnPositions[i].transform.position, spawnPositions[i].transform.rotation);
         }
+        //switch (enemies)
+        //{
+        //    case 1:
+        //        Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
+        //        break;
+        //    case 2:
+        //        Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
+        //        Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation);
+        //        break;
+        //    case 3:
+        //        Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation).name = "E1";
+        //        Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation).name = "E2";
+        //        Instantiate(enemy, spawnPositions[2].transform.position, spawnPositions[2].transform.rotation).name = "E3";
+        //        break;
+        //    case 4:
+        //        Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
+        //        Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation);
+        //        Instantiate(enemy, spawnPositions[2].transform.position, spawnPositions[2].transform.rotation);
+        //        Instantiate(enemy, spawnPositions[3].transform.position, spawnPositions[3].transform.rotation);
+        //        break;
+        //}
         enemiesList = FindObjectsOfType<EnemyController>();
         foreach (EnemyController e in enemiesList)
         {

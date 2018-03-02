@@ -27,7 +27,10 @@ public class Room{
     public RoomType roomType;
     public int treasures;
 
-    private Enemy[] enemiesInRoom;
+    private bool roomEntered = false;
+    private Encounter encounter;
+
+    private List<GameObject> enemiesInRoom;
 
     public Room(RoomType rt)
     {

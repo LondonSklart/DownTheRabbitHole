@@ -111,7 +111,11 @@ public class WorldBuilder : MonoBehaviour {
         InvalidIndex(healingFountain);
 
         //Seed monster rooms
-
+        for(int i = 0; i < floorSizeX*floorSizeY; i++)
+        {
+        if(rooms[i])
+        rooms[i]
+        }
 
     }
 
