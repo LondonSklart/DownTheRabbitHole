@@ -198,10 +198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
-  startingHealth: 100
-  weaponDamage: 1
-  initiative: 5
-  startingHaste: 4
   haste: 4
   healthbar: {fileID: 114291763720190898}
   enemiesList: []
@@ -420,7 +416,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773902389088242}
   m_LocalRotation: {x: 0.000000013095423, y: -0.9366722, z: 0.3502074, w: -0.0000000372529}
-  m_LocalPosition: {x: -0.13999939, y: 0.9300003, z: -0.29}
+  m_LocalPosition: {x: 0, y: 0, z: -0.29}
   m_LocalScale: {x: 0.021425443, y: 0.01019465, z: 0.017964361}
   m_Children: []
   m_Father: {fileID: 4522300387103380}
@@ -438,7 +434,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1969670018490576}
   m_LocalRotation: {x: -0.3577093, y: -0, z: -0, w: 0.93383306}
-  m_LocalPosition: {x: 0.02999878, y: -0.22999954, z: 0.62}
+  m_LocalPosition: {x: 0, y: 0, z: 0.62}
   m_LocalScale: {x: 0.031967502, y: 0.008658479, z: 0.10625317}
   m_Children:
   - {fileID: 224666072240906034}
@@ -457,7 +453,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657799040123174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -32, z: 0.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0.8}
   m_LocalScale: {x: 0.6342439, y: 0.1815205, z: 1}
   m_Children:
   - {fileID: 224369378025679614}

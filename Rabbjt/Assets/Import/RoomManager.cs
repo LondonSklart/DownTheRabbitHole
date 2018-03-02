@@ -32,22 +32,22 @@ public class RoomManager : MonoBehaviour
         switch (enemies)
         {
             case 1:
-                Instantiate(enemy, spawnPositions[0].transform.position, rotation);
+                Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
                 break;
             case 2:
-                Instantiate(enemy, spawnPositions[0].transform.position, rotation);
-                Instantiate(enemy, spawnPositions[1].transform.position, rotation);
+                Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
+                Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation);
                 break;
             case 3:
-                Instantiate(enemy, spawnPositions[0].transform.position, rotation).name = "E1";
-                Instantiate(enemy, spawnPositions[1].transform.position, rotation).name = "E2";
-                Instantiate(enemy, spawnPositions[2].transform.position, rotation).name = "E3";
+                Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation).name = "E1";
+                Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation).name = "E2";
+                Instantiate(enemy, spawnPositions[2].transform.position, spawnPositions[2].transform.rotation).name = "E3";
                 break;
             case 4:
-                Instantiate(enemy, spawnPositions[0].transform.position, rotation);
-                Instantiate(enemy, spawnPositions[1].transform.position, rotation);
-                Instantiate(enemy, spawnPositions[2].transform.position, rotation);
-                Instantiate(enemy, spawnPositions[3].transform.position, rotation);
+                Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
+                Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation);
+                Instantiate(enemy, spawnPositions[2].transform.position, spawnPositions[2].transform.rotation);
+                Instantiate(enemy, spawnPositions[3].transform.position, spawnPositions[3].transform.rotation);
                 break;
         }
         enemiesList = FindObjectsOfType<EnemyController>();

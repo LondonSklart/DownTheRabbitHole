@@ -8,17 +8,17 @@ public class PlayerController : MonoBehaviour
 {
     public Weapon weapon;
 
-    public float startingHealth = 10;
+    float startingHealth = 10;
     private float health;
     private float lifeOnHit;
-    public float weaponDamage = 2;
-    public float initiative = 1;
-    public float startingHaste = 1;
+    float weaponDamage = 2;
+    float startingHaste;
     public float haste = 0;
     float buffertimer = 1;
     private bool[] weaponAOE = new bool[] {false,false,false,false };
     TurnManager turnManager;
     TurnController turnController;
+    CharacterStats Chstats;
     DamagePrint damagePrint;
     TextController textController;
     private bool attackChoice = false;
@@ -30,12 +30,19 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         weapon = WeaponLibrary.Instance.GetWeapon(1);
-        health = startingHealth;
-        haste = startingHaste;
+        Chstats = gameObject.GetComponent<CharacterStats>();
         turnManager = FindObjectOfType<TurnManager>();
         damagePrint = GetComponentInChildren<DamagePrint>();
         turnController = gameObject.GetComponent<TurnController>();
         LocateEnemies();
+
+        startingHealth = Chstats.stats[1].GetCalculatedValue();
+        turnController.initiative = Chstats.stats[2].GetCalculatedValue();
+        startingHaste = Chstats.stats[3].GetCalculatedValue();
+        weaponAOE = Chstats.AOE;
+
+        health = startingHealth;
+        haste = startingHaste;
     }
 
     private void Update()
@@ -77,7 +84,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Attack()
     {
-        CheckEquipment(weapon.AOE,weapon.attackDamage,weapon.Effect);
+        CheckEquipment(weapon.AOE,Chstats.stats[0].GetCalculatedValue(),weapon.Effect);
         LocateEnemies();
         if (weaponAOE[0])
         {
@@ -187,10 +194,6 @@ public class PlayerController : MonoBehaviour
                 lifeOnHit = 2;
                 break;
         }
-    }
-    public float GetInitiative()
-    {
-        return initiative;
     }
 
 }
