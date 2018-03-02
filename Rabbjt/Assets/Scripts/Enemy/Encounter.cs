@@ -2,15 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Encounter : MonoBehaviour {
+[CreateAssetMenu(fileName = "EncounterData", menuName = "Encounter/New Encounter", order = 1)]
+public class Encounter : ScriptableObject {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public List<GameObject> enemiesInRoom;
 }
