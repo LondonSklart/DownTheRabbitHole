@@ -30,7 +30,31 @@ public class Room{
     private bool roomEntered = false;
     private Encounter encounter;
 
-    private List<GameObject> enemiesInRoom;
+    public List<GameObject> enemiesInRoom;
+
+    public Encounter Encounter
+    {
+        get { return encounter; }
+        set { encounter = value; }
+    }
+    public bool RoomEntered
+    {
+        get { return roomEntered; }
+        set { roomEntered = value; }
+    }
+
+    public List<GameObject> EnemiesInRoom
+    {
+        get
+        {
+            return enemiesInRoom;
+        }
+
+        set
+        {
+            enemiesInRoom = value;
+        }
+    }
 
     public Room(RoomType rt)
     {

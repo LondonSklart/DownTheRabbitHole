@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     public Weapon weapon;
 
+    int currentRoom;
+
     float startingHealth = 10;
     private float health;
     private float lifeOnHit;
@@ -26,6 +28,19 @@ public class PlayerController : MonoBehaviour
     public Image healthbar;
     [SerializeField]
     List<EnemyController> enemiesList = new List<EnemyController>();
+
+    public int CurrentRoom
+    {
+        get
+        {
+            return currentRoom;
+        }
+
+        set
+        {
+            currentRoom = value;
+        }
+    }
 
     private void Start()
     {

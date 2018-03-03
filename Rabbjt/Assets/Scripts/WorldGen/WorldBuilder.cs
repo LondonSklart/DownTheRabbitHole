@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class WorldBuilder : MonoBehaviour {
 
+    PlayerController player;
+
     //enum for floor types (Like in binding of isaac) e.g. Basement I, Basement II, Womb, Sheol.  Probably solved through
     public enum FloorType
     {
@@ -39,20 +41,33 @@ public class WorldBuilder : MonoBehaviour {
     [SerializeField]
     public Room[] rooms; //Holds rooms on current floor
 
+    Encounter[] availableEncounters;
+
     // Use this for initialization
-    void Start () {
+    private void Awake()
+    {
+        player = FindObjectOfType<PlayerController>();
+
+        availableEncounters = Resources.FindObjectsOfTypeAll<Encounter>();
+
         runSeed = Random.Range(int.MinValue, int.MaxValue); //Level Seed Stuff
         GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<Text>().text = "Seed: " + runSeed;
         sr = new System.Random(runSeed);
 
-        for(int i = 0; i < floorSeed.Length; i++)
+        for (int i = 0; i < floorSeed.Length; i++)
         {
             floorSeed[i] = sr.Next();
             //Debug.Log("Floor "+i+": "+floorSeed[i]);
         }
 
         GenerateFloor();
-        //VisualGenerator();
+    }
+
+    void Start () {
+
+
+        VisualGenerator();
+
 	}
 
     
@@ -110,13 +125,47 @@ public class WorldBuilder : MonoBehaviour {
 
         InvalidIndex(healingFountain);
 
+
+
+        //This part should help the workload in case of too many encounters
+        List<Encounter> validEncounters = new List<Encounter>();
+        for(int i = 0; i < availableEncounters.Length; i++)
+        {
+            List<FloorType> validFT = availableEncounters[i].validFloors;
+            for (int j = 0; j < validFT.Count; i++)
+            {
+                if((int)validFT[j] == currentFloor)
+                {
+                    validEncounters.Add(availableEncounters[i]);
+                    break;
+                }
+            }
+        }
         //Seed monster rooms
         for(int i = 0; i < floorSizeX*floorSizeY; i++)
         {
-        if(rooms[i])
-        rooms[i]
+            if (!invalidIndex.Contains(i))
+            {
+                rooms[i].Encounter = validEncounters[sfr.Next(0, validEncounters.Count)];
+                rooms[i].roomType = Room.RoomType.Monster;
+            }
         }
 
+        //Load player to floor
+        player.CurrentRoom = startRoom;
+
+    }
+
+    public Room LoadRoom(int currentRoom)
+    {
+        Room activeRoom = rooms[currentRoom];
+        activeRoom.RoomEntered = true;
+        if(activeRoom.Encounter != null)
+        activeRoom.EnemiesInRoom = activeRoom.Encounter.enemiesInRoom;
+
+        return activeRoom;
+
+        //Add a bunch of logic to replace the backdrop
     }
 
     private int SeedRooms()

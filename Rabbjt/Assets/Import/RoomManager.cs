@@ -6,10 +6,12 @@ using System.Linq;
 public class RoomManager : MonoBehaviour
 {
 
+    PlayerController player;
     public GameObject enemy;
     Quaternion rotation;
     TurnManager turnManager;
     EnemyController[] enemiesList;
+    WorldBuilder worldBuilder;
 
     [SerializeField]
     Encounter testEncounter;
@@ -21,40 +23,29 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
+        player = FindObjectOfType<PlayerController>();
+        worldBuilder = FindObjectOfType<WorldBuilder>();
         turnManager = FindObjectOfType<TurnManager>();
-        OnRoomLoad(testEncounter);
+
+        OnRoomLoad(player.CurrentRoom);
 
 
     }
 
 
-    public void OnRoomLoad(Encounter encounter)
+    public void OnRoomLoad(int currentRoom)
     {
-        for(int i = 0; i < encounter.enemiesInRoom.Count(); i++)
+        Room activeRoom = worldBuilder.LoadRoom(currentRoom);
+
+        if(activeRoom.Encounter != null) //Only runs if the room contains enemies
         {
-            Instantiate(encounter.enemiesInRoom[i], spawnPositions[i].transform.position, spawnPositions[i].transform.rotation);
+        for(int i = 0; i < activeRoom.enemiesInRoom.Count(); i++)
+        {
+            Instantiate(activeRoom.enemiesInRoom[i], spawnPositions[i].transform.position, spawnPositions[i].transform.rotation);
         }
-        //switch (enemies)
-        //{
-        //    case 1:
-        //        Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
-        //        break;
-        //    case 2:
-        //        Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
-        //        Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation);
-        //        break;
-        //    case 3:
-        //        Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation).name = "E1";
-        //        Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation).name = "E2";
-        //        Instantiate(enemy, spawnPositions[2].transform.position, spawnPositions[2].transform.rotation).name = "E3";
-        //        break;
-        //    case 4:
-        //        Instantiate(enemy, spawnPositions[0].transform.position, spawnPositions[0].transform.rotation);
-        //        Instantiate(enemy, spawnPositions[1].transform.position, spawnPositions[1].transform.rotation);
-        //        Instantiate(enemy, spawnPositions[2].transform.position, spawnPositions[2].transform.rotation);
-        //        Instantiate(enemy, spawnPositions[3].transform.position, spawnPositions[3].transform.rotation);
-        //        break;
-        //}
+
+        }
+
         enemiesList = FindObjectsOfType<EnemyController>();
         foreach (EnemyController e in enemiesList)
         {
