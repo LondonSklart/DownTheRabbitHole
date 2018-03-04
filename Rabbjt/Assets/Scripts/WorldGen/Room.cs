@@ -32,6 +32,11 @@ public class Room{
 
     public List<GameObject> enemiesInRoom;
 
+    //Visual data
+    List<int> roomVisSeed;
+
+
+    //Get Set methods
     public Encounter Encounter
     {
         get { return encounter; }
@@ -55,6 +60,22 @@ public class Room{
             enemiesInRoom = value;
         }
     }
+
+    public List<int> RoomVisSeed
+    {
+        get
+        {
+            return roomVisSeed;
+        }
+
+        set
+        {
+            roomVisSeed = value;
+        }
+    }
+
+
+
 
     public Room(RoomType rt)
     {

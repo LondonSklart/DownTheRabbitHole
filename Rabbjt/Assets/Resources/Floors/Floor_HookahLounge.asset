@@ -17,3 +17,8 @@ MonoBehaviour:
   floorSizeY: 5
   maxDifficulty: 3
   itemList: 
+  floorType: 2
+  wallsVis: []
+  cornerWallsVis: []
+  doorVis: []
+  floorVis: []

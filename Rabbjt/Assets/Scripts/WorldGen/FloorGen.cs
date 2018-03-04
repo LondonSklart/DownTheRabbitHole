@@ -15,4 +15,11 @@ public class FloorGen : ScriptableObject {
     public int maxDifficulty = 5;
 
     public int[] itemList;
+
+    public WorldBuilder.FloorType floorType;
+
+    public GameObject[] wallsVis;
+    public GameObject[] cornerWallsVis;
+    public GameObject[] doorVis;
+    public GameObject[] floorVis;
 }

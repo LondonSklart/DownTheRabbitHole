@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - UI
+  - Character
+  - w_Room
   layers:
   - Default
   - TransparentFX

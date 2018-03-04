@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f1748ddd114744f88839a9d0d47ba0, type: 3}
+  m_Name: Floor_RabbitHole
+  m_EditorClassIdentifier: 
+  floorName: RabbitHole
+  loopingFloor: 1
+  floorSizeX: 5
+  floorSizeY: 5
+  maxDifficulty: 3
+  itemList: 
+  floorType: 0
+  wallsVis:
+  - {fileID: 1475027113362612, guid: 65a037cdaea59e84d8a1dcd0823f95d5, type: 2}
+  cornerWallsVis:
+  - {fileID: 1799468497125900, guid: 309e4ab21363cbb4089e8bf1de55469c, type: 2}
+  doorVis:
+  - {fileID: 100000, guid: f480fbf0bd154124eba547c8cabbe8ac, type: 3}
+  floorVis:
+  - {fileID: 1230018325290618, guid: 80ac24affa70b244cbb59b82399d9d0e, type: 2}

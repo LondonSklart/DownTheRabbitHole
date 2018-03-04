@@ -17,3 +17,12 @@ MonoBehaviour:
   floorSizeY: 5
   maxDifficulty: 3
   itemList: 
+  floorType: 3
+  wallsVis:
+  - {fileID: 0}
+  cornerWallsVis:
+  - {fileID: 0}
+  doorVis:
+  - {fileID: 0}
+  floorVis:
+  - {fileID: 0}

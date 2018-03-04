@@ -35,14 +35,15 @@ public class RoomManager : MonoBehaviour
 
     public void OnRoomLoad(int currentRoom)
     {
+        Debug.Log("Loading new room: "+currentRoom);
         Room activeRoom = worldBuilder.LoadRoom(currentRoom);
 
         if(activeRoom.Encounter != null) //Only runs if the room contains enemies
         {
-        for(int i = 0; i < activeRoom.enemiesInRoom.Count(); i++)
-        {
-            Instantiate(activeRoom.enemiesInRoom[i], spawnPositions[i].transform.position, spawnPositions[i].transform.rotation);
-        }
+            for(int i = 0; i < activeRoom.enemiesInRoom.Count(); i++)
+            {
+                Instantiate(activeRoom.enemiesInRoom[i], spawnPositions[i].transform.position, spawnPositions[i].transform.rotation);
+            }
 
         }
 

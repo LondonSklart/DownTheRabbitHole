@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class WorldBuilder : MonoBehaviour {
 
     PlayerController player;
-
+    RoomVisualManager rvManager;
     //enum for floor types (Like in binding of isaac) e.g. Basement I, Basement II, Womb, Sheol.  Probably solved through
     public enum FloorType
     {
@@ -42,13 +42,15 @@ public class WorldBuilder : MonoBehaviour {
     public Room[] rooms; //Holds rooms on current floor
 
     Encounter[] availableEncounters;
+    FloorGen[] availableFloors;
 
     // Use this for initialization
     private void Awake()
     {
         player = FindObjectOfType<PlayerController>();
-
+        rvManager = GameObject.FindGameObjectWithTag("w_Room").GetComponent<RoomVisualManager>();
         availableEncounters = Resources.FindObjectsOfTypeAll<Encounter>();
+        availableFloors = Resources.FindObjectsOfTypeAll<FloorGen>();
 
         runSeed = Random.Range(int.MinValue, int.MaxValue); //Level Seed Stuff
         GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<Text>().text = "Seed: " + runSeed;
@@ -66,7 +68,7 @@ public class WorldBuilder : MonoBehaviour {
     void Start () {
 
 
-        VisualGenerator();
+        //VisualGenerator();
 
 	}
 
@@ -159,13 +161,110 @@ public class WorldBuilder : MonoBehaviour {
     public Room LoadRoom(int currentRoom)
     {
         Room activeRoom = rooms[currentRoom];
-        activeRoom.RoomEntered = true;
-        if(activeRoom.Encounter != null)
-        activeRoom.EnemiesInRoom = activeRoom.Encounter.enemiesInRoom;
+        if (activeRoom.RoomEntered != true)
+        {
+            activeRoom.RoomEntered = true;
+
+            if (activeRoom.Encounter != null)
+            {
+                activeRoom.EnemiesInRoom = activeRoom.Encounter.enemiesInRoom;
+
+            }
+
+        }
+        //Add a bunch of logic to replace the backdrop (Maybe make into coroutine)
+
+       UpdateRoomVisuals(currentRoom ,rooms[currentRoom].RoomVisSeed);
 
         return activeRoom;
+    }
 
-        //Add a bunch of logic to replace the backdrop
+    
+
+    public void UpdateRoomVisuals(int currentRoom, List<int> roomSeed = null)
+    {
+        FloorGen activeFloorTileset = null;
+        for(int i = 0; i < availableFloors.Length; i++)
+        {
+            if((int)availableFloors[i].floorType == currentFloor)
+            {
+                activeFloorTileset = availableFloors[i];
+                break;
+            }
+        }
+        List<int> roomVisSeed = new List<int>();
+        
+        GameObject[] wallObject = rvManager.walls;
+        if(roomSeed == null) //First make sure there is a tileset for the room
+        {
+            for (int i = 0; i < wallObject.Length; i++)
+            {
+
+                for(int j = 0; j < wallObject[i].transform.childCount; j++)
+                roomVisSeed.Add(sfr.Next(0,activeFloorTileset.wallsVis.Length));
+
+            }
+            roomVisSeed.Add(sfr.Next(0, activeFloorTileset.cornerWallsVis.Length));//For NW corner
+            roomVisSeed.Add(sfr.Next(0, activeFloorTileset.cornerWallsVis.Length));//For NE corner
+            roomVisSeed.Add(sfr.Next(0, activeFloorTileset.doorVis.Length));//Door W
+            roomVisSeed.Add(sfr.Next(0, activeFloorTileset.doorVis.Length));//Door N
+            roomVisSeed.Add(sfr.Next(0, activeFloorTileset.doorVis.Length));//Door E
+            roomVisSeed.Add(sfr.Next(0, activeFloorTileset.floorVis.Length));//Floor
+
+        }
+        else
+        {
+            roomVisSeed = roomSeed;
+
+        }
+
+        int seedCounter = 0;
+
+        //Replace wall rows
+        for (int i = 0; i < wallObject.Length; i++)
+        {//Logic for actual uptades
+            //Replace wall rows
+            GameObject[] wallSegment = new GameObject[wallObject[i].transform.childCount];//Gets children of wall
+            for (int j = 0; j < wallSegment.Length; j++)
+            {
+                wallSegment[j] = wallObject[i].transform.GetChild(j).gameObject;
+                
+                
+                MeshFilter meshFilter = wallSegment[j].GetComponent<MeshFilter>();
+                MeshRenderer meshRenderer = wallSegment[j].GetComponent<MeshRenderer>();
+
+                meshFilter.mesh = activeFloorTileset.wallsVis[roomVisSeed[seedCounter]].GetComponent<MeshFilter>().sharedMesh;
+                meshRenderer.material = activeFloorTileset.wallsVis[roomVisSeed[seedCounter]].GetComponent<MeshRenderer>().sharedMaterial;
+
+                seedCounter++; 
+            }
+        }
+        //Replace Corner walls
+        rvManager.wallNWcorner.GetComponent<MeshFilter>().mesh = activeFloorTileset.cornerWallsVis[roomVisSeed[seedCounter]].GetComponent<MeshFilter>().sharedMesh;
+        rvManager.wallNWcorner.GetComponent<MeshRenderer>().material = activeFloorTileset.cornerWallsVis[roomVisSeed[seedCounter]].GetComponent<MeshRenderer>().sharedMaterial;
+        seedCounter++;
+
+        rvManager.wallNEcorner.GetComponent<MeshFilter>().mesh = activeFloorTileset.cornerWallsVis[roomVisSeed[seedCounter]].GetComponent<MeshFilter>().sharedMesh;
+        rvManager.wallNEcorner.GetComponent<MeshRenderer>().material = activeFloorTileset.cornerWallsVis[roomVisSeed[seedCounter]].GetComponent<MeshRenderer>().sharedMaterial;
+        seedCounter++;
+        //Replace Doors
+        rvManager.door_W.GetComponent<MeshFilter>().mesh = activeFloorTileset.doorVis[roomVisSeed[seedCounter]].GetComponent<MeshFilter>().sharedMesh;
+        rvManager.door_W.GetComponent<MeshRenderer>().material = activeFloorTileset.doorVis[roomVisSeed[seedCounter]].GetComponent<MeshRenderer>().sharedMaterial;
+        seedCounter++;
+
+        rvManager.door_N.GetComponent<MeshFilter>().mesh = activeFloorTileset.doorVis[roomVisSeed[seedCounter]].GetComponent<MeshFilter>().sharedMesh;
+        rvManager.door_N.GetComponent<MeshRenderer>().material = activeFloorTileset.doorVis[roomVisSeed[seedCounter]].GetComponent<MeshRenderer>().sharedMaterial;
+        seedCounter++;
+
+        rvManager.door_E.GetComponent<MeshFilter>().mesh = activeFloorTileset.doorVis[roomVisSeed[seedCounter]].GetComponent<MeshFilter>().sharedMesh;
+        rvManager.door_E.GetComponent<MeshRenderer>().material = activeFloorTileset.doorVis[roomVisSeed[seedCounter]].GetComponent<MeshRenderer>().sharedMaterial;
+        seedCounter++;
+        //Replace Floor
+        rvManager.floor.GetComponent<MeshFilter>().mesh = activeFloorTileset.floorVis[roomVisSeed[seedCounter]].GetComponent<MeshFilter>().sharedMesh;
+        rvManager.floor.GetComponent<MeshRenderer>().material = activeFloorTileset.floorVis[roomVisSeed[seedCounter]].GetComponent<MeshRenderer>().sharedMaterial;
+        seedCounter++;
+
+        rooms[currentRoom].RoomVisSeed = roomVisSeed;
     }
 
     private int SeedRooms()

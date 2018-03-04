@@ -299,6 +299,7 @@
     <Compile Include="Assets\Import\TurnController.cs" />
     <Compile Include="Assets\Import\TurnManager.cs" />
     <Compile Include="Assets\Import\WeaponLibrary.cs" />
+    <Compile Include="Assets\RoomVisualManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\Encounter.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Elemental.cs" />
