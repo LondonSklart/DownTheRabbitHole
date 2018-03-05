@@ -35,6 +35,7 @@ public class RoomManager : MonoBehaviour
 
     public void OnRoomLoad(int currentRoom)
     {
+        allCharactersList.Clear();
         Debug.Log("Loading new room: "+currentRoom);
         Room activeRoom = worldBuilder.LoadRoom(currentRoom);
 
@@ -44,6 +45,7 @@ public class RoomManager : MonoBehaviour
             {
                 Instantiate(activeRoom.enemiesInRoom[i], spawnPositions[i].transform.position, spawnPositions[i].transform.rotation);
             }
+            activeRoom.Encounter = null;
 
         }
 
@@ -59,7 +61,7 @@ public class RoomManager : MonoBehaviour
                 }
             }
         }
-
+        
         GameObject[] allCharacters = GameObject.FindGameObjectsWithTag("Character");
 
         foreach (GameObject c in allCharacters)

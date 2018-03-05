@@ -110,7 +110,6 @@ public class PlayerController : MonoBehaviour
             {
                 UsePotion();
                 itemChoice = false;
-                turnManager.EndTurn();
             }
         
         }
