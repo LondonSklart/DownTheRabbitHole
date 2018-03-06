@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
 
     public float startingHealth;
     private float health;
-    public float attackDamage;
+    public int attackDamage;
     private float swingTimer = 1;
     public float initiative;
     public float startingHaste;
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void Attack(float damage)
+    public void Attack(int damage)
     {
         PlayerController player;
         player = FindObjectOfType<PlayerController>();

@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
 
     int currentRoom;
 
-    float startingHealth = 10;
-    private float health;
+    public float startingHealth = 10;
+    public float health;
     private float lifeOnHit;
     float weaponDamage = 2;
     float startingHaste;
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Attack()
     {
-        CheckEquipment(weapon.AOE,Chstats.stats[0].GetCalculatedValue(),weapon.Effect);
+        CheckEquipment(Chstats.AOE,Chstats.stats[0].GetCalculatedValue(),weapon.Effect);
         LocateEnemies();
         if (weaponAOE[0])
         {
@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour
         damagePrint.PrintDamage(damage);
         health -= damage;
         healthbar.fillAmount = health / startingHealth;
+
     }
     public void GainHealth(float damage)
     {

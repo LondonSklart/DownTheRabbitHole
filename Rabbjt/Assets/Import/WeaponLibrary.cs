@@ -19,6 +19,11 @@ public class WeaponLibrary : ScriptableObject
         return Instantiate(weapons[index]);
     }
 
+    public int GetLibraryLength()
+    {
+        return weapons.Length;
+    }
+
     public Weapon[] GetAllWeapons()
     {
         return weapons;

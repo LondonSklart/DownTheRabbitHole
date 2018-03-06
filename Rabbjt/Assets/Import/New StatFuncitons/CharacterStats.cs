@@ -26,11 +26,14 @@ public class CharacterStats : MonoBehaviour
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.C))
         {
             Debug.Log(stats[0].GetCalculatedValue());
             Debug.Log(stats[1].GetCalculatedValue());
+            foreach (bool b in AOE)
+            {
+                Debug.Log(b);
+            }
         }
 
 

@@ -57,7 +57,7 @@ public class PlayerWeaponController : MonoBehaviour
 
 
 
-
+        characterStat.AOE = itemToEquip.AOE;
         characterStat.AddStatBonus(itemToEquip.Stats);
     }
 
