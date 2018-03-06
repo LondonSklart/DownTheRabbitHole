@@ -6,14 +6,12 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 
 {
-    public Weapon weapon;
 
     int currentRoom;
 
     public float startingHealth = 10;
     public float health;
     private float lifeOnHit;
-    float weaponDamage = 2;
     float startingHaste;
     public float haste = 0;
     float buffertimer = 1;
@@ -23,6 +21,7 @@ public class PlayerController : MonoBehaviour
     CharacterStats Chstats;
     DamagePrint damagePrint;
     TextController textController;
+    PlayerWeaponController weaponController;
     private bool attackChoice = false;
     private bool itemChoice = false;
     public Image healthbar;
@@ -44,7 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        weapon = WeaponLibrary.Instance.GetWeapon(1);
+        //weapon = WeaponLibrary.Instance.GetWeapon(1);
+        weaponController = gameObject.GetComponent<PlayerWeaponController>();
         Chstats = gameObject.GetComponent<CharacterStats>();
         turnManager = FindObjectOfType<TurnManager>();
         damagePrint = GetComponentInChildren<DamagePrint>();
@@ -120,35 +120,35 @@ public class PlayerController : MonoBehaviour
     }
     public void Attack()
     {
-        CheckEquipment(Chstats.AOE,Chstats.stats[0].GetCalculatedValue(),weapon.Effect);
+       // CheckEquipment(Chstats.AOE,Chstats.stats[0].GetCalculatedValue());
         LocateEnemies();
-        if (weaponAOE[0])
+        if (Chstats.AOE[0])
         {
             if (enemiesList.Count > 0)
             {
-            enemiesList[0].TakeDamage(weaponDamage);
+            enemiesList[0].TakeDamage(Chstats.stats[0].GetCalculatedValue());
             }
 
         }
-        if (weaponAOE[1])
+        if (Chstats.AOE[1])
         {
             if (enemiesList.Count > 1)
             {
-                enemiesList[1].TakeDamage(weaponDamage);
+                enemiesList[1].TakeDamage(Chstats.stats[0].GetCalculatedValue());
             }
         }
-        if (weaponAOE[2])
+        if (Chstats.AOE[2])
         {
             if (enemiesList.Count > 2)
             {
-                enemiesList[2].TakeDamage(weaponDamage);
+                enemiesList[2].TakeDamage(Chstats.stats[0].GetCalculatedValue());
             }
         }
-        if (weaponAOE[3])
+        if (Chstats.AOE[3])
         {
             if (enemiesList.Count > 3)
             {
-                enemiesList[3].TakeDamage(weaponDamage);
+                enemiesList[3].TakeDamage(Chstats.stats[0].GetCalculatedValue());
             }
         }
         if (lifeOnHit > 0)
@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
         enemiesList.TrimExcess();
         enemiesList.AddRange(FindObjectsOfType<EnemyController>());
     }
-    public void CheckEquipment( bool[] AOE, float weaponD, string effect)
+    public void CheckEquipment( bool[] AOE, float weaponD)
     {
         if (AOE.Length >= 1)
         {
@@ -224,13 +224,7 @@ public class PlayerController : MonoBehaviour
                 weaponAOE[3] = true;
             }
         }
-        weaponDamage = weaponD;
-        switch (effect)
-        {
-            case "Lifesteal":
-                lifeOnHit = 2;
-                break;
-        }
+
     }
 
 }

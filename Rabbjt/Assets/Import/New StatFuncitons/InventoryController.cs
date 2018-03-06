@@ -57,14 +57,14 @@ public class InventoryController : MonoBehaviour
         bool[] fistaoe = new bool[] { true, false, false, false };
         fist = new Item(fistStats, "helmet", "Weapon",fistaoe);
 
-        weaponController.EquipItem(sword);
+        weaponController.EquipItem(itemList[0]);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            weaponController.EquipItem(sword);
+            weaponController.EquipItem(itemList[1]);
 
         }
         if (Input.GetKeyDown(KeyCode.X))
@@ -75,7 +75,7 @@ public class InventoryController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            weaponController.UnEquipItem(sword);
+            weaponController.UnEquipItem(itemList[1]);
             weaponController.UnEquipItem(helmet);
 
         }
