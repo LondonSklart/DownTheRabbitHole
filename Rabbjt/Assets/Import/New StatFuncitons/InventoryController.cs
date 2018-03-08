@@ -6,8 +6,10 @@ public class InventoryController : MonoBehaviour
 {
     PlayerWeaponController weaponController;
     PlayerController playerController;
+    public Transform itemSlotLocation;
+    public GameObject inventorySlot;
 
-    List<Item> itemList = new List<Item>();
+    public List<Item> itemList = new List<Item>();
 
     public Item sword;
     public Item helmet;
@@ -31,6 +33,7 @@ public class InventoryController : MonoBehaviour
             statBlock.Add(new BaseStat(WeaponLibrary.Instance.GetWeapon(i).haste, "Haste", "Your haste level"));
 
                itemList.Add( new Item(statBlock, "sword", "Weapon" ,WeaponLibrary.Instance.GetWeapon(i).AOE));
+            Instantiate(inventorySlot, itemSlotLocation);
         }
 
 

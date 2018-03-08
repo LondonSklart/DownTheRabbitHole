@@ -285,6 +285,8 @@
     <Compile Include="Assets\Import\DamagePrint.cs" />
     <Compile Include="Assets\Import\EnemyController.cs" />
     <Compile Include="Assets\Import\EnemyScriptableObject.cs" />
+    <Compile Include="Assets\Import\Inventory\InventorySlot.cs" />
+    <Compile Include="Assets\Import\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Import\New StatFuncitons\BaseStat.cs" />
     <Compile Include="Assets\Import\New StatFuncitons\CharacterStats.cs" />
     <Compile Include="Assets\Import\New StatFuncitons\InventoryController.cs" />

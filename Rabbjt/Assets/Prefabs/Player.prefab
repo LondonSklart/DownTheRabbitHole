@@ -261,6 +261,7 @@ MonoBehaviour:
   startingHealth: 10
   health: 0
   haste: 4
+  invetoryUI: {fileID: 0}
   healthbar: {fileID: 114291763720190898}
   enemiesList: []
 --- !u!114 &114261994722195674
@@ -371,6 +372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d49724d51730aa46bf227f01b64c991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSlotLocation: {fileID: 0}
+  inventorySlot: {fileID: 1440876816637898, guid: 159ea6cd42486db48ad85175edcfda5f,
+    type: 2}
 --- !u!114 &114438022508126056
 MonoBehaviour:
   m_ObjectHideFlags: 1
