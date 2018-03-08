@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     CharacterStats Chstats;
     DamagePrint damagePrint;
     TextController textController;
+
+
+    public GameObject invetoryUI;
+    
     PlayerWeaponController weaponController;
     private bool attackChoice = false;
     private bool itemChoice = false;
@@ -99,7 +103,6 @@ public class PlayerController : MonoBehaviour
                 turnController.ResetHaste();
                 turnController.SetTurn(false);
                 turnManager.NewTurn();
-                Debug.Log("Hej");
                 // turnManager.EndTurn();
                 turnManager.DecreaseHaste();
 
@@ -225,6 +228,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+    public void OpenInventory()
+    {
+        invetoryUI.SetActive(!invetoryUI.activeSelf);
     }
 
 }

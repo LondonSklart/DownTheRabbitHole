@@ -356,10 +356,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  power: 0
+  power: 1
   initiative: 500
   haste: 4
-  AOE: 01010100
+  AOE: 01000000
 --- !u!114 &114406941962704238
 MonoBehaviour:
   m_ObjectHideFlags: 1

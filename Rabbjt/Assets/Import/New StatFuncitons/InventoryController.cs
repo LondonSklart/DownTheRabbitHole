@@ -57,7 +57,6 @@ public class InventoryController : MonoBehaviour
         bool[] fistaoe = new bool[] { true, false, false, false };
         fist = new Item(fistStats, "helmet", "Weapon",fistaoe);
 
-        weaponController.EquipItem(itemList[0]);
     }
 
     private void Update()

@@ -14,8 +14,7 @@ public class PlayerWeaponController : MonoBehaviour
 
 
 
-    int ass = 1;
-    int dick = 1;
+
 
     CharacterStats characterStat;
     GameObject location;
@@ -31,8 +30,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(ass);
-        Debug.Log(dick);
+
       //  Debug.Log(EquipedWeapon);
     }
 
@@ -106,25 +104,24 @@ public class PlayerWeaponController : MonoBehaviour
         switch (itemToUnequip.ItemType)
         {
             case "Weapon":
-                if (ass == 1)
+                if (EquipedWeapon!=null)
                 {
                     Debug.Log("daasdasd");
 
                     characterStat.RemoveStatBonus(EquipedWeapon.GetComponent<IWeapon>().Stats);
                     Destroy(playerHand.transform.GetChild(0).gameObject);
-                    ass = 0;
+                    EquipedWeapon = null;
                     player.startingHealth -= itemToUnequip.Stats[1].GetCalculatedValue();
                     player.health -= itemToUnequip.Stats[1].GetCalculatedValue();
 
                 }
                 break;
             case "Helmet":
-                if (dick == 1)
+                if (EquipedHelmet)
                 {
                     characterStat.RemoveStatBonus(EquipedHelmet.GetComponent<IWeapon>().Stats);
                     Destroy(playerHead.transform.GetChild(0).gameObject);
                     EquipedHelmet = null;
-                    dick = 0;
                     player.startingHealth -= itemToUnequip.Stats[1].GetCalculatedValue();
                     player.health -= itemToUnequip.Stats[1].GetCalculatedValue();
                 }

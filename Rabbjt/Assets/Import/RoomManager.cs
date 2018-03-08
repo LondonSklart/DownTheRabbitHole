@@ -78,7 +78,6 @@ public class RoomManager : MonoBehaviour
 
         turnManager.NewTurn();
        // turnManager.SeedSecondTurn();
-        Debug.Log("dab");
        // turnManager.EnterFight();
     }
 
