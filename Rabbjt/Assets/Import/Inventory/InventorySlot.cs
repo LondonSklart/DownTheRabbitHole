@@ -5,19 +5,31 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour {
 
-    public Text itemType;
+    public Text itemName;
 
     Item item;
 
     public void AddItem(Item newItem)
     {
         item = newItem;
-        itemType.text = newItem.ItemType;
+        itemName.text = newItem.Name;
+    }
+
+    private void Update()
+    {
+        if (item != null && Input.GetKeyDown(KeyCode.P))
+        {
+        }
     }
 
     public void ClearSlot()
     {
-        Debug.Log("ClearingSlot");
         Destroy(gameObject);
+    }
+
+    public void UseItem()
+    {
+
+        item.UseItem(item);
     }
 }

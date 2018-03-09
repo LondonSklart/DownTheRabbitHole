@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Sword
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  name: <:;:;:;:;:;:)===3
-  attackDamage: 3
+  power: 2
+  health: 2
+  initiative: 0
+  haste: 0
+  AOE: 01010000
   Effect: 
-  AOE: 010101

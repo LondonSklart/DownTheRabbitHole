@@ -18,7 +18,7 @@ public class InventoryUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             UpdateUI();
         }
@@ -28,11 +28,11 @@ public class InventoryUI : MonoBehaviour {
     {
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
 
-        Debug.Log("Updating UI");
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < inventory.itemList.Count)
             {
+                Debug.Log("adding intem");
                 slots[i].AddItem(inventory.itemList[i]);
             }
             else

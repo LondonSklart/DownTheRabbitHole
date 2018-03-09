@@ -32,7 +32,7 @@ public class InventoryController : MonoBehaviour
             statBlock.Add(new BaseStat(WeaponLibrary.Instance.GetWeapon(i).initiative, "Initiative", "Your initiative level"));
             statBlock.Add(new BaseStat(WeaponLibrary.Instance.GetWeapon(i).haste, "Haste", "Your haste level"));
 
-               itemList.Add( new Item(statBlock, "sword", "Weapon" ,WeaponLibrary.Instance.GetWeapon(i).AOE));
+               itemList.Add( new Item(WeaponLibrary.Instance.GetWeapon(i).name ,statBlock, "sword", "Weapon" ,WeaponLibrary.Instance.GetWeapon(i).AOE));
             Instantiate(inventorySlot, itemSlotLocation);
         }
 
@@ -41,24 +41,24 @@ public class InventoryController : MonoBehaviour
 
 
 
-        List<BaseStat> swordStats = new List<BaseStat>();
-        swordStats.Add(new BaseStat(1, "Power", "Your power level"));
-        swordStats.Add(new BaseStat(1, "Health", "Your health level"));
-        bool[] swordaoe = new bool[] { true, true, false, false };
-        sword = new Item(swordStats, "sword","Weapon",swordaoe);
+        //List<BaseStat> swordStats = new List<BaseStat>();
+        //swordStats.Add(new BaseStat(1, "Power", "Your power level"));
+        //swordStats.Add(new BaseStat(1, "Health", "Your health level"));
+        //bool[] swordaoe = new bool[] { true, true, false, false };
+        //sword = new Item(swordStats, "sword","Weapon",swordaoe);
 
 
-        List<BaseStat> helmetStats = new List<BaseStat>();
-        helmetStats.Add(new BaseStat(1, "Power", "Your power level"));
-        helmetStats.Add(new BaseStat(1, "Health", "Your health level"));
-        bool[] helmetaoe = new bool[] { false, false, false, false };
-        helmet = new Item(helmetStats, "helmet", "Helmet",helmetaoe);
+        //List<BaseStat> helmetStats = new List<BaseStat>();
+        //helmetStats.Add(new BaseStat(1, "Power", "Your power level"));
+        //helmetStats.Add(new BaseStat(1, "Health", "Your health level"));
+        //bool[] helmetaoe = new bool[] { false, false, false, false };
+        //helmet = new Item(helmetStats, "helmet", "Helmet",helmetaoe);
 
-        List<BaseStat> fistStats = new List<BaseStat>();
-        fistStats.Add(new BaseStat(1, "Power", "Your power level"));
-        fistStats.Add(new BaseStat(1, "Health", "Your health level"));
-        bool[] fistaoe = new bool[] { true, false, false, false };
-        fist = new Item(fistStats, "helmet", "Weapon",fistaoe);
+        //List<BaseStat> fistStats = new List<BaseStat>();
+        //fistStats.Add(new BaseStat(1, "Power", "Your power level"));
+        //fistStats.Add(new BaseStat(1, "Health", "Your health level"));
+        //bool[] fistaoe = new bool[] { true, false, false, false };
+        //fist = new Item(fistStats, "helmet", "Weapon",fistaoe);
 
     }
 
@@ -82,7 +82,6 @@ public class InventoryController : MonoBehaviour
 
         }
     }
-
 
 
 }
