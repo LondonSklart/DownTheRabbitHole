@@ -8,10 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0df4a40890b46b04aa683f5a843b9ce8, type: 3}
-  m_Name: New Enemy Scriptable Object
-  m_EditorClassIdentifier: 
-  name: Billy
-  startingHealth: 10
-  attackDamage: 2
-  initiative: 2
+  m_Script: {fileID: 0}
+  m_Name: BigAssSword
+  m_EditorClassIdentifier: Assembly-CSharp::Equipment
+  power: 4
+  health: 100
+  initiative: 1
+  haste: 0
+  AOE: 01010101
+  itemSlot: 0
+  Effect: 

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class WeaponLibrary : ScriptableObject
 {
-    [SerializeField] Weapon[] weapons;
+    [SerializeField] Equipment[] weapons;
 
     private static WeaponLibrary instance;
     public static WeaponLibrary Instance
@@ -14,7 +14,7 @@ public class WeaponLibrary : ScriptableObject
          private set{ instance = value; }
     }
 
-    public Weapon GetWeapon(int index)
+    public Equipment GetWeapon(int index)
     {
         return Instantiate(weapons[index]);
     }
@@ -24,7 +24,7 @@ public class WeaponLibrary : ScriptableObject
         return weapons.Length;
     }
 
-    public Weapon[] GetAllWeapons()
+    public Equipment[] GetAllWeapons()
     {
         return weapons;
     }

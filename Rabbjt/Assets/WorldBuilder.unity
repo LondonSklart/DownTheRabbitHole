@@ -1261,6 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1916983700}
+  inventory: {fileID: 856359658}
 --- !u!1 &414020633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,6 +2837,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 811764533}
   m_Mesh: {fileID: 4300000, guid: 0b23525b65aae68468c8ca4c4ba51538, type: 3}
+--- !u!114 &856359658 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114406941962704238, guid: 16806f5cf674d2649af239d1123a3eb9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1862000870}
+  m_Script: {fileID: 11500000, guid: 4d49724d51730aa46bf227f01b64c991, type: 3}
 --- !u!1001 &879530174
 Prefab:
   m_ObjectHideFlags: 0
@@ -5655,7 +5662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 116, y: -236.65001}
+  m_AnchoredPosition: {x: 116.20001, y: -236.65001}
   m_SizeDelta: {x: 232, y: 473.30005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916983701
@@ -5731,7 +5738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1929583532
 RectTransform:
   m_ObjectHideFlags: 0

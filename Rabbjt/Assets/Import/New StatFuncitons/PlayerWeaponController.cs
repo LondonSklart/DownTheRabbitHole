@@ -10,10 +10,10 @@ public class PlayerWeaponController : MonoBehaviour
     public GameObject playerHead;
     public GameObject EquipedHelmet { get; set; }
 
-    public Weapon EquipedOldWeapon { get; set; }
+    public Equipment EquipedOldWeapon { get; set; }
 
 
-
+    public List<Item> EquipedItems = new List<Item>();
 
 
     CharacterStats characterStat;
@@ -28,11 +28,7 @@ public class PlayerWeaponController : MonoBehaviour
         player = GetComponent<PlayerController>();
     }
 
-    private void Update()
-    {
 
-      //  Debug.Log(EquipedWeapon);
-    }
 
     public void EquipItem(Item itemToEquip)
     {
@@ -42,9 +38,9 @@ public class PlayerWeaponController : MonoBehaviour
 
 
 
-        switch (itemToEquip.ItemType)
+        switch (itemToEquip.Slot)
         {
-            case "Weapon":
+            case EquipmenSlot.Weapon:
 
                 if (EquipedWeapon != null)
                 {
@@ -61,9 +57,8 @@ public class PlayerWeaponController : MonoBehaviour
                 equipedWeapon = EquipedWeapon.GetComponent<IWeapon>();
                 EquipedWeapon.GetComponent<IWeapon>().Stats = itemToEquip.Stats;
                 EquipedWeapon.transform.SetParent(playerHand.transform);
-
                 break;
-            case "Helmet":
+            case EquipmenSlot.Head:
 
 
                 if (EquipedHelmet != null)
@@ -87,7 +82,7 @@ public class PlayerWeaponController : MonoBehaviour
         }
 
 
-
+        EquipedItems.Add(itemToEquip);
         characterStat.AOE = itemToEquip.AOE;
         characterStat.AddStatBonus(itemToEquip.Stats);
     }
@@ -101,12 +96,11 @@ public class PlayerWeaponController : MonoBehaviour
     {
 
 
-        switch (itemToUnequip.ItemType)
+        switch (itemToUnequip.Slot)
         {
-            case "Weapon":
+            case EquipmenSlot.Weapon:
                 if (EquipedWeapon!=null)
                 {
-                    Debug.Log("daasdasd");
 
                     characterStat.RemoveStatBonus(EquipedWeapon.GetComponent<IWeapon>().Stats);
                     Destroy(playerHand.transform.GetChild(0).gameObject);
@@ -116,7 +110,7 @@ public class PlayerWeaponController : MonoBehaviour
 
                 }
                 break;
-            case "Helmet":
+            case EquipmenSlot.Head:
                 if (EquipedHelmet)
                 {
                     characterStat.RemoveStatBonus(EquipedHelmet.GetComponent<IWeapon>().Stats);
@@ -130,7 +124,11 @@ public class PlayerWeaponController : MonoBehaviour
         }
 
 
+    }
 
+    public void ClearEquipedItemsList()
+    {
+        EquipedItems.Clear();
     }
 
 

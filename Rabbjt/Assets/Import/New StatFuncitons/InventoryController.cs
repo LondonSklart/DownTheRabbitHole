@@ -6,59 +6,57 @@ public class InventoryController : MonoBehaviour
 {
     PlayerWeaponController weaponController;
     PlayerController playerController;
+    InventoryUI ui;
+
     public Transform itemSlotLocation;
     public GameObject inventorySlot;
 
     public List<Item> itemList = new List<Item>();
 
+    public delegate void OnItemAdded();
+    public static OnItemAdded OnitemAddedCallBack; 
+
     public Item sword;
     public Item helmet;
     public Item fist;
 
+    public static InventoryController instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
+
+        ui = FindObjectOfType<InventoryUI>();
         weaponController = gameObject.GetComponent<PlayerWeaponController>();
         playerController = FindObjectOfType<PlayerController>();
         WeaponLibrary.Instance.GetLibraryLength();
 
 
 
-        for (int i = 0; i < WeaponLibrary.Instance.GetAllWeapons().Length; i++)
+        bool[] AOEchache = new bool[] {false,false,false,false };
+
+        foreach (Equipment w in WeaponLibrary.Instance.GetAllWeapons())
         {
-
+            Debug.Log("ay");
             List<BaseStat> statBlock = new List<BaseStat>();
-            statBlock.Add(new BaseStat(WeaponLibrary.Instance.GetWeapon(i).power, "Power", "Your power level"));
-            statBlock.Add(new BaseStat(WeaponLibrary.Instance.GetWeapon(i).health, "Health", "Your health level"));
-            statBlock.Add(new BaseStat(WeaponLibrary.Instance.GetWeapon(i).initiative, "Initiative", "Your initiative level"));
-            statBlock.Add(new BaseStat(WeaponLibrary.Instance.GetWeapon(i).haste, "Haste", "Your haste level"));
-
-               itemList.Add( new Item(WeaponLibrary.Instance.GetWeapon(i).name ,statBlock, "sword", "Weapon" ,WeaponLibrary.Instance.GetWeapon(i).AOE));
+            statBlock.Add(new BaseStat(w.power, "Power", "Your power level"));
+            statBlock.Add(new BaseStat(w.health, "Health", "Your health level"));
+            statBlock.Add(new BaseStat(w.initiative, "Initiative", "Your initiative level"));
+            statBlock.Add(new BaseStat(w.haste, "Haste", "Your haste level"));
+            if (w.itemSlot == EquipmenSlot.Weapon)
+            {
+                AOEchache = w.AOE;
+            }
+            itemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, AOEchache));
             Instantiate(inventorySlot, itemSlotLocation);
+
+            
         }
 
-
-
-
-
-
-        //List<BaseStat> swordStats = new List<BaseStat>();
-        //swordStats.Add(new BaseStat(1, "Power", "Your power level"));
-        //swordStats.Add(new BaseStat(1, "Health", "Your health level"));
-        //bool[] swordaoe = new bool[] { true, true, false, false };
-        //sword = new Item(swordStats, "sword","Weapon",swordaoe);
-
-
-        //List<BaseStat> helmetStats = new List<BaseStat>();
-        //helmetStats.Add(new BaseStat(1, "Power", "Your power level"));
-        //helmetStats.Add(new BaseStat(1, "Health", "Your health level"));
-        //bool[] helmetaoe = new bool[] { false, false, false, false };
-        //helmet = new Item(helmetStats, "helmet", "Helmet",helmetaoe);
-
-        //List<BaseStat> fistStats = new List<BaseStat>();
-        //fistStats.Add(new BaseStat(1, "Power", "Your power level"));
-        //fistStats.Add(new BaseStat(1, "Health", "Your health level"));
-        //bool[] fistaoe = new bool[] { true, false, false, false };
-        //fist = new Item(fistStats, "helmet", "Weapon",fistaoe);
+        ui.UpdateUI();
 
     }
 
@@ -69,19 +67,15 @@ public class InventoryController : MonoBehaviour
             weaponController.EquipItem(itemList[1]);
 
         }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            // weaponController.UnEquipItem(sword);
-            weaponController.EquipItem(helmet);
 
-        }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            weaponController.UnEquipItem(itemList[1]);
-            weaponController.UnEquipItem(helmet);
+            foreach (Item i in weaponController.EquipedItems)
+            {
+                weaponController.UnEquipItem(i);
+            }
 
         }
     }
-
 
 }

@@ -15,12 +15,7 @@ public class InventorySlot : MonoBehaviour {
         itemName.text = newItem.Name;
     }
 
-    private void Update()
-    {
-        if (item != null && Input.GetKeyDown(KeyCode.P))
-        {
-        }
-    }
+
 
     public void ClearSlot()
     {
