@@ -83,7 +83,11 @@ public class PlayerWeaponController : MonoBehaviour
 
 
         EquipedItems.Add(itemToEquip);
-        characterStat.AOE = itemToEquip.AOE;
+        if (itemToEquip.Slot == EquipmenSlot.Weapon)
+        {
+            characterStat.AOE = itemToEquip.AOE;
+
+        }
         characterStat.AddStatBonus(itemToEquip.Stats);
     }
 
