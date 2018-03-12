@@ -8,8 +8,12 @@ public class TurnManager : MonoBehaviour
     private float highestInitiative = 0;
     public float lowestInitiative = 100;
     private float highestHaste;
+    private bool fighting = false;
 
     RoomManager room;
+    InventoryUI inventoryUI;
+    List<GameObject> enemies = new List<GameObject>();
+
 
     public List<TurnController> turnControllerList = new List<TurnController>();
     public List<GameObject> HasteEntryList = new List<GameObject>();
@@ -17,18 +21,26 @@ public class TurnManager : MonoBehaviour
     private void Awake()
     {
         room = FindObjectOfType<RoomManager>();
+        inventoryUI = FindObjectOfType<InventoryUI>();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            CheckIfVictorious();
+
+        }
+
 
     }
 
-
     public void NewTurn()
     {
+        CheckIfVictorious();
 
-         // EnterFight();
-       // FindHighestHaste();
+
         SortMainListInt();
-       // findcontrollerwithhighesthaste();
-       // upkeep()
+
         if (room.allCharactersList[0] != null)
         {
             GetNextInQueue().GetComponent<TurnController>().SetTurn(true);
@@ -38,12 +50,8 @@ public class TurnManager : MonoBehaviour
         else
         {
             print("Cannot find entry 0 in queue");
-           // room.allCharactersList.RemoveAt(0);
             NewTurn();
         }
-
-
-        // Debug.Log(room.allCharactersList[0].GetComponent<TurnController>().initiative);
 
     }
 
@@ -71,7 +79,7 @@ public class TurnManager : MonoBehaviour
     public void Death (GameObject character)
     {
         room.allCharactersList.Remove(character);
-
+        CheckIfVictorious();
     }
     public void EnterQueue(GameObject character)
     {
@@ -86,21 +94,7 @@ public class TurnManager : MonoBehaviour
     }
     public void EnterFight()
     {
-        Debug.Log(HasteEntryList.Count);
-        for (int i = 0; i < HasteEntryList.Count; i++)
-        {
-            if (HasteEntryList.Count > 0)
-            {
-                Debug.Log("Här");
-
-                room.allCharactersList.Add(HasteEntryList[0]);
-                HasteEntryList.RemoveAt(0);
-
-            }
-
-        }
-
-
+        fighting = true;
     }
     public void SeedSecondTurn()
     {
@@ -112,40 +106,6 @@ public class TurnManager : MonoBehaviour
         room.allCharactersList.AddRange(currentBattlers);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //EnemyController[] enemies = FindObjectsOfType<EnemyController>();
-
-        //for (int i = 0; i < room.allCharactersList.Count; i++)
-        //{
-        //   // Debug.Log("Dab");
-        //FindObjectOfType<PlayerController>().haste--;
-
-        //foreach (EnemyController e in enemies)
-        //{
-        //    e.haste--;
-        //    // Debug.Log(e.haste);
-        //}
-        //Debug.Log(FindObjectOfType<PlayerController>().haste);
-        //}
     }
 
     public void FindHighestHaste()
@@ -225,5 +185,25 @@ public class TurnManager : MonoBehaviour
                else  return (a.GetComponent<TurnController>().initiative).CompareTo(b.GetComponent<TurnController>().initiative);
             });
         
+    }
+    public void CheckIfVictorious()
+    {
+        enemies.Clear();
+        foreach (GameObject g in room.allCharactersList)
+        {
+            if (g.GetComponent<EnemyController>() != null)
+            {
+                enemies.Add(g);
+
+            }
+        }
+
+            if (fighting == true && enemies.Count < 1)
+            {
+                inventoryUI.VictoryUI();
+                fighting = false;
+            }
+        
+
     }
 }

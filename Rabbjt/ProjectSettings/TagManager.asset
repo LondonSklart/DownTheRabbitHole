@@ -8,6 +8,7 @@ TagManager:
   - UI
   - Character
   - w_Room
+  - LootScreen
   layers:
   - Default
   - TransparentFX

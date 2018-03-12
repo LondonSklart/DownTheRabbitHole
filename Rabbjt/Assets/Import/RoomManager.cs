@@ -50,16 +50,9 @@ public class RoomManager : MonoBehaviour
         }
 
         enemiesList = FindObjectsOfType<EnemyController>();
-        foreach (EnemyController e in enemiesList)
+        if (enemiesList.Length > 0)
         {
-            foreach (EnemyController ee in enemiesList)
-            {
-                if (e.initiative == ee.initiative)
-                {
-                    e.initiative -= 0.1f;
-                    ee.initiative += 0.1f;
-                }
-            }
+            turnManager.EnterFight();
         }
         
         GameObject[] allCharacters = GameObject.FindGameObjectsWithTag("Character");

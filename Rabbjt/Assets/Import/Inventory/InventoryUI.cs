@@ -5,6 +5,9 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour {
 
     public Transform itemsParent;
+    public Transform lootParent;
+
+    public GameObject LootScreen;
 
     public InventoryController inventory;
 
@@ -41,6 +44,20 @@ public class InventoryUI : MonoBehaviour {
             {
                 slots[i].ClearSlot();
             }
+        }
+    }
+    public void VictoryUI()
+    {
+        InventorySlot[] victoryLootSlots;
+        LootScreen.SetActive(true);
+        Debug.Log("Victory!");
+        victoryLootSlots = lootParent.GetComponentsInChildren<InventorySlot>();
+        Debug.Log(victoryLootSlots.Length);
+        for (int i = 0; i < victoryLootSlots.Length; i++)
+        {
+
+                victoryLootSlots[i].AddItem(inventory.itemList[i]);
+ 
         }
     }
 }

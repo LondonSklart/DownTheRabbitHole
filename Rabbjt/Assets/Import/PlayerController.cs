@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
         {
         GainHealth(lifeOnHit);
         }
-
+        turnManager.CheckIfVictorious();
     }
     public void TakeDamage(float damage)
     {

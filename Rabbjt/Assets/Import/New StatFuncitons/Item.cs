@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     PlayerWeaponController weaponController;
+    InventoryController inventoryController;
 
     public string Name { get; set; }
     public List<BaseStat> Stats { get; set; }
@@ -26,6 +27,14 @@ public class Item : MonoBehaviour
     {
         weaponController = FindObjectOfType<PlayerWeaponController>();
         weaponController.EquipItem(itemToEquip);
+    }
+
+    public void ChooseItem (Item itemToAdd)
+    {
+        inventoryController = FindObjectOfType<InventoryController>();
+        inventoryController.ChooseItem(itemToAdd);
+        GameObject.FindGameObjectWithTag("LootScreen").SetActive(false);
+
     }
 
 }

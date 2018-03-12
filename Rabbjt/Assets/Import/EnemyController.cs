@@ -44,17 +44,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        //Debug.Log(haste);
-/*
-        if (haste <= 0)
-        {
-            turnManager.EnterQueue(gameObject);
 
-
-            haste = startingHaste;
-
-
-        }*/
 
         if (turnController.GetTurn())
         {

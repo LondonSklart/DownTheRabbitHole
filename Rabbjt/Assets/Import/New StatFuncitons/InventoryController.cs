@@ -40,7 +40,6 @@ public class InventoryController : MonoBehaviour
 
         foreach (Equipment w in WeaponLibrary.Instance.GetAllWeapons())
         {
-            Debug.Log("ay");
             List<BaseStat> statBlock = new List<BaseStat>();
             statBlock.Add(new BaseStat(w.power, "Power", "Your power level"));
             statBlock.Add(new BaseStat(w.health, "Health", "Your health level"));
@@ -77,5 +76,11 @@ public class InventoryController : MonoBehaviour
 
         }
     }
-
+    
+    public void ChooseItem(Item item)
+    {
+        Instantiate(inventorySlot, itemSlotLocation);
+        itemList.Add(item);
+        ui.UpdateUI();
+    }
 }

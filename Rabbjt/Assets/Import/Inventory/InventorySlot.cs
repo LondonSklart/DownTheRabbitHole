@@ -11,8 +11,11 @@ public class InventorySlot : MonoBehaviour {
 
     public void AddItem(Item newItem)
     {
-        item = newItem;
-        itemName.text = newItem.Name;
+   
+            item = newItem;
+            itemName.text = newItem.Name;
+        
+
     }
 
 
@@ -22,9 +25,18 @@ public class InventorySlot : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    public Item GetItem()
+    {
+        return item;
+    }
+
     public void UseItem()
     {
 
         item.UseItem(item);
+    }
+    public void ChooseItem()
+    {
+        item.ChooseItem(item);
     }
 }
