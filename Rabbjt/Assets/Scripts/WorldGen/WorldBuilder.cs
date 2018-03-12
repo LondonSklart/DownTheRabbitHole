@@ -421,6 +421,18 @@ public class WorldBuilder : MonoBehaviour {
         { Room.RoomType.Empty, Color.white},
     };
 
+    public int CurrentFloor
+    {
+        get
+        {
+            return currentFloor;
+        }
+
+        set
+        {
+            currentFloor = value;
+        }
+    }
 
     private void UpdateColorMap()
     {//Recolors cube primitives based on roomtype
