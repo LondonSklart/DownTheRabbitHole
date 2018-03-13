@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Floor1Loot
+  m_EditorClassIdentifier: Assembly-CSharp::LootTable
+  weapons:
+  - {fileID: 11400000, guid: ffed45ac29fbb2243beb7debe359d118, type: 2}
+  - {fileID: 11400000, guid: a8b4f4f8966be2e4b8e06256bbd8eb6b, type: 2}
+  - {fileID: 11400000, guid: b90e121b7df1736458c7a0a61c0d33f5, type: 2}
+  - {fileID: 11400000, guid: 750bf38e56212a74a8d3d013d4a550a6, type: 2}
+  - {fileID: 11400000, guid: 3991354b3df865c4290285e1a547513d, type: 2}
+  - {fileID: 11400000, guid: f69f7e01984897b4393d36e0d1d2cbd6, type: 2}
+  - {fileID: 11400000, guid: f891e3900ae4fb2439077cac691e5ae4, type: 2}
+  - {fileID: 11400000, guid: 6b9d95a736a55cb4f826128190cd91cb, type: 2}
+  - {fileID: 11400000, guid: 66641c6d4f354cc43bf2d752ef4111f4, type: 2}
+  - {fileID: 11400000, guid: 60c9d70b818244949a2dbc3bb29411fa, type: 2}

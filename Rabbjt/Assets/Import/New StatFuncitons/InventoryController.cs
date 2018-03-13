@@ -10,11 +10,14 @@ public class InventoryController : MonoBehaviour
 
     public Transform itemSlotLocation;
     public GameObject inventorySlot;
+    public GameMaster gameMaster;
+    public WorldBuilder worldBuilder;
 
     public List<Item> itemList = new List<Item>();
+    public List<Item> currentFloorItemList = new List<Item>();
 
     public delegate void OnItemAdded();
-    public static OnItemAdded OnitemAddedCallBack; 
+    public OnItemAdded OnitemAddedCallBack; 
 
     public Item sword;
     public Item helmet;
@@ -54,8 +57,9 @@ public class InventoryController : MonoBehaviour
 
             
         }
-
-        ui.UpdateUI();
+        OnLoadFloor();
+        OnitemAddedCallBack.Invoke();
+        //ui.UpdateUI();
 
     }
 
@@ -77,10 +81,35 @@ public class InventoryController : MonoBehaviour
         }
     }
     
+    public void OnLoadFloor()
+    {
+
+        bool[] AOEchache = new bool[] { false, false, false, false };
+
+        foreach (Equipment w in gameMaster.lootTables[worldBuilder.GetCurrentFloor()].GetAllWeapons())
+        {
+            List<BaseStat> statBlock = new List<BaseStat>();
+            statBlock.Add(new BaseStat(w.power, "Power", "Your power level"));
+            statBlock.Add(new BaseStat(w.health, "Health", "Your health level"));
+            statBlock.Add(new BaseStat(w.initiative, "Initiative", "Your initiative level"));
+            statBlock.Add(new BaseStat(w.haste, "Haste", "Your haste level"));
+            if (w.itemSlot == EquipmenSlot.Weapon)
+            {
+                AOEchache = w.AOE;
+            }
+            currentFloorItemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, AOEchache));
+
+
+        }
+    }
+
+
+
     public void ChooseItem(Item item)
     {
         Instantiate(inventorySlot, itemSlotLocation);
         itemList.Add(item);
-        ui.UpdateUI();
+        OnitemAddedCallBack.Invoke();
+        //ui.UpdateUI();
     }
 }

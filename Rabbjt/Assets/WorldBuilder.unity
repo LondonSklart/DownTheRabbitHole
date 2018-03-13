@@ -1354,6 +1354,8 @@ MonoBehaviour:
   itemsParent: {fileID: 1916983700}
   lootParent: {fileID: 518114258}
   LootScreen: {fileID: 1681904085}
+  gameMaster: {fileID: 713014842}
+  worldBuilder: {fileID: 723753051}
   inventory: {fileID: 856359658}
 --- !u!1 &414020633
 GameObject:
@@ -2468,6 +2470,54 @@ Transform:
   m_Father: {fileID: 1004044627}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &713014841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 713014843}
+  - component: {fileID: 713014842}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &713014842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 713014841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba7eeb9b37164b40b4ae43d1f5a147a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTables:
+  - {fileID: 11400000, guid: b5490d19d48d80146b441c6d99861826, type: 2}
+  - {fileID: 11400000, guid: dc80d8da82f652a428bc61eba83e8efb, type: 2}
+  - {fileID: 11400000, guid: 7fcc2aa819c96ee4d8ec489b49185ba0, type: 2}
+  - {fileID: 11400000, guid: d2dba9371dda187439e23e497598fc0b, type: 2}
+  - {fileID: 11400000, guid: b8e546cc3fbf1ed4689e4d0c574a9d22, type: 2}
+  - {fileID: 11400000, guid: f008f9ed138547c40982326bc399b0cc, type: 2}
+  - {fileID: 11400000, guid: 732e69b717bcb594498789d10f8990ac, type: 2}
+--- !u!4 &713014843
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 713014841}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 160.98564, y: 80.85805, z: 2.152954}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &713364341
 Prefab:
   m_ObjectHideFlags: 0
@@ -5778,6 +5828,16 @@ Prefab:
       propertyPath: invetoryUI
       value: 
       objectReference: {fileID: 1929583531}
+    - target: {fileID: 114406941962704238, guid: 16806f5cf674d2649af239d1123a3eb9,
+        type: 2}
+      propertyPath: gameMaster
+      value: 
+      objectReference: {fileID: 713014842}
+    - target: {fileID: 114406941962704238, guid: 16806f5cf674d2649af239d1123a3eb9,
+        type: 2}
+      propertyPath: worldBuilder
+      value: 
+      objectReference: {fileID: 723753051}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16806f5cf674d2649af239d1123a3eb9, type: 2}
   m_IsPrefabParent: 0

@@ -8,6 +8,7 @@ public class RoomManager : MonoBehaviour
 
     PlayerController player;
     public GameObject enemy;
+
     Quaternion rotation;
     TurnManager turnManager;
     EnemyController[] enemiesList;

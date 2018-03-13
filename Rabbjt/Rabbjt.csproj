@@ -285,6 +285,7 @@
     <Compile Include="Assets\Import\DamagePrint.cs" />
     <Compile Include="Assets\Import\EnemyController.cs" />
     <Compile Include="Assets\Import\EnemyScriptableObject.cs" />
+    <Compile Include="Assets\Import\FloorLootTable.cs" />
     <Compile Include="Assets\Import\Inventory\InventorySlot.cs" />
     <Compile Include="Assets\Import\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Import\New StatFuncitons\BaseStat.cs" />
@@ -305,6 +306,7 @@
     <Compile Include="Assets\Scripts\Enemy\Encounter.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy_Elemental.cs" />
+    <Compile Include="Assets\Scripts\GameMaster.cs" />
     <Compile Include="Assets\Scripts\WorldGen\Event.cs" />
     <Compile Include="Assets\Scripts\WorldGen\FloorGen.cs" />
     <Compile Include="Assets\Scripts\WorldGen\Room.cs" />

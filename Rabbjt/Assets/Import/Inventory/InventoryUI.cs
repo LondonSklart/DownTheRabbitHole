@@ -9,15 +9,20 @@ public class InventoryUI : MonoBehaviour {
 
     public GameObject LootScreen;
 
+    public GameMaster gameMaster;
+    public WorldBuilder worldBuilder;
+
     public InventoryController inventory;
 
     InventorySlot[] slots;
 
+    private LootTable currentLootTable;
+    int randomNumber;
 
-	// Use this for initialization
-	void Start () {
-       // inventory = FindObjectOfType<InventoryController>();
-        InventoryController.OnitemAddedCallBack += UpdateUI;
+    // Use this for initialization
+    void Start () {
+        inventory = FindObjectOfType<InventoryController>();
+        inventory.OnitemAddedCallBack += UpdateUI;
 	}
 	
 	// Update is called once per frame
@@ -30,7 +35,7 @@ public class InventoryUI : MonoBehaviour {
 
     public void UpdateUI()
     {
-        Debug.Log("adding intem");
+
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
 
@@ -48,6 +53,10 @@ public class InventoryUI : MonoBehaviour {
     }
     public void VictoryUI()
     {
+        currentLootTable = gameMaster.lootTables[worldBuilder.GetCurrentFloor()];
+
+        List<int> chachedNumbers = new List<int>();
+
         InventorySlot[] victoryLootSlots;
         LootScreen.SetActive(true);
         Debug.Log("Victory!");
@@ -55,9 +64,18 @@ public class InventoryUI : MonoBehaviour {
         Debug.Log(victoryLootSlots.Length);
         for (int i = 0; i < victoryLootSlots.Length; i++)
         {
+            randomNumber = Random.Range(0,currentLootTable.GetLibraryLength());
+            while (chachedNumbers.Contains(randomNumber))
+            {
+                randomNumber = Random.Range(0, currentLootTable.GetLibraryLength());
+            }
+            victoryLootSlots[i].AddItem(inventory.currentFloorItemList[randomNumber]);
+            chachedNumbers.Add(randomNumber);
 
-                victoryLootSlots[i].AddItem(inventory.itemList[i]);
+
+
  
         }
     }
+
 }

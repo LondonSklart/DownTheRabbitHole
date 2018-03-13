@@ -433,4 +433,8 @@ public class WorldBuilder : MonoBehaviour {
 
     }
 
+    public int GetCurrentFloor()
+    {
+        return currentFloor;
+    }
 }
