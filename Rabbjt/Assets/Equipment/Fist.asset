@@ -17,4 +17,5 @@ MonoBehaviour:
   haste: 0
   AOE: 01000000
   itemSlot: 0
+  onHitEffect: 1
   Effect: 

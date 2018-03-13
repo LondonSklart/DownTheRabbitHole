@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
             if (attackChoice)
             {
 
-                Attack();
+                Attack(Chstats.stats[0].GetCalculatedValue());
                 attackChoice = false;
                 turnController.ResetHaste();
                 turnController.SetTurn(false);
@@ -121,43 +121,17 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void Attack()
+    public void Attack(float damage)
     {
        // CheckEquipment(Chstats.AOE,Chstats.stats[0].GetCalculatedValue());
         LocateEnemies();
-        if (Chstats.AOE[0])
+        DealDamage(damage);
+        foreach (Item item in weaponController.EquipedItems)
         {
-            if (enemiesList.Count > 0)
-            {
-            enemiesList[0].TakeDamage(Chstats.stats[0].GetCalculatedValue());
-            }
+            EquipmentEffect(item.OnHitEffect);
+        }
 
-        }
-        if (Chstats.AOE[1])
-        {
-            if (enemiesList.Count > 1)
-            {
-                enemiesList[1].TakeDamage(Chstats.stats[0].GetCalculatedValue());
-            }
-        }
-        if (Chstats.AOE[2])
-        {
-            if (enemiesList.Count > 2)
-            {
-                enemiesList[2].TakeDamage(Chstats.stats[0].GetCalculatedValue());
-            }
-        }
-        if (Chstats.AOE[3])
-        {
-            if (enemiesList.Count > 3)
-            {
-                enemiesList[3].TakeDamage(Chstats.stats[0].GetCalculatedValue());
-            }
-        }
-        if (lifeOnHit > 0)
-        {
-        GainHealth(lifeOnHit);
-        }
+
         turnManager.CheckIfVictorious();
     }
     public void TakeDamage(float damage)
@@ -165,6 +139,39 @@ public class PlayerController : MonoBehaviour
         damagePrint.PrintDamage(damage);
         health -= damage;
         healthbar.fillAmount = health / startingHealth;
+
+    }
+    public void DealDamage(float damage)
+    {
+        if (Chstats.AOE[0])
+        {
+            if (enemiesList.Count > 0)
+            {
+                enemiesList[0].TakeDamage(damage);
+            }
+
+        }
+        if (Chstats.AOE[1])
+        {
+            if (enemiesList.Count > 1)
+            {
+                enemiesList[1].TakeDamage(damage);
+            }
+        }
+        if (Chstats.AOE[2])
+        {
+            if (enemiesList.Count > 2)
+            {
+                enemiesList[2].TakeDamage(damage);
+            }
+        }
+        if (Chstats.AOE[3])
+        {
+            if (enemiesList.Count > 3)
+            {
+                enemiesList[3].TakeDamage(damage);
+            }
+        }
 
     }
     public void GainHealth(float damage)
@@ -232,6 +239,26 @@ public class PlayerController : MonoBehaviour
     public void OpenInventory()
     {
         invetoryUI.SetActive(!invetoryUI.activeSelf);
+    }
+
+    public void EquipmentEffect(OnHitEffect effect)
+    {
+        switch (effect)
+        {
+            case OnHitEffect.None:
+                break;
+            case OnHitEffect.DoubleStrike:
+
+                    DealDamage(Chstats.stats[0].GetCalculatedValue());
+                
+                break;
+            case OnHitEffect.Bleed:
+                break;
+            case OnHitEffect.LifeSteal:
+                health += Chstats.stats[0].GetCalculatedValue();
+                break;
+
+        }
     }
 
 }
