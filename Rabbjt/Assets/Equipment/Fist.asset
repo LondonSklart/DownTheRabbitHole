@@ -15,7 +15,10 @@ MonoBehaviour:
   health: 1
   initiative: 0
   haste: 0
-  AOE: 01000000
+  AOE: 01010101
+  dotName: Poison
+  dotDamage: 0
+  hotRecovery: 0
+  dotLength: 2
   itemSlot: 0
-  onHitEffect: 1
-  Effect: 
+  onHitEffect: {fileID: 0}

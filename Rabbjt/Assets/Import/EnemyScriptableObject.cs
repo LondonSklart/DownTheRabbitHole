@@ -11,14 +11,22 @@ public class Equipment : ScriptableObject
     public int initiative;
     public int haste;
     public bool[] AOE = new bool[4];
-    public EquipmenSlot itemSlot;
-    public OnHitEffect onHitEffect;
 
-    public string Effect;
+    public string dotName;
+    public int dotDamage;
+    public int hotRecovery;
+    public int dotLength;
+
+    public EquipmenSlot itemSlot;
+    public Effect onHitEffect;
+
+
+
+
 
 
 }
 
 public enum EquipmenSlot { Weapon, Head, Chest}
 
-public enum OnHitEffect {None,DoubleStrike,Bleed,LifeSteal }
+public enum OnHitEffect {None,Poison,Bleed,LifeSteal }

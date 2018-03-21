@@ -23,6 +23,8 @@ public class EnemyController : MonoBehaviour
     DamagePrint damagePrint;
     TurnController turnController;
 
+    private List<Effect> afflictedList = new List<Effect>();
+
     private void Awake()
     {
         startingHealth = Random.Range(5, 10);
@@ -44,10 +46,15 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        if (afflictedList.Count > 0)
+        {
+            Debug.Log(afflictedList[0].Damage);
 
+        }
 
         if (turnController.GetTurn())
         {
+
             swingTimer -= Time.deltaTime;
             if (swingTimer <= 0)
             {
@@ -58,7 +65,14 @@ public class EnemyController : MonoBehaviour
                 turnController.SetTurn(false);
                 turnManager.NewTurn();
                 turnManager.DecreaseHaste();
-
+                foreach (Effect e in afflictedList)
+                {
+                    e.OnEndTurn(gameObject);
+                    if (e.Length <= 0)
+                    {
+                        afflictedList.Remove(e);
+                    }
+                 }
                 // turnManager.EndTurn();
             }
 
@@ -87,5 +101,8 @@ public class EnemyController : MonoBehaviour
 
 
     }
-
+    public void Afflicted(Effect effect)
+    {
+        afflictedList.Add(effect);
+    }
 }

@@ -11,11 +11,11 @@ public class Item : MonoBehaviour
     public List<BaseStat> Stats { get; set; }
     public string ObjectSlug { get; set; }
     public EquipmenSlot Slot { get; set; }
-    public OnHitEffect OnHitEffect { get; set; }
+    public Effect OnHitEffect { get; set; }
     public bool[] AOE { get; set; }
 
 
-    public Item(string name,List <BaseStat> _Stats, string _ObjectSlug, EquipmenSlot _Slot, OnHitEffect _OnHit,bool[] _AOE)
+    public Item(string name,List <BaseStat> _Stats, string _ObjectSlug, EquipmenSlot _Slot, Effect _OnHit,bool[] _AOE)
     {
         Name = name;
         Stats = _Stats;

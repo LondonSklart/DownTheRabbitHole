@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     List<EnemyController> enemiesList = new List<EnemyController>();
 
+    public List<Effect> effects = new List<Effect>();
+
     public int CurrentRoom
     {
         get
@@ -62,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
         health = startingHealth;
         haste = startingHaste;
+
+        effects.Add(new PoisonEffect("poison",2,0,2));
     }
 
     private void Update()
@@ -126,10 +130,6 @@ public class PlayerController : MonoBehaviour
        // CheckEquipment(Chstats.AOE,Chstats.stats[0].GetCalculatedValue());
         LocateEnemies();
         DealDamage(damage);
-        foreach (Item item in weaponController.EquipedItems)
-        {
-            EquipmentEffect(item.OnHitEffect);
-        }
 
 
         turnManager.CheckIfVictorious();
@@ -148,6 +148,8 @@ public class PlayerController : MonoBehaviour
             if (enemiesList.Count > 0)
             {
                 enemiesList[0].TakeDamage(damage);
+                EffectCheck(enemiesList[0]);
+
             }
 
         }
@@ -156,6 +158,7 @@ public class PlayerController : MonoBehaviour
             if (enemiesList.Count > 1)
             {
                 enemiesList[1].TakeDamage(damage);
+                EffectCheck(enemiesList[1]);
             }
         }
         if (Chstats.AOE[2])
@@ -163,6 +166,7 @@ public class PlayerController : MonoBehaviour
             if (enemiesList.Count > 2)
             {
                 enemiesList[2].TakeDamage(damage);
+                EffectCheck(enemiesList[2]);
             }
         }
         if (Chstats.AOE[3])
@@ -170,9 +174,18 @@ public class PlayerController : MonoBehaviour
             if (enemiesList.Count > 3)
             {
                 enemiesList[3].TakeDamage(damage);
+                EffectCheck(enemiesList[3]);
             }
         }
 
+    }
+    public void EffectCheck(EnemyController target)
+    {
+        Debug.Log("boom");
+        foreach (Item item in weaponController.EquipedItems)
+        {
+            target.Afflicted(item.OnHitEffect);
+        }
     }
     public void GainHealth(float damage)
     {
@@ -241,24 +254,6 @@ public class PlayerController : MonoBehaviour
         invetoryUI.SetActive(!invetoryUI.activeSelf);
     }
 
-    public void EquipmentEffect(OnHitEffect effect)
-    {
-        switch (effect)
-        {
-            case OnHitEffect.None:
-                break;
-            case OnHitEffect.DoubleStrike:
 
-                    DealDamage(Chstats.stats[0].GetCalculatedValue());
-                
-                break;
-            case OnHitEffect.Bleed:
-                break;
-            case OnHitEffect.LifeSteal:
-                health += Chstats.stats[0].GetCalculatedValue();
-                break;
-
-        }
-    }
 
 }

@@ -283,6 +283,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Import\DamagePrint.cs" />
+    <Compile Include="Assets\Import\Effect.cs" />
+    <Compile Include="Assets\Import\Effectcontroller.cs" />
     <Compile Include="Assets\Import\EnemyController.cs" />
     <Compile Include="Assets\Import\EnemyScriptableObject.cs" />
     <Compile Include="Assets\Import\FloorLootTable.cs" />
@@ -297,6 +299,7 @@
     <Compile Include="Assets\Import\New StatFuncitons\StatBonus.cs" />
     <Compile Include="Assets\Import\New StatFuncitons\Sword.cs" />
     <Compile Include="Assets\Import\PlayerController.cs" />
+    <Compile Include="Assets\Import\PoisonEffect.cs" />
     <Compile Include="Assets\Import\RoomManager.cs" />
     <Compile Include="Assets\Import\TextController.cs" />
     <Compile Include="Assets\Import\TurnController.cs" />

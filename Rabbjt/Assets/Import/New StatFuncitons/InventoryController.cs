@@ -48,11 +48,13 @@ public class InventoryController : MonoBehaviour
             statBlock.Add(new BaseStat(w.health, "Health", "Your health level"));
             statBlock.Add(new BaseStat(w.initiative, "Initiative", "Your initiative level"));
             statBlock.Add(new BaseStat(w.haste, "Haste", "Your haste level"));
+
+
             if (w.itemSlot == EquipmenSlot.Weapon)
             {
                 AOEchache = w.AOE;
             }
-            itemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, w.onHitEffect,AOEchache));
+            itemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength),AOEchache));
             Instantiate(inventorySlot, itemSlotLocation);
 
             
@@ -97,7 +99,7 @@ public class InventoryController : MonoBehaviour
             {
                 AOEchache = w.AOE;
             }
-            currentFloorItemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, w.onHitEffect,AOEchache));
+            currentFloorItemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot,w.onHitEffect,AOEchache));
 
 
         }
