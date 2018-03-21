@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyController : MonoBehaviour
 {
 
-
+    public Sprite uiIcon;
 
 
     public float startingHealth;

@@ -20,19 +20,17 @@ public class RoomManager : MonoBehaviour
     public List<GameObject> allCharactersList = new List<GameObject>();
 
     public GameObject[] spawnPositions=new GameObject[3];
-
+    UI_room uiRoom;
 
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
         worldBuilder = FindObjectOfType<WorldBuilder>();
         turnManager = FindObjectOfType<TurnManager>();
-
+        uiRoom = FindObjectOfType<UI_room>();
         OnRoomLoad(player.CurrentRoom);
 
-
     }
-
 
     public void OnRoomLoad(int currentRoom)
     {
@@ -69,7 +67,7 @@ public class RoomManager : MonoBehaviour
                 return (a.GetComponent<TurnController>().initiative).CompareTo(b.GetComponent<TurnController>().initiative);
             });
         }
-
+        uiRoom.UpdateUI();
         turnManager.NewTurn();
        // turnManager.SeedSecondTurn();
        // turnManager.EnterFight();
