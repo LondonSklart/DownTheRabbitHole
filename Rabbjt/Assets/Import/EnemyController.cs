@@ -48,7 +48,6 @@ public class EnemyController : MonoBehaviour
     {
         if (afflictedList.Count > 0)
         {
-            Debug.Log(afflictedList[0].Damage);
 
         }
 
@@ -65,15 +64,19 @@ public class EnemyController : MonoBehaviour
                 turnController.SetTurn(false);
                 turnManager.NewTurn();
                 turnManager.DecreaseHaste();
-                foreach (Effect e in afflictedList)
+
+                for (int i = 0; i < afflictedList.Count; i++)
                 {
-                    e.OnEndTurn(gameObject);
-                    if (e.Length <= 0)
+                    if (afflictedList[i].Length <= 0)
+                        afflictedList.Remove(afflictedList[i]);
+                    else
                     {
-                        afflictedList.Remove(e);
+                        afflictedList[i].OnEndTurn(gameObject);
+
                     }
-                 }
-                // turnManager.EndTurn();
+
+                }
+
             }
 
         }

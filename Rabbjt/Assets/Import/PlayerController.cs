@@ -181,10 +181,14 @@ public class PlayerController : MonoBehaviour
     }
     public void EffectCheck(EnemyController target)
     {
-        Debug.Log("boom");
         foreach (Item item in weaponController.EquipedItems)
         {
-            target.Afflicted(item.OnHitEffect);
+            if (item.OnHitEffect.Name.Length > 0)
+            {
+                Debug.Log("Afflicting: " + target + " with: " + item.OnHitEffect.Name + "From weapon: " + item.Name);
+                target.Afflicted(item.OnHitEffect);
+
+            }
         }
     }
     public void GainHealth(float damage)
