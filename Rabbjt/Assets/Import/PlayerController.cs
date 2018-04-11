@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private float lifeOnHit;
     float startingHaste;
     public float haste = 0;
-    float buffertimer = 1;
     private bool[] weaponAOE = new bool[] {false,false,false,false };
     TurnManager turnManager;
     TurnController turnController;
@@ -146,7 +145,7 @@ public class PlayerController : MonoBehaviour
         {
             if (enemiesList.Count > 0)
             {
-                enemiesList[0].TakeDamage(damage);
+                enemiesList[0].TakeDamage(damage,true);
                 EffectCheck(enemiesList[0]);
 
             }
@@ -156,7 +155,7 @@ public class PlayerController : MonoBehaviour
         {
             if (enemiesList.Count > 1)
             {
-                enemiesList[1].TakeDamage(damage);
+                enemiesList[1].TakeDamage(damage,true);
                 EffectCheck(enemiesList[1]);
             }
         }
@@ -164,7 +163,7 @@ public class PlayerController : MonoBehaviour
         {
             if (enemiesList.Count > 2)
             {
-                enemiesList[2].TakeDamage(damage);
+                enemiesList[2].TakeDamage(damage,true);
                 EffectCheck(enemiesList[2]);
             }
         }
@@ -172,7 +171,7 @@ public class PlayerController : MonoBehaviour
         {
             if (enemiesList.Count > 3)
             {
-                enemiesList[3].TakeDamage(damage);
+                enemiesList[3].TakeDamage(damage,true);
                 EffectCheck(enemiesList[3]);
             }
         }

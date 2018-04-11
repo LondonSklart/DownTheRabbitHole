@@ -11,12 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Head
   m_EditorClassIdentifier: Assembly-CSharp::Equipment
-  power: 1
+  power: 20
   health: 1
   initiative: 1
   haste: 0
   AOE: 00000000
-  dotName: Burning
+  dotName: 
   dotDamage: 1
   hotRecovery: 0
   dotLength: 3

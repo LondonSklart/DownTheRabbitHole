@@ -11,13 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: BigAssSword
   m_EditorClassIdentifier: Assembly-CSharp::Equipment
-  power: 0
+  power: 5
   health: 100
   initiative: 1
   haste: 0
-  AOE: 01010101
-  dotName: 
+  AOE: 01000000
+  dotName: Poison
   dotDamage: 0
   hotRecovery: 0
-  dotLength: 0
+  dotLength: 3
+  armorShred: 1
+  fragileInfliction: 0
+  dotIcon: {fileID: 1703010511988106, guid: d16381dd2b73a3349bdaa6477d50efd7, type: 2}
   itemSlot: 0

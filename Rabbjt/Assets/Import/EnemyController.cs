@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour
     public float initiative;
     public float startingHaste;
     public float haste;
+    public float armor;
+    public float fragile;
 
     public Image healthbar;
 
@@ -34,6 +36,7 @@ public class EnemyController : MonoBehaviour
         startingHealth = Random.Range(20, 50);
         attackDamage = Random.Range(1, 5);
         initiative = Random.Range(1, 3);
+        armor = 2;
         if (startingHaste <= 0)
         {
             startingHaste = 2;//Random.Range(1, 10);
@@ -79,9 +82,9 @@ public class EnemyController : MonoBehaviour
                     }
 
                 }
-                if (afflictedList.Count > 0)
+                if (afflictedList.Count > 0 && damageCache >0)
                 {
-                    TakeDamage(damageCache);
+                    TakeDamage(damageCache,false);
                 }
 
                 for (int i = 0; i < afflictedList.Count; i++)
@@ -89,12 +92,11 @@ public class EnemyController : MonoBehaviour
                     if (afflictedList[i].Length <= 0)
                     {
                         Debug.Log(afflictedList[i].Name + " has fallen off from " + gameObject.name);
- 
 
+                        afflictedList[i].OnFallOff(gameObject);
 
                         for (int j = 0; j < templist.Count; j++)
                         {
-                            Debug.Log("Asznee");
                             if (afflictedList[i].Icon.GetComponent<Image>().sprite.name == templist[j].GetComponent<Image>().sprite.name)
                             {
                                 Destroy(templist[j].gameObject);
@@ -115,10 +117,21 @@ public class EnemyController : MonoBehaviour
         }
 
 	}
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage,bool affectedByArmor)
     {
+        if (affectedByArmor == true)
+        {
+            damage /= armor;
+
+            Debug.Log("Damage affected by armor " + damage);
+            if (damage % 2 != 0)
+            {
+                damage = Mathf.Round(damage);
+                Debug.Log("Is rounded to " + damage);
+            }
+        }
         damagePrint.PrintDamage(damage.ToString());
-        health -= damage;
+        health -= (damage + fragile);
         healthbar.fillAmount = health / startingHealth;
         if (health <= 0)
         {
@@ -156,8 +169,11 @@ public class EnemyController : MonoBehaviour
         else
         {
             Debug.Log(gameObject.name + "Recieved dot: " + effect.Name);
-            afflictedList.Add(new Effect(effect.Name, effect.Damage, effect.HealthRecover, effect.Length, effect.Icon));
-           
+            afflictedList.Add(new Effect(effect.Name, effect.Damage, effect.HealthRecover, effect.Length, effect.Icon,effect.ArmorShred,effect.FragileLevel));
+            Debug.Log("Armor before shred" + armor);
+            effect.OnApplied(gameObject);
+            Debug.Log("Armor after shred" + armor);
+
             templist.Add(Instantiate(effect.Icon, IconParent.transform));
             StartCoroutine(TimedPopUp(0.5f, afflictedList));
 

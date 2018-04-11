@@ -16,6 +16,8 @@ public class Equipment : ScriptableObject
     public int dotDamage;
     public int hotRecovery;
     public int dotLength;
+    public int armorShred;
+    public int fragileInfliction;
 
     public GameObject dotIcon;
 

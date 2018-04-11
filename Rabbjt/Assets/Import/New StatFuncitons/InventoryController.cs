@@ -5,7 +5,6 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     PlayerWeaponController weaponController;
-    PlayerController playerController;
     InventoryUI ui;
 
     public Transform itemSlotLocation;
@@ -34,7 +33,6 @@ public class InventoryController : MonoBehaviour
 
         ui = FindObjectOfType<InventoryUI>();
         weaponController = gameObject.GetComponent<PlayerWeaponController>();
-        playerController = FindObjectOfType<PlayerController>();
         WeaponLibrary.Instance.GetLibraryLength();
 
 
@@ -54,7 +52,7 @@ public class InventoryController : MonoBehaviour
             {
                 AOEchache = w.AOE;
             }
-            itemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon),AOEchache));
+            itemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon,w.armorShred,w.fragileInfliction),AOEchache));
             Instantiate(inventorySlot, itemSlotLocation);
 
             
@@ -108,7 +106,7 @@ public class InventoryController : MonoBehaviour
             {
                 AOEchache = w.AOE;
             }
-            currentFloorItemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot,new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon),AOEchache));
+            currentFloorItemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot,new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon,w.armorShred,w.fragileInfliction),AOEchache));
 
 
         }
