@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item
 {
     PlayerWeaponController weaponController;
     InventoryController inventoryController;
@@ -25,15 +25,15 @@ public class Item : MonoBehaviour
         OnHitEffect = _OnHit;
 
     }
-    public void UseItem(Item itemToEquip)
+    public void UseItem(Item itemToEquip, PlayerWeaponController pwc)
     {
-        weaponController = FindObjectOfType<PlayerWeaponController>();
+        weaponController = pwc;
         weaponController.EquipItem(itemToEquip);
     }
 
-    public void ChooseItem (Item itemToAdd)
+    public void ChooseItem (Item itemToAdd, InventoryController ic)
     {
-        inventoryController = FindObjectOfType<InventoryController>();
+        inventoryController = ic;
         inventoryController.ChooseItem(itemToAdd);
         GameObject.FindGameObjectWithTag("LootScreen").SetActive(false);
 

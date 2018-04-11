@@ -75,10 +75,19 @@ public class InventoryController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            foreach (Item i in weaponController.EquipedItems)
+            int length = weaponController.EquipedItems.Count;
+            for (int i = 0; i < length; i++)
             {
-                weaponController.UnEquipItem(i);
+                Debug.Log("Removing " + weaponController.EquipedItems[0]);
+
+                weaponController.UnEquipItem(weaponController.EquipedItems[0]);
             }
+
+
+            //foreach (Item i in weaponController.EquipedItems)
+            //{
+            //    weaponController.UnEquipItem(i);
+            //}
 
         }
     }

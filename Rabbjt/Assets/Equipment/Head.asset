@@ -16,9 +16,8 @@ MonoBehaviour:
   initiative: 1
   haste: 0
   AOE: 00000000
-  dotName: Ass
+  dotName: Burning
   dotDamage: 1
   hotRecovery: 0
   dotLength: 3
   itemSlot: 1
-  onHitEffect: {fileID: 0}

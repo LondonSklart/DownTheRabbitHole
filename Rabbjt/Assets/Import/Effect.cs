@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Effect : MonoBehaviour
+public class Effect
 {
     public string Name { get; set; }
     public int Damage { get; set; }
@@ -18,7 +18,7 @@ public class Effect : MonoBehaviour
         Length = length;
     }
 
-    public  virtual void OnEndTurn(GameObject target)
+    public void OnEndTurn(GameObject target)
     {
         if (target.GetComponent<PlayerController>() == null)
         {
@@ -28,7 +28,8 @@ public class Effect : MonoBehaviour
         {
             target.GetComponent<PlayerController>().TakeDamage(Damage);
         }
-        remainingLenght--;
+        
+
     }
     public virtual void TurnTick()
     {

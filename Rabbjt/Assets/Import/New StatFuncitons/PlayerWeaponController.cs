@@ -19,8 +19,21 @@ public class PlayerWeaponController : MonoBehaviour
     CharacterStats characterStat;
     GameObject location;
     PlayerController player;
+    Item itemtoremove;
+
 
     IWeapon equipedWeapon;
+
+    public static PlayerWeaponController instance;
+
+
+    private void Awake()
+    {
+     
+            instance = this;
+        
+    }
+
 
     private void Start()
     {
@@ -46,7 +59,14 @@ public class PlayerWeaponController : MonoBehaviour
                 {
                     player.startingHealth -= EquipedWeapon.GetComponent<IWeapon>().Stats[1].GetCalculatedValue();
                     player.health -= EquipedWeapon.GetComponent<IWeapon>().Stats[1].GetCalculatedValue();
-
+                    foreach (Item i in EquipedItems)
+                    {
+                        if (i.Slot == EquipmenSlot.Weapon)
+                        {
+                            itemtoremove = i;
+                        }
+                    }
+                    EquipedItems.Remove(itemtoremove);
                     characterStat.RemoveStatBonus(EquipedWeapon.GetComponent<IWeapon>().Stats);
                     Destroy(playerHand.transform.GetChild(0).gameObject);
                 }
@@ -65,6 +85,14 @@ public class PlayerWeaponController : MonoBehaviour
                 {
                     player.startingHealth -= EquipedHelmet.GetComponent<IWeapon>().Stats[1].GetCalculatedValue();
                     player.health -= EquipedHelmet.GetComponent<IWeapon>().Stats[1].GetCalculatedValue();
+                    foreach (Item i in EquipedItems)
+                    {
+                        if (i.Slot == EquipmenSlot.Weapon)
+                        {
+                            itemtoremove = i;
+                        }
+                    }
+                    EquipedItems.Remove(itemtoremove);
 
                     characterStat.RemoveStatBonus(EquipedHelmet.GetComponent<IWeapon>().Stats);
                     Destroy(playerHead.transform.GetChild(0).gameObject);
@@ -81,7 +109,6 @@ public class PlayerWeaponController : MonoBehaviour
                 break;
         }
 
-
         EquipedItems.Add(itemToEquip);
         if (itemToEquip.Slot == EquipmenSlot.Weapon)
         {
@@ -89,6 +116,11 @@ public class PlayerWeaponController : MonoBehaviour
 
         }
         characterStat.AddStatBonus(itemToEquip.Stats);
+
+        Debug.Log(EquipedWeapon);
+
+        Debug.Log(EquipedItems.Count);
+
     }
 
 
@@ -108,6 +140,14 @@ public class PlayerWeaponController : MonoBehaviour
 
                     characterStat.RemoveStatBonus(EquipedWeapon.GetComponent<IWeapon>().Stats);
                     Destroy(playerHand.transform.GetChild(0).gameObject);
+                    foreach (Item i in EquipedItems)
+                    {
+                        if (i.Slot == EquipmenSlot.Weapon)
+                        {
+                            itemtoremove = i;
+                        }
+                    }
+                    EquipedItems.Remove(itemtoremove);
                     EquipedWeapon = null;
                     player.startingHealth -= itemToUnequip.Stats[1].GetCalculatedValue();
                     player.health -= itemToUnequip.Stats[1].GetCalculatedValue();
@@ -119,6 +159,17 @@ public class PlayerWeaponController : MonoBehaviour
                 {
                     characterStat.RemoveStatBonus(EquipedHelmet.GetComponent<IWeapon>().Stats);
                     Destroy(playerHead.transform.GetChild(0).gameObject);
+                    foreach (Item i in EquipedItems)
+                    {
+                        if (i.Slot == EquipmenSlot.Head)
+                        {
+                            itemtoremove = i;
+                        }
+                    }
+
+ 
+
+                    EquipedItems.Remove(itemtoremove);
                     EquipedHelmet = null;
                     player.startingHealth -= itemToUnequip.Stats[1].GetCalculatedValue();
                     player.health -= itemToUnequip.Stats[1].GetCalculatedValue();

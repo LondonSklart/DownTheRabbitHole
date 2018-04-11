@@ -33,10 +33,10 @@ public class InventorySlot : MonoBehaviour {
     public void UseItem()
     {
 
-        item.UseItem(item);
+        item.UseItem(item, PlayerWeaponController.instance);
     }
     public void ChooseItem()
     {
-        item.ChooseItem(item);
+        item.ChooseItem(item, InventoryController.instance);
     }
 }

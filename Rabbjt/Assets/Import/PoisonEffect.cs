@@ -17,7 +17,7 @@ public class PoisonEffect : Effect
     }
 
 
-    public override void OnEndTurn(GameObject target)
+    public void OnEndTurn(GameObject target)
     {
         if (target.GetComponent<PlayerController>() == null)
         {

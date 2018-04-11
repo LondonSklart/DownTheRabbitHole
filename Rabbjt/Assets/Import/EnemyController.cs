@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     DamagePrint damagePrint;
     TurnController turnController;
 
-    private List<Effect> afflictedList = new List<Effect>();
+    public List<Effect> afflictedList = new List<Effect>();
 
     private void Awake()
     {
@@ -64,19 +64,27 @@ public class EnemyController : MonoBehaviour
                 turnController.SetTurn(false);
                 turnManager.NewTurn();
                 turnManager.DecreaseHaste();
-
-                for (int i = 0; i < afflictedList.Count; i++)
+                foreach (Effect e in afflictedList)
                 {
-                    if (afflictedList[i].Length <= 0)
-                        afflictedList.Remove(afflictedList[i]);
-                    else
+                    if (e.Length > 0)
                     {
-                        afflictedList[i].OnEndTurn(gameObject);
-
+                        e.OnEndTurn(gameObject);
+                        e.Length--;
                     }
 
                 }
 
+                for (int i = 0; i < afflictedList.Count; i++)
+                {
+                    if (afflictedList[i].Length <= 0)
+                    {
+                        Debug.Log(afflictedList[i].Name + " has fallen off from " + gameObject.name);
+                        afflictedList.Remove(afflictedList[i]);
+                        
+                    }
+                }
+
+                // turnManager.EndTurn();
             }
 
         }
@@ -106,6 +114,25 @@ public class EnemyController : MonoBehaviour
     }
     public void Afflicted(Effect effect)
     {
-        afflictedList.Add(effect);
+        bool check = false;
+        foreach (Effect e in afflictedList)
+        {
+            if (e.Name == effect.Name)
+            {
+                e.Length = effect.Length;
+                Debug.Log("Refreshing dot");
+                check = true;
+            }
+        }
+        if (check == true)
+        {
+            
+        }
+        else
+        {
+            Debug.Log(gameObject.name + "Recieved dot: " + effect.Name);
+            afflictedList.Add(new Effect(effect.Name, effect.Damage, effect.HealthRecover, effect.Length));
+
+        }
     }
 }
