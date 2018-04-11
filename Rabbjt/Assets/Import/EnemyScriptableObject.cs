@@ -17,8 +17,9 @@ public class Equipment : ScriptableObject
     public int hotRecovery;
     public int dotLength;
 
+    public GameObject dotIcon;
+
     public EquipmenSlot itemSlot;
-    public Effect onHitEffect;
 
 
 

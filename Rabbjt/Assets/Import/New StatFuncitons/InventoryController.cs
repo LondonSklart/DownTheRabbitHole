@@ -54,7 +54,7 @@ public class InventoryController : MonoBehaviour
             {
                 AOEchache = w.AOE;
             }
-            itemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength),AOEchache));
+            itemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon),AOEchache));
             Instantiate(inventorySlot, itemSlotLocation);
 
             
@@ -108,7 +108,7 @@ public class InventoryController : MonoBehaviour
             {
                 AOEchache = w.AOE;
             }
-            currentFloorItemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot,w.onHitEffect,AOEchache));
+            currentFloorItemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot,new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon),AOEchache));
 
 
         }

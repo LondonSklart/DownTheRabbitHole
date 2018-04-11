@@ -6,7 +6,7 @@ public class DamagePrint : MonoBehaviour
 {
     public TextController text;
 
-    public void PrintDamage(float damage)
+    public void PrintDamage(string damage)
     {
         TextController texten = Instantiate(text,gameObject.transform);
         texten.SetText(damage);

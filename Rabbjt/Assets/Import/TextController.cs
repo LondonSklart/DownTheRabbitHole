@@ -16,7 +16,7 @@ public class TextController : MonoBehaviour
 
 
     }
-    public void SetText(float damage)
+    public void SetText(string damage)
     {
         animator.GetComponent<Text>().text = damage.ToString();
     }

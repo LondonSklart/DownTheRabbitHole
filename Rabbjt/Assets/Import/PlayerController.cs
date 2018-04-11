@@ -65,7 +65,6 @@ public class PlayerController : MonoBehaviour
         health = startingHealth;
         haste = startingHaste;
 
-        effects.Add(new PoisonEffect("poison",2,0,2));
     }
 
     private void Update()
@@ -136,7 +135,7 @@ public class PlayerController : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        damagePrint.PrintDamage(damage);
+        damagePrint.PrintDamage(damage.ToString());
         health -= damage;
         healthbar.fillAmount = health / startingHealth;
 
@@ -193,7 +192,7 @@ public class PlayerController : MonoBehaviour
     }
     public void GainHealth(float damage)
     {
-        damagePrint.PrintDamage(damage);
+        damagePrint.PrintDamage(damage.ToString());
         health += damage;
         healthbar.fillAmount = health / startingHealth;
     }

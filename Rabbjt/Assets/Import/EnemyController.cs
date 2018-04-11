@@ -18,16 +18,20 @@ public class EnemyController : MonoBehaviour
     public float haste;
 
     public Image healthbar;
+
+    public GameObject IconParent;
+
     TurnManager turnManager;
     RoomManager roomManager;
     DamagePrint damagePrint;
     TurnController turnController;
 
+    List<GameObject> templist = new List<GameObject>();
     public List<Effect> afflictedList = new List<Effect>();
 
     private void Awake()
     {
-        startingHealth = Random.Range(5, 10);
+        startingHealth = Random.Range(20, 50);
         attackDamage = Random.Range(1, 5);
         initiative = Random.Range(1, 3);
         if (startingHaste <= 0)
@@ -46,10 +50,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (afflictedList.Count > 0)
-        {
 
-        }
 
         if (turnController.GetTurn())
         {
@@ -64,14 +65,23 @@ public class EnemyController : MonoBehaviour
                 turnController.SetTurn(false);
                 turnManager.NewTurn();
                 turnManager.DecreaseHaste();
+
+                float damageCache = 0;
+
                 foreach (Effect e in afflictedList)
                 {
                     if (e.Length > 0)
                     {
-                        e.OnEndTurn(gameObject);
+
+                        damageCache +=e.OnEndTurn();
+
                         e.Length--;
                     }
 
+                }
+                if (afflictedList.Count > 0)
+                {
+                    TakeDamage(damageCache);
                 }
 
                 for (int i = 0; i < afflictedList.Count; i++)
@@ -79,8 +89,23 @@ public class EnemyController : MonoBehaviour
                     if (afflictedList[i].Length <= 0)
                     {
                         Debug.Log(afflictedList[i].Name + " has fallen off from " + gameObject.name);
+ 
+
+
+                        for (int j = 0; j < templist.Count; j++)
+                        {
+                            Debug.Log("Asznee");
+                            if (afflictedList[i].Icon.GetComponent<Image>().sprite.name == templist[j].GetComponent<Image>().sprite.name)
+                            {
+                                Destroy(templist[j].gameObject);
+                                templist.Remove(templist[j]);
+                            }
+                        }
+
+
                         afflictedList.Remove(afflictedList[i]);
-                        
+
+
                     }
                 }
 
@@ -92,7 +117,7 @@ public class EnemyController : MonoBehaviour
 	}
     public void TakeDamage(float damage)
     {
-        damagePrint.PrintDamage(damage);
+        damagePrint.PrintDamage(damage.ToString());
         health -= damage;
         healthbar.fillAmount = health / startingHealth;
         if (health <= 0)
@@ -131,8 +156,36 @@ public class EnemyController : MonoBehaviour
         else
         {
             Debug.Log(gameObject.name + "Recieved dot: " + effect.Name);
-            afflictedList.Add(new Effect(effect.Name, effect.Damage, effect.HealthRecover, effect.Length));
+            afflictedList.Add(new Effect(effect.Name, effect.Damage, effect.HealthRecover, effect.Length, effect.Icon));
+           
+            templist.Add(Instantiate(effect.Icon, IconParent.transform));
+            StartCoroutine(TimedPopUp(0.5f, afflictedList));
 
         }
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+        IEnumerator TimedPopUp(float time, List<Effect> dotList)
+    {
+
+
+        for (int i = 0; i < dotList.Count; i++)
+        {
+            yield return new WaitForSeconds(time);
+            damagePrint.PrintDamage(dotList[i].Name);
+        }
+
+
+
     }
 }
