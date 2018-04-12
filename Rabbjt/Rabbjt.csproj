@@ -299,6 +299,7 @@
     <Compile Include="Assets\Import\New StatFuncitons\StatBonus.cs" />
     <Compile Include="Assets\Import\New StatFuncitons\Sword.cs" />
     <Compile Include="Assets\Import\PlayerController.cs" />
+    <Compile Include="Assets\Import\PotionBelt.cs" />
     <Compile Include="Assets\Import\RoomManager.cs" />
     <Compile Include="Assets\Import\TextController.cs" />
     <Compile Include="Assets\Import\TurnController.cs" />

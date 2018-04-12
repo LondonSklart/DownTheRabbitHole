@@ -45,34 +45,44 @@ public class Effect
     }
     public void OnApplied(GameObject target)
     {
-        Debug.Log("Shredding armor");
-        if (target.GetComponent<PlayerController>() == null)
+        if (ArmorShred > 0)
         {
-            target.GetComponent<EnemyController>().armor -= ArmorShred;
-            target.GetComponent<EnemyController>().fragile += FragileLevel;
 
-        }
-        else
-        {
-            target.GetComponent<EnemyController>().armor -= ArmorShred;
-            target.GetComponent<EnemyController>().fragile += FragileLevel;
 
+            Debug.Log("Shredding armor");
+            if (target.GetComponent<PlayerController>() == null)
+            {
+                target.GetComponent<EnemyController>().armor -= ArmorShred;
+                target.GetComponent<EnemyController>().fragile += FragileLevel;
+
+            }
+            else
+            {
+                target.GetComponent<EnemyController>().armor -= ArmorShred;
+                target.GetComponent<EnemyController>().fragile += FragileLevel;
+
+            }
         }
     }
     public void OnFallOff(GameObject target)
     {
         Debug.Log("Restoring armor");
-        if (target.GetComponent<PlayerController>() == null)
+        if (ArmorShred > 0)
         {
-            target.GetComponent<EnemyController>().armor += ArmorShred;
-            target.GetComponent<EnemyController>().fragile -= FragileLevel;
 
-        }
-        else
-        {
-            target.GetComponent<EnemyController>().armor += ArmorShred;
-            target.GetComponent<EnemyController>().fragile -= FragileLevel;
 
+            if (target.GetComponent<PlayerController>() == null)
+            {
+                target.GetComponent<EnemyController>().armor += ArmorShred;
+                target.GetComponent<EnemyController>().fragile -= FragileLevel;
+
+            }
+            else
+            {
+                target.GetComponent<EnemyController>().armor += ArmorShred;
+                target.GetComponent<EnemyController>().fragile -= FragileLevel;
+
+            }
         }
     }
 

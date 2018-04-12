@@ -9,18 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Head
+  m_Name: EnemyPoison
   m_EditorClassIdentifier: Assembly-CSharp::Equipment
   power: 0
-  health: 1
-  initiative: 1
+  health: 0
+  initiative: 0
   haste: 0
   AOE: 00000000
-  dotName: Burning
-  dotDamage: 2
+  dotName: Poison
+  dotDamage: 1
   hotRecovery: 0
   dotLength: 3
   armorShred: 0
   fragileInfliction: 0
-  dotIcon: {fileID: 1558813668490654, guid: 7311f5accee8a4947a95c28bddce89f6, type: 2}
-  itemSlot: 1
+  dotIcon: {fileID: 1703010511988106, guid: d16381dd2b73a3349bdaa6477d50efd7, type: 2}
+  itemSlot: 0

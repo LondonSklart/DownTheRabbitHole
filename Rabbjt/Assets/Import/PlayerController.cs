@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     int currentRoom;
 
     public float startingHealth = 10;
+    public float armor = 1;
+    public float bonusDamage;
+    public float fragile = 0;
     public float health;
     private float lifeOnHit;
     float startingHaste;
@@ -21,9 +24,10 @@ public class PlayerController : MonoBehaviour
     DamagePrint damagePrint;
     TextController textController;
 
-
+    public GameObject potionBelt;
     public GameObject invetoryUI;
-    
+    public GameObject IconParent;
+
     PlayerWeaponController weaponController;
     private bool attackChoice = false;
     private bool itemChoice = false;
@@ -31,7 +35,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     List<EnemyController> enemiesList = new List<EnemyController>();
 
-    public List<Effect> effects = new List<Effect>();
+    //public List<Effect> effects = new List<Effect>();
+    List<GameObject> templist = new List<GameObject>();
+    public List<Effect> afflictedList = new List<Effect>();
 
     public int CurrentRoom
     {
@@ -108,14 +114,58 @@ public class PlayerController : MonoBehaviour
                 // turnManager.EndTurn();
                 turnManager.DecreaseHaste();
 
+                float damageCache = 0;
+
+                foreach (Effect e in afflictedList)
+                {
+                    if (e.Length > 0)
+                    {
+
+                        damageCache += e.OnEndTurn();
+
+                        e.Length--;
+                    }
+
+                }
+                if (afflictedList.Count > 0 && damageCache > 0)
+                {
+                    TakeDamage(damageCache, false);
+                }
+
+                for (int i = 0; i < afflictedList.Count; i++)
+                {
+                    if (afflictedList[i].Length <= 0)
+                    {
+                        Debug.Log(afflictedList[i].Name + " has fallen off from " + gameObject.name);
+
+                        if (afflictedList[i].Name == "Strength")
+                        {
+                            bonusDamage -= 10;
+                        }
+
+                        afflictedList[i].OnFallOff(gameObject);
+
+                        for (int j = 0; j < templist.Count; j++)
+                        {
+                           
+
+                                if (afflictedList[i].Icon.GetComponent<Image>().sprite.name == templist[j].GetComponent<Image>().sprite.name)
+                                {
+                                    Destroy(templist[j].gameObject);
+                                    templist.Remove(templist[j]);
+                                }
+                            
+                        }
 
 
+                        afflictedList.Remove(afflictedList[i]);
+
+
+                    }
+                }
+
             }
-            else if (itemChoice)
-            {
-                UsePotion();
-                itemChoice = false;
-            }
+
         
         }
         if (health <= 0)
@@ -127,13 +177,26 @@ public class PlayerController : MonoBehaviour
     {
        // CheckEquipment(Chstats.AOE,Chstats.stats[0].GetCalculatedValue());
         LocateEnemies();
-        DealDamage(damage);
+        DealDamage(damage + bonusDamage);
 
 
         turnManager.CheckIfVictorious();
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool affectedByArmor)
     {
+
+        if (affectedByArmor == true)
+        {
+            damage /= armor;
+
+            Debug.Log("Damage affected by armor " + damage);
+            if (damage % 2 != 0)
+            {
+                damage = Mathf.Round(damage);
+                Debug.Log("Is rounded to " + damage);
+            }
+        }
+
         damagePrint.PrintDamage(damage.ToString());
         health -= damage;
         healthbar.fillAmount = health / startingHealth;
@@ -191,8 +254,11 @@ public class PlayerController : MonoBehaviour
     }
     public void GainHealth(float damage)
     {
+        Debug.Log("Health before heal" + health);
         damagePrint.PrintDamage(damage.ToString());
         health += damage;
+        Debug.Log("Health after heal" + health);
+
         healthbar.fillAmount = health / startingHealth;
     }
     public void ChooseAttack()
@@ -255,7 +321,56 @@ public class PlayerController : MonoBehaviour
     {
         invetoryUI.SetActive(!invetoryUI.activeSelf);
     }
+    public void OpenPotionBelt()
+    {
+        potionBelt.SetActive(!potionBelt.activeSelf);
+
+    }
+    public void Afflicted(Effect effect)
+    {
+        bool check = false;
+        foreach (Effect e in afflictedList)
+        {
+            if (e.Name == effect.Name)
+            {
+                e.Length = effect.Length;
+                Debug.Log("Refreshing dot");
+                check = true;
+            }
+        }
+        if (check == true)
+        {
+
+        }
+        else
+        {
+            Debug.Log(gameObject.name + "Recieved dot: " + effect.Name);
+            afflictedList.Add(new Effect(effect.Name, effect.Damage, effect.HealthRecover, effect.Length, effect.Icon, effect.ArmorShred, effect.FragileLevel));
+            Debug.Log("Armor before shred" + armor);
+            effect.OnApplied(gameObject);
+            Debug.Log("Armor after shred" + armor);
+
+            if (effect.Icon != null)
+            {
+                templist.Add(Instantiate(effect.Icon, IconParent.transform));
+
+            }
+            StartCoroutine(TimedPopUp(0.5f, afflictedList));
+
+        }
+    }
+
+    IEnumerator TimedPopUp(float time, List<Effect> dotList)
+    {
+
+
+        for (int i = 0; i < dotList.Count; i++)
+        {
+            yield return new WaitForSeconds(time);
+            damagePrint.PrintDamage(dotList[i].Name);
+        }
 
 
 
+    }
 }

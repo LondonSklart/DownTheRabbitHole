@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
 
     public Image healthbar;
 
+    public Equipment dotItem;
+
     public GameObject IconParent;
 
     TurnManager turnManager;
@@ -145,7 +147,8 @@ public class EnemyController : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         if (player != null)
         {
-        player.TakeDamage(damage);
+        player.TakeDamage(damage,true);
+            player.Afflicted(new Effect(dotItem.dotName,dotItem.dotDamage,dotItem.hotRecovery,dotItem.dotLength,dotItem.dotIcon,dotItem.armorShred,dotItem.fragileInfliction));
         }
 
 
