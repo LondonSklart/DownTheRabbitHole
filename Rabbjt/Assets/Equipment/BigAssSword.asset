@@ -11,11 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: BigAssSword
   m_EditorClassIdentifier: Assembly-CSharp::Equipment
-  power: 5
+  power: 500
   health: 100
   initiative: 1
   haste: 0
-  AOE: 01000000
+  AOE: 01010100
   dotName: Poison
   dotDamage: 0
   hotRecovery: 0

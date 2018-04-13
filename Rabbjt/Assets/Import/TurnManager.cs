@@ -13,7 +13,9 @@ public class TurnManager : MonoBehaviour
     RoomManager room;
     InventoryUI inventoryUI;
     List<GameObject> enemies = new List<GameObject>();
-
+    UI_room ui_room;
+    WorldBuilder worldBuilder;
+    PlayerController player;
 
     public List<TurnController> turnControllerList = new List<TurnController>();
     public List<GameObject> HasteEntryList = new List<GameObject>();
@@ -22,6 +24,9 @@ public class TurnManager : MonoBehaviour
     {
         room = FindObjectOfType<RoomManager>();
         inventoryUI = FindObjectOfType<InventoryUI>();
+        ui_room = FindObjectOfType<UI_room>();
+        worldBuilder = FindObjectOfType<WorldBuilder>();
+        player = FindObjectOfType<PlayerController>();
     }
     private void Update()
     {
@@ -202,8 +207,11 @@ public class TurnManager : MonoBehaviour
             {
                 inventoryUI.VictoryUI();
                 fighting = false;
+            Debug.Log("Player current room" + player.CurrentRoom);
+            worldBuilder.rooms[player.CurrentRoom].EnemiesInRoom = null;
+            worldBuilder.rooms[player.CurrentRoom].Encounter = null;
+            ui_room.UpdateUI();
             }
-        
-
+    
     }
 }
