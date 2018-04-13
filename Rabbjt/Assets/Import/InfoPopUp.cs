@@ -13,6 +13,17 @@ public class InfoPopUp : MonoBehaviour {
     public Text weaponAOE;
     public Text weaponEffect;
 
+    Vector3 location;
+
+    private void FixedUpdate()
+    {
+
+        location = Input.mousePosition;
+        
+        
+        gameObject.transform.position = location;
+    }
+
     public void SetInfo(string weaponname,string weapondamage,string weaponhealth,string weaponinitiative,string weaponhaste,string weaponaoe,string weaponeffect)
     {
         weaponName.text =  weaponname;

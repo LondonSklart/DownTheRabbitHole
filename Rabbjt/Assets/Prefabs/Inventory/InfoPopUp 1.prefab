@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224369705308171174}
   - component: {fileID: 222820157634708362}
   - component: {fileID: 114756726684112540}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: WeaponSPDText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224323510866304576}
   - component: {fileID: 222279809526008718}
   - component: {fileID: 114314838820179636}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: WeaponDMGText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 224924543098813966}
   - component: {fileID: 222911338578709514}
   - component: {fileID: 114867340466482964}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: WeaponEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 224365855230740350}
   - component: {fileID: 222553737144859884}
   - component: {fileID: 114366364205696528}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: WeaponAOEText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 224713697218560144}
   - component: {fileID: 222228525652555320}
   - component: {fileID: 114859771244968692}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: WeaponINTText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 224475366577454086}
   - component: {fileID: 222431615404947712}
   - component: {fileID: 114618598683005316}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: WeaponHPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 222452939564357184}
   - component: {fileID: 114985006884209414}
   - component: {fileID: 114569937195252918}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: InfoPopUp 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 224010749865981602}
   - component: {fileID: 222427705199760194}
   - component: {fileID: 114386538000466750}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: WeaponNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -582,8 +582,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 405.43414, y: -152.76492}
   m_SizeDelta: {x: 114.81, y: 108.18}
   m_Pivot: {x: 0.5, y: 0.5}
