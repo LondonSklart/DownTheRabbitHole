@@ -57,7 +57,18 @@ public class PotionBelt : MonoBehaviour
         }
 
     }
+    public void DrinkHastePotion()
+    {
+        if (hastePotions > 0)
+        {
+            player.Afflicted(new Effect("Haste",0,0,2,strIcon,0,0));
+            player.GetComponent<TurnController>().Startinghaste -= 2;
+            player.GetComponent<TurnController>().haste -= 2;
+            hastePotions--;
+            amount3.text = hastePotions.ToString();
 
+        }
+    }
 
 
 

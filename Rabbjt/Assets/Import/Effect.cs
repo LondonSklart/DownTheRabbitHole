@@ -12,6 +12,7 @@ public class Effect
     public int ArmorShred { get; set; }
     public int FragileLevel { get; set; }
     private int remainingLenght;
+    private bool mentioned = false;
 
     public  Effect (string name, int damage, int healthrecover, int length, GameObject icon,int armorshred,int fragilelevel)
     {
@@ -85,5 +86,12 @@ public class Effect
             }
         }
     }
-
+    public void Mentioned()
+    {
+        mentioned = true;
+    }
+    public bool GetMentioned()
+    {
+        return mentioned;
+    }
 }
