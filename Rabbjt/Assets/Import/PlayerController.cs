@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
         if (haste == 0)
         {
-            FindObjectOfType<TurnManager>().EnterQueue(gameObject);
+            //FindObjectOfType<TurnManager>().EnterQueue(gameObject);
            // haste = startingHaste;
         }
         if (turnController.GetTurn())
@@ -141,6 +141,12 @@ public class PlayerController : MonoBehaviour
                         if (afflictedList[i].Name == "Strength")
                         {
                             bonusDamage -= 10;
+                        }
+                        if (afflictedList[i].Name == "Haste")
+                        {
+                            turnController.Startinghaste += 2;
+                            turnController.haste += 2;
+
                         }
 
                         afflictedList[i].OnFallOff(gameObject);
