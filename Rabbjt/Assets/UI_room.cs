@@ -8,10 +8,10 @@ public class UI_room : MonoBehaviour {
     //Instantiation data
     const int TILESIZE = 50;
     int tileSizeY;
-
+    private Dictionary<Room.RoomType, Sprite> roomColorMap;
     PlayerController player;
     WorldBuilder worldBuilder;
-
+    public Sprite[] floorBG;
     [SerializeField]
     GameObject uiRoom;
     private GameObject[] floorMap;
@@ -23,6 +23,15 @@ public class UI_room : MonoBehaviour {
         player = FindObjectOfType<PlayerController>();
         Debug.Log(uiRoom.name);
         initialized = true;
+        roomColorMap = new Dictionary<Room.RoomType, Sprite>()
+        {//Color Map
+        { Room.RoomType.Start, floorBG[0]},//Start
+        { Room.RoomType.End, floorBG[1]},//End
+        { Room.RoomType.Monster, floorBG[2]},//Monster
+        { Room.RoomType.Shop, floorBG[3]},//Shop
+        { Room.RoomType.HealingFountain, floorBG[4]},//Healing Fountain
+        { Room.RoomType.Empty, floorBG[5]},//Empty
+    };
         UpdateUI();
     }
 
@@ -56,7 +65,8 @@ public class UI_room : MonoBehaviour {
                 currentRoom.name = "x:" + x + " y:" + y;
 
                 floorMap[i] = currentRoom;
-
+                currentRoom.GetComponent<uiRoomData>().roomBG.GetComponent<Image>().sprite = roomColorMap[worldBuilder.rooms[i].roomType];
+                
                 GameObject[] monsterIcons = currentRoom.GetComponent<uiRoomData>().monsterIcons;
                 for(int j = 0; j < monsterIcons.Length; j++)
                 {
@@ -82,15 +92,15 @@ public class UI_room : MonoBehaviour {
 
     }
 
-    private Dictionary<Room.RoomType, Color> roomColorMap = new Dictionary<Room.RoomType, Color>()
-    {//Color Map
-        { Room.RoomType.Start, Color.green},
-        { Room.RoomType.End, Color.red},
-        { Room.RoomType.Monster, Color.magenta},
-        { Room.RoomType.Shop, Color.yellow},
-        { Room.RoomType.HealingFountain, Color.blue},
-        { Room.RoomType.Empty, Color.white},
-    };
+    //private Dictionary<Room.RoomType, Sprite> roomColorMap = new Dictionary<Room.RoomType, Sprite>()
+    //{//Color Map
+    //    { Room.RoomType.Start, floorBG[0]},//Start
+    //    { Room.RoomType.End, floorBG[1]},//End
+    //    { Room.RoomType.Monster, floorBG[2]},//Monster
+    //    { Room.RoomType.Shop, floorBG[3]},//Shop
+    //    { Room.RoomType.HealingFountain, floorBG[4]},//Healing Fountain
+    //    { Room.RoomType.Empty, floorBG[5]},//Empty
+    //};
 
 
 }

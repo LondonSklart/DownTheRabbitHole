@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class uiRoomData : MonoBehaviour {
 
+    public GameObject roomBG;
     
     public GameObject[] monsterIcons;
     
@@ -19,5 +20,6 @@ public class uiRoomData : MonoBehaviour {
     {
         monsterIcons[index].GetComponent<Image>().sprite = sprite;
     }
+
 
 }
