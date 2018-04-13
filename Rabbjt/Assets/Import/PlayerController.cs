@@ -367,7 +367,11 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < dotList.Count; i++)
         {
             yield return new WaitForSeconds(time);
-            damagePrint.PrintDamage(dotList[i].Name);
+            if (dotList[i].GetMentioned()== false)
+            {
+                damagePrint.PrintDamage(dotList[i].Name);
+                dotList[i].Mentioned();
+            }
         }
 
 
