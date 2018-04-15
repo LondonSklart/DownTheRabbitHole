@@ -205,6 +205,10 @@ public class TurnManager : MonoBehaviour
 
             if (fighting == true && enemies.Count < 1)
             {
+            foreach (TurnController t in FindObjectsOfType<TurnController>())
+            {
+                t.CheckEndOfFight();
+            }
                 inventoryUI.VictoryUI();
                 fighting = false;
             Debug.Log("Player current room" + player.CurrentRoom);

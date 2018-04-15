@@ -9,6 +9,7 @@ TagManager:
   - Character
   - w_Room
   - LootScreen
+  - TurnText
   layers:
   - Default
   - TransparentFX

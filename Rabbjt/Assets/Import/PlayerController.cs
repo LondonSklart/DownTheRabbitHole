@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
 
         health = startingHealth;
         haste = startingHaste;
-
     }
 
     private void Update()
@@ -169,10 +168,10 @@ public class PlayerController : MonoBehaviour
 
                     }
                 }
-
             }
 
-        
+            turnController.CheckEndOfFight();
+
         }
         if (health <= 0)
         {
