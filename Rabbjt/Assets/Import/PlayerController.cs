@@ -73,23 +73,23 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && turnManager.GetFighting() == false)
         {
             Debug.Log("W pressed");
             RoomManager rm = FindObjectOfType<RoomManager>();
             rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_N(currentRoom, true));
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && turnManager.GetFighting() == false)
         {
             RoomManager rm = FindObjectOfType<RoomManager>();
             rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_W(currentRoom, true));
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && turnManager.GetFighting() == false)
         {
             RoomManager rm = FindObjectOfType<RoomManager>();
             rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_S(currentRoom, true));
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && turnManager.GetFighting() == false)
         {
             RoomManager rm = FindObjectOfType<RoomManager>();
             rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_E(currentRoom, true));

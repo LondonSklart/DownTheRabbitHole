@@ -212,10 +212,15 @@ public class TurnManager : MonoBehaviour
                 inventoryUI.VictoryUI();
                 fighting = false;
             Debug.Log("Player current room" + player.CurrentRoom);
+            //worldBuilder.rooms[player.CurrentRoom].Encounter.coinReward;
             worldBuilder.rooms[player.CurrentRoom].EnemiesInRoom = null;
             worldBuilder.rooms[player.CurrentRoom].Encounter = null;
             ui_room.UpdateUI();
             }
     
+    }
+    public bool GetFighting()
+    {
+        return fighting;
     }
 }

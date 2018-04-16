@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
@@ -16,7 +17,10 @@ public class InventoryController : MonoBehaviour
     public List<Item> currentFloorItemList = new List<Item>();
 
     public delegate void OnItemAdded();
-    public OnItemAdded OnitemAddedCallBack; 
+    public OnItemAdded OnitemAddedCallBack;
+
+    private int coins = 10;
+    public Text coinText;
 
     public Item sword;
     public Item helmet;
@@ -34,7 +38,7 @@ public class InventoryController : MonoBehaviour
         ui = FindObjectOfType<InventoryUI>();
         weaponController = gameObject.GetComponent<PlayerWeaponController>();
         WeaponLibrary.Instance.GetLibraryLength();
-
+        coinText.text = "Coin: " + coins;
 
 
         bool[] AOEchache = new bool[] {false,false,false,false };
@@ -112,7 +116,16 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-
+    public void GetCoin(int coinToGet)
+    {
+        coins += coinToGet;
+        coinText.text = "Coin: " + coins;
+    }
+    public void LoseCoin(int coinToLose)
+    {
+        coins -= coinToLose;
+        coinText.text = "Coin: " + coins;
+    }
 
     public void ChooseItem(Item item)
     {
