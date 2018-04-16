@@ -9,6 +9,8 @@ public class RoomManager : MonoBehaviour
     PlayerController player;
     public GameObject enemy;
 
+    int counter =0;
+
     Quaternion rotation;
     TurnManager turnManager;
     EnemyController[] enemiesList;
@@ -35,6 +37,10 @@ public class RoomManager : MonoBehaviour
         allCharactersList.Clear();
         Debug.Log("Loading new room: "+currentRoom);
         Room activeRoom = worldBuilder.LoadRoom(currentRoom);
+        if (activeRoom.roomType == Room.RoomType.Shop)
+        {
+
+        }
 
         if(activeRoom.Encounter != null) //Only runs if the room contains enemies
         {
@@ -42,6 +48,8 @@ public class RoomManager : MonoBehaviour
             {
                 Instantiate(activeRoom.enemiesInRoom[i], spawnPositions[i].transform.position, spawnPositions[i].transform.rotation);
             }
+            turnManager.SetCoinReward(activeRoom.Encounter.coinReward);
+
             activeRoom.Encounter = null;
 
         }
@@ -64,6 +72,13 @@ public class RoomManager : MonoBehaviour
 
                 return (a.GetComponent<TurnController>().initiative).CompareTo(b.GetComponent<TurnController>().initiative);
             });
+        }
+
+        if (worldBuilder.rooms[player.CurrentRoom].Encounter == null)
+        {
+            counter++;
+            Debug.Log("Setting coin reward " + counter);
+
         }
         uiRoom.UpdateUI();
         turnManager.NewTurn();

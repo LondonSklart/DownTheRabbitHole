@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class InventoryUI : MonoBehaviour {
     public Transform lootParent;
 
     public GameObject LootScreen;
+    public Text coinText;
 
     public GameMaster gameMaster;
     public WorldBuilder worldBuilder;
@@ -59,6 +61,7 @@ public class InventoryUI : MonoBehaviour {
 
         InventorySlot[] victoryLootSlots;
         LootScreen.SetActive(true);
+        coinText.text = "Coin Looted " + FindObjectOfType<TurnManager>().GetCoinReward();
         Debug.Log("Victory!");
         victoryLootSlots = lootParent.GetComponentsInChildren<InventorySlot>();
         Debug.Log(victoryLootSlots.Length);

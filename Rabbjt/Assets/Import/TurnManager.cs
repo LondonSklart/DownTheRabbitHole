@@ -9,6 +9,7 @@ public class TurnManager : MonoBehaviour
     public float lowestInitiative = 100;
     private float highestHaste;
     private bool fighting = false;
+    private int coinReward;
 
     RoomManager room;
     InventoryUI inventoryUI;
@@ -211,8 +212,9 @@ public class TurnManager : MonoBehaviour
             }
                 inventoryUI.VictoryUI();
                 fighting = false;
-            Debug.Log("Player current room" + player.CurrentRoom);
-            //worldBuilder.rooms[player.CurrentRoom].Encounter.coinReward;
+
+            //Debug.Log(worldBuilder.rooms[player.CurrentRoom].Encounter.coinReward);
+            InventoryController.instance.GetCoin(coinReward);
             worldBuilder.rooms[player.CurrentRoom].EnemiesInRoom = null;
             worldBuilder.rooms[player.CurrentRoom].Encounter = null;
             ui_room.UpdateUI();
@@ -222,5 +224,13 @@ public class TurnManager : MonoBehaviour
     public bool GetFighting()
     {
         return fighting;
+    }
+    public void SetCoinReward(int coin)
+    {
+        coinReward = coin;
+    }
+    public int GetCoinReward()
+    {
+        return coinReward;
     }
 }
