@@ -316,6 +316,7 @@
     <Compile Include="Assets\Scripts\WorldGen\Room.cs" />
     <Compile Include="Assets\Scripts\WorldGen\UI_Manager.cs" />
     <Compile Include="Assets\Scripts\WorldGen\WorldBuilder.cs" />
+    <Compile Include="Assets\Shop.cs" />
     <Compile Include="Assets\UI_room.cs" />
     <Compile Include="Assets\uiRoomData.cs" />
   </ItemGroup>

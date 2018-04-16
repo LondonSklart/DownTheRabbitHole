@@ -116,6 +116,10 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    public int ReturnCoin()
+    {
+        return coins;
+    }
     public void GetCoin(int coinToGet)
     {
         coins += coinToGet;
@@ -129,6 +133,7 @@ public class InventoryController : MonoBehaviour
 
     public void ChooseItem(Item item)
     {
+        Debug.Log("boom");
         Instantiate(inventorySlot, itemSlotLocation);
         itemList.Add(item);
         OnitemAddedCallBack.Invoke();

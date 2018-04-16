@@ -56,8 +56,18 @@ public class InventorySlot : MonoBehaviour {
         info.transform.position = location;
         info.GetComponent<InfoPopUp>().SetInfo(item.Name,item.Stats[0].GetCalculatedValue().ToString(),item.Stats[1].GetCalculatedValue().ToString(), item.Stats[2].GetCalculatedValue().ToString(), item.Stats[3].GetCalculatedValue().ToString(),item.AOE.Length.ToString(),( item.OnHitEffect.Name.Length >0 ? item.OnHitEffect.Name : "No Effect"));
     }
+    public void BuyItem()
+    {
+        if (InventoryController.instance.ReturnCoin() > 20)
+        {
+            item.ChooseItem(item, InventoryController.instance);
+            InventoryController.instance.LoseCoin(20);
+            Destroy(gameObject);
+        }
+    }
     public void InformationExit()
     {
         Destroy(info);
     }
+
 }
