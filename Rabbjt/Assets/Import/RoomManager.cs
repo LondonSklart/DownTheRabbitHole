@@ -14,8 +14,6 @@ public class RoomManager : MonoBehaviour
     EnemyController[] enemiesList;
     WorldBuilder worldBuilder;
 
-    [SerializeField]
-    Encounter testEncounter;
 
     public List<GameObject> allCharactersList = new List<GameObject>();
 

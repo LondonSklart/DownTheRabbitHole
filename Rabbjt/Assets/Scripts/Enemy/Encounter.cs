@@ -4,7 +4,11 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "EncounterData", menuName = "Encounter/New Encounter", order = 1)]
 public class Encounter : ScriptableObject {
-    public int difficulty = 1; //Used to help seed rooms defaults to 1
+    public int difficulty = 1; //Intended to help seed rooms defaults to 1(Future feature)
+    
+    public bool bossEncounter;
+
+    public int coinReward = 10;
 
 	public List<GameObject> enemiesInRoom;
 
