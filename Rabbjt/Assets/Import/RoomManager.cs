@@ -46,7 +46,7 @@ public class RoomManager : MonoBehaviour
         {
             for(int i = 0; i < activeRoom.enemiesInRoom.Count(); i++)
             {
-                Instantiate(activeRoom.enemiesInRoom[i], spawnPositions[i].transform.position, spawnPositions[i].transform.rotation);
+                if (activeRoom.enemiesInRoom[i] != null) Instantiate(activeRoom.enemiesInRoom[i], spawnPositions[i].transform.position, spawnPositions[i].transform.rotation);
             }
             turnManager.SetCoinReward(activeRoom.Encounter.coinReward);
 

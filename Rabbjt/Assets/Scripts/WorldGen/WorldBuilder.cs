@@ -51,6 +51,7 @@ public class WorldBuilder : MonoBehaviour {
     {
         player = FindObjectOfType<PlayerController>();
         rvManager = GameObject.FindGameObjectWithTag("w_Room").GetComponent<RoomVisualManager>();
+        Resources.LoadAll<Encounter>("EnemySO");
         availableEncounters = Resources.FindObjectsOfTypeAll<Encounter>();
         availableFloors = Resources.FindObjectsOfTypeAll<FloorGen>();
 
