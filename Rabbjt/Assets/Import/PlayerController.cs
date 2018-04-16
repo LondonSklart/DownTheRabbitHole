@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     CharacterStats Chstats;
     DamagePrint damagePrint;
     TextController textController;
+    WorldBuilder worldBuilder;
 
     public GameObject potionBelt;
     public GameObject invetoryUI;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     //public List<Effect> effects = new List<Effect>();
     List<GameObject> templist = new List<GameObject>();
     public List<Effect> afflictedList = new List<Effect>();
+
 
     public int CurrentRoom
     {
@@ -66,34 +68,15 @@ public class PlayerController : MonoBehaviour
         turnController.initiative = Chstats.stats[2].GetCalculatedValue();
         startingHaste = Chstats.stats[3].GetCalculatedValue();
         weaponAOE = Chstats.AOE;
-
+        worldBuilder = FindObjectOfType<WorldBuilder>();
         health = startingHealth;
         haste = startingHaste;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && turnManager.GetFighting() == false)
-        {
-            Debug.Log("W pressed");
-            RoomManager rm = FindObjectOfType<RoomManager>();
-            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_N(currentRoom, true));
-        }
-        if (Input.GetKeyDown(KeyCode.A) && turnManager.GetFighting() == false)
-        {
-            RoomManager rm = FindObjectOfType<RoomManager>();
-            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_W(currentRoom, true));
-        }
-        if (Input.GetKeyDown(KeyCode.S) && turnManager.GetFighting() == false)
-        {
-            RoomManager rm = FindObjectOfType<RoomManager>();
-            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_S(currentRoom, true));
-        }
-        if (Input.GetKeyDown(KeyCode.D) && turnManager.GetFighting() == false)
-        {
-            RoomManager rm = FindObjectOfType<RoomManager>();
-            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_E(currentRoom, true));
-        }
+        if(turnManager.GetFighting() == false) PlayerNavigation();
+       
 
         if (haste == 0)
         {
@@ -176,6 +159,35 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+    private void PlayerNavigation()
+    {
+        RoomManager rm = FindObjectOfType<RoomManager>();
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("W pressed");
+            
+            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_N(currentRoom, true));
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            
+            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_W(currentRoom, true));
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            
+            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_S(currentRoom, true));
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            
+            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_E(currentRoom, true));
+        }
+        if(Input.GetKeyDown(KeyCode.F) && currentRoom == worldBuilder.EndRoom){
+            worldBuilder.CurrentFloor++;
+            worldBuilder.GenerateFloor();
         }
     }
     public void Attack(float damage)

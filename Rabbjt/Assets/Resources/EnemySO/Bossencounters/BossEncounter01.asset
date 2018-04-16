@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Name: BossEncounter01
   m_EditorClassIdentifier: 
   difficulty: 1
-  bossEncounter: 1
+  bossRoom: 1
   coinReward: 10
   enemiesInRoom:
+  - {fileID: 1029844598413354, guid: a09891a4f3458db4a923eefaf5034cd8, type: 2}
   - {fileID: 0}
-  validFloors: 0000000001000000020000000300000004000000
+  - {fileID: 0}
+  validFloors: 0000000001000000

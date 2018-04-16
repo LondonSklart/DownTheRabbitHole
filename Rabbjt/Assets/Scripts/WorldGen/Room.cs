@@ -26,7 +26,6 @@ public class Room{
 
     public RoomType roomType;
     public int treasures;
-
     private bool roomEntered = false;
     private Encounter encounter;
 

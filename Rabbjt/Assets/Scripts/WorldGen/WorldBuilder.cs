@@ -30,7 +30,7 @@ public class WorldBuilder : MonoBehaviour {
     [SerializeField]
     private int currentFloor;
     
-    private int startRoom; //To be generated within the first 
+    private int startRoom; 
     private int endRoom;
     List<int> invalidIndex = new List<int>();
 
@@ -43,6 +43,8 @@ public class WorldBuilder : MonoBehaviour {
 
     Encounter[] availableEncounters;
     FloorGen[] availableFloors;
+
+    bool initialized = false;
 
     // Use this for initialization
     private void Awake()
@@ -61,16 +63,12 @@ public class WorldBuilder : MonoBehaviour {
             floorSeed[i] = sr.Next();
             //Debug.Log("Floor "+i+": "+floorSeed[i]);
         }
-
+        for(int i = 0; i < availableEncounters.Length; i++)
+        {
+            Debug.Log(availableEncounters[i].name);
+        }
         GenerateFloor();
     }
-
-    void Start () {
-
-
-        //VisualGenerator();
-
-	}
 
     
 
@@ -92,23 +90,41 @@ public class WorldBuilder : MonoBehaviour {
 
         }
 
-        //Seed start room
-        startRoom = SeedRooms();
-        rooms[startRoom].roomType = Room.RoomType.Start;
-        rooms[startRoom].name = "Start Room";
+        //This part should help the workload in case of too many encounters
+        List<Encounter> validEncounters = new List<Encounter>();
+        List<Encounter> validBossEncounters = new List<Encounter>();
+        for (int i = 0; i < availableEncounters.Length; i++)
+        {
+            List<FloorType> validFT = availableEncounters[i].validFloors;
+            for (int j = 0; j < validFT.Count; i++)
+            {
+                if ((int)validFT[j] == currentFloor)
+                {
+                    if (!availableEncounters[i].bossRoom) validEncounters.Add(availableEncounters[i]);
+                    else if (availableEncounters[i].bossRoom) validBossEncounters.Add(availableEncounters[i]);
+                    break;
+                }
+            }
+        }
 
-        InvalidIndex(startRoom, true);
+        //Seed start room
+        StartRoom = SeedRooms();
+        rooms[StartRoom].roomType = Room.RoomType.Start;
+        rooms[StartRoom].name = "Start Room";
+
+        InvalidIndex(StartRoom, true);
 
 
         int RoomTypeCount = System.Enum.GetNames(typeof(Room.RoomType)).Length;
 
         //Seed end room
         
-        endRoom = SeedRooms();
-        rooms[endRoom].roomType = Room.RoomType.End;
-        rooms[endRoom].name = "End Room";
+        EndRoom = SeedRooms();
+        rooms[EndRoom].roomType = Room.RoomType.End;
+        rooms[EndRoom].name = "End Room";
+        rooms[EndRoom].Encounter = validBossEncounters[sfr.Next(0, validBossEncounters.Count)];
 
-        InvalidIndex(endRoom);
+        InvalidIndex(EndRoom);
 
         //Seed Shop
 
@@ -129,20 +145,7 @@ public class WorldBuilder : MonoBehaviour {
 
 
 
-        //This part should help the workload in case of too many encounters
-        List<Encounter> validEncounters = new List<Encounter>();
-        for(int i = 0; i < availableEncounters.Length; i++)
-        {
-            List<FloorType> validFT = availableEncounters[i].validFloors;
-            for (int j = 0; j < validFT.Count; i++)
-            {
-                if((int)validFT[j] == currentFloor && !availableEncounters[i].bossEncounter)
-                {
-                    validEncounters.Add(availableEncounters[i]);
-                    break;
-                }
-            }
-        }
+       
         //Seed monster rooms
         for(int i = 0; i < floorSizeX*floorSizeY; i++)
         {
@@ -154,7 +157,7 @@ public class WorldBuilder : MonoBehaviour {
         }
 
         //Load player to floor
-        player.CurrentRoom = startRoom;
+        player.CurrentRoom = StartRoom;
 
     }
 
@@ -431,6 +434,32 @@ public class WorldBuilder : MonoBehaviour {
         set
         {
             currentFloor = value;
+        }
+    }
+
+    public int StartRoom
+    {
+        get
+        {
+            return startRoom;
+        }
+
+        set
+        {
+            startRoom = value;
+        }
+    }
+
+    public int EndRoom
+    {
+        get
+        {
+            return endRoom;
+        }
+
+        set
+        {
+            endRoom = value;
         }
     }
 

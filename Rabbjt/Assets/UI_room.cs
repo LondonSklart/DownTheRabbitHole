@@ -72,12 +72,22 @@ public class UI_room : MonoBehaviour {
                 {
                     if(worldBuilder.rooms[i].Encounter != null)
                     {
-                    monsterIcons[j].GetComponent<Image>().sprite = worldBuilder.rooms[i].Encounter.enemiesInRoom[j].GetComponent<EnemyController>().uiIcon;
+                        if (worldBuilder.rooms[i].Encounter.enemiesInRoom[j] == null) break;
+                        else
+                        {
+                        monsterIcons[j].GetComponent<Image>().sprite = worldBuilder.rooms[i].Encounter.enemiesInRoom[j].GetComponent<EnemyController>().uiIcon;
 
+                        }
+                        
                     }
                     else if(worldBuilder.rooms[i].enemiesInRoom != null)
                     {
+                        if (worldBuilder.rooms[i].enemiesInRoom[j] == null) break;
+                        else
+                        {
                         monsterIcons[j].GetComponent<Image>().sprite = worldBuilder.rooms[i].enemiesInRoom[j].GetComponent<EnemyController>().uiIcon;
+
+                        }
                     }
                 
                     else { Debug.Log("Encounter is null for room: "+ i);

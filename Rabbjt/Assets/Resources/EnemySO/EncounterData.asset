@@ -11,7 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5fb028b82e2b348ab091b4749b6dc1, type: 3}
   m_Name: EncounterData
   m_EditorClassIdentifier: 
+  difficulty: 1
+  bossRoom: 0
+  coinReward: 10
   enemiesInRoom:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  validFloors: 
