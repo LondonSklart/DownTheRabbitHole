@@ -136,7 +136,7 @@ public class WorldBuilder : MonoBehaviour {
             List<FloorType> validFT = availableEncounters[i].validFloors;
             for (int j = 0; j < validFT.Count; i++)
             {
-                if((int)validFT[j] == currentFloor)
+                if((int)validFT[j] == currentFloor && !availableEncounters[i].bossEncounter)
                 {
                     validEncounters.Add(availableEncounters[i]);
                     break;
