@@ -9,6 +9,8 @@ public class RoomManager : MonoBehaviour
     PlayerController player;
     public GameObject enemy;
 
+    public GameObject ShopUI;
+
     int counter =0;
 
     Quaternion rotation;
@@ -39,10 +41,13 @@ public class RoomManager : MonoBehaviour
         Room activeRoom = worldBuilder.LoadRoom(currentRoom);
         if (activeRoom.roomType == Room.RoomType.Shop)
         {
+            ShopUI.SetActive(true);
+
+            ShopUI.GetComponent<Shop>().SlotLoad();
 
         }
 
-        if(activeRoom.Encounter != null) //Only runs if the room contains enemies
+        if (activeRoom.Encounter != null) //Only runs if the room contains enemies
         {
             for(int i = 0; i < activeRoom.enemiesInRoom.Count(); i++)
             {

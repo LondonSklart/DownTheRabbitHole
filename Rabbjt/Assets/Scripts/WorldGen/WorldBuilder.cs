@@ -131,7 +131,7 @@ public class WorldBuilder : MonoBehaviour {
 
         int shop = SeedRooms();
         rooms[shop].roomType = Room.RoomType.Shop;
-        rooms[shop].name = "End Room";
+        rooms[shop].name = "Shop";
 
         InvalidIndex(shop);
 

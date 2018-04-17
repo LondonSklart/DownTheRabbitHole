@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class Shop : MonoBehaviour {
     public GameMaster gameMaster;
     public WorldBuilder worldBuilder;
 
+    public Text SellText;
 
     InventorySlot[] slots;
 
@@ -69,12 +71,28 @@ public class Shop : MonoBehaviour {
             }
         }
     }
+    public void ShopRecieveItem(Item item)
+    {
+        shopItems.Add(item);
+        Instantiate(inventorySlot, itemSlotLocation);
+        SlotLoad();
+    }
     public void CloseShop()
     {
         gameObject.SetActive(false);
     }
     public void Sell()
     {
+        SellText.text = "What item do you want to sell?";
         InventoryController.instance.SetSellMode(true);
+
+    }
+    public void SetSellMode(bool mode)
+    {
+        InventoryController.instance.SetSellMode(mode);
+    }
+    public List<Item> GetShopStock()
+    {
+        return shopItems;
     }
 }

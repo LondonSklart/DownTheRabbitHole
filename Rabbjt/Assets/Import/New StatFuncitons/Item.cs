@@ -36,7 +36,11 @@ public class Item
     {
         inventoryController = ic;
         inventoryController.ChooseItem(itemToAdd);
-        GameObject.FindGameObjectWithTag("LootScreen").SetActive(false);
+        if (GameObject.FindGameObjectWithTag("LootScreen") != null)
+        {
+            GameObject.FindGameObjectWithTag("LootScreen").SetActive(false);
+
+        }
 
     }
 
