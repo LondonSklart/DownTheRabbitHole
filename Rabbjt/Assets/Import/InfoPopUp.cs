@@ -34,7 +34,7 @@ public class InfoPopUp : MonoBehaviour {
         weaponHaste.text = "Haste: "+ weaponhaste;
         weaponAOE.text = "Aoe: "+ weaponaoe;
         weaponEffect.text = "Effect: " +  weaponeffect;
-        weaponValue.text = "Value: " + weaponvalue;
+        weaponValue.text = weaponvalue;
 
     }
 

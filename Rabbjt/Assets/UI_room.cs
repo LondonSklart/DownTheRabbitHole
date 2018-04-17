@@ -75,7 +75,7 @@ public class UI_room : MonoBehaviour {
                         if (worldBuilder.rooms[i].Encounter.enemiesInRoom[j] == null) break;
                         else
                         {
-                        monsterIcons[j].GetComponent<Image>().sprite = worldBuilder.rooms[i].Encounter.enemiesInRoom[j].GetComponent<EnemyController>().uiIcon;
+                        monsterIcons[j].GetComponent<Image>().sprite = worldBuilder.rooms[i].Encounter.enemiesInRoom[j].GetComponentInChildren<EnemyController>().uiIcon;
 
                         }
                         
@@ -85,7 +85,7 @@ public class UI_room : MonoBehaviour {
                         if (worldBuilder.rooms[i].enemiesInRoom[j] == null) break;
                         else
                         {
-                        monsterIcons[j].GetComponent<Image>().sprite = worldBuilder.rooms[i].enemiesInRoom[j].GetComponent<EnemyController>().uiIcon;
+                        monsterIcons[j].GetComponent<Image>().sprite = worldBuilder.rooms[i].enemiesInRoom[j].GetComponentInChildren<EnemyController>().uiIcon;
 
                         }
                     }

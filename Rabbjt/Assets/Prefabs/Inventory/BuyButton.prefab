@@ -101,7 +101,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 114227188936819016}
-          m_MethodName: InformationHover
+          m_MethodName: ShopInformationHover
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
