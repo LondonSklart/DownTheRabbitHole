@@ -16,6 +16,7 @@ MonoBehaviour:
   initiative: 0
   haste: 0
   AOE: 01000000
+  value: 10
   dotName: 
   dotDamage: 1
   hotRecovery: 0

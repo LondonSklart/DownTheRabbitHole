@@ -19,13 +19,7 @@ public class InventorySlot : MonoBehaviour {
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.H))
-        {
-            Debug.Log(item.Stats[0].GetCalculatedValue());
-        }
-    }
+
 
     public void ClearSlot()
     {
@@ -39,8 +33,17 @@ public class InventorySlot : MonoBehaviour {
 
     public void UseItem()
     {
+        InventoryController inventory = InventoryController.instance;
+        if (inventory.GetSellMode())
+        {
+            inventory.GetCoin((item.Value)/2);
+            Destroy(gameObject);
+        }
+        else
+        {
+            item.UseItem(item, PlayerWeaponController.instance);
 
-        item.UseItem(item, PlayerWeaponController.instance);
+        }
     }
     public void ChooseItem()
     {
@@ -58,10 +61,10 @@ public class InventorySlot : MonoBehaviour {
     }
     public void BuyItem()
     {
-        if (InventoryController.instance.ReturnCoin() > 20)
+        if (InventoryController.instance.ReturnCoin() > item.Value)
         {
             item.ChooseItem(item, InventoryController.instance);
-            InventoryController.instance.LoseCoin(20);
+            InventoryController.instance.LoseCoin(item.Value);
             Destroy(gameObject);
         }
     }

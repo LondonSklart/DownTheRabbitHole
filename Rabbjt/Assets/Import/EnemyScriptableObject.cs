@@ -12,6 +12,8 @@ public class Equipment : ScriptableObject
     public int haste;
     public bool[] AOE = new bool[4];
 
+    public int value;
+
     public string dotName;
     public int dotDamage;
     public int hotRecovery;
