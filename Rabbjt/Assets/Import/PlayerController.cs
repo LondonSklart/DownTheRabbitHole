@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public GameObject invetoryUI;
     public GameObject IconParent;
 
+    Vector3 originPosition;
+
     PlayerWeaponController weaponController;
     private bool attackChoice = false;
     private bool itemChoice = false;
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
         animator = gameObject.GetComponent<Animation>();
 
         LocateEnemies();
+        originPosition = gameObject.transform.position;
 
         startingHealth = Chstats.stats[1].GetCalculatedValue();
         turnController.initiative = Chstats.stats[2].GetCalculatedValue();
@@ -170,8 +173,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             Debug.Log("W pressed");
+            // animator.Play("PlayerRoomTransitionUp");
+            //if (animator.isPlaying == false)
+            //{
+            // rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_N(currentRoom, true));
+            StartCoroutine(Move("Up"));
             
-            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_N(currentRoom, true));
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -397,5 +404,24 @@ public class PlayerController : MonoBehaviour
 
 
 
+    }
+    IEnumerator Move(string input)
+    {
+        RoomManager rm = FindObjectOfType<RoomManager>();
+
+        switch (input)
+        {
+            case "Up":
+                animator.Play("PlayerRoomTransitionUp");
+                yield return new WaitForSeconds(animator.GetClip("PlayerRoomTransitionUp").length);
+
+                rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_N(currentRoom, true));
+                yield return new WaitForSeconds(0.1f);
+
+                gameObject.transform.position = originPosition;
+                Debug.Log(gameObject.transform.position == originPosition);
+                break;
+
+        }
     }
 }
