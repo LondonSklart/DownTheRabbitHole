@@ -182,18 +182,21 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            
-            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_W(currentRoom, true));
+            StartCoroutine(Move("Left"));
+
+           // rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_W(currentRoom, true));
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            
-            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_S(currentRoom, true));
+            StartCoroutine(Move("Down"));
+
+            //rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_S(currentRoom, true));
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            
-            rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_E(currentRoom, true));
+            StartCoroutine(Move("Right"));
+
+           // rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_E(currentRoom, true));
         }
         if(Input.GetKeyDown(KeyCode.F) && currentRoom == worldBuilder.EndRoom){
             worldBuilder.CurrentFloor++;
@@ -421,7 +424,38 @@ public class PlayerController : MonoBehaviour
                 gameObject.transform.position = originPosition;
                 Debug.Log(gameObject.transform.position == originPosition);
                 break;
+            case "Right":
+                animator.Play("PlayerRoomTransitionRight");
+                yield return new WaitForSeconds(animator.GetClip("PlayerRoomTransitionRight").length);
 
+                rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_E(currentRoom, true));
+                yield return new WaitForSeconds(0.1f);
+
+                gameObject.transform.position = originPosition;
+                Debug.Log(gameObject.transform.position == originPosition);
+                break;
+            case "Left":
+                animator.Play("PlayerRoomTransitionLeft");
+                yield return new WaitForSeconds(animator.GetClip("PlayerRoomTransitionLeft").length);
+
+                rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_W(currentRoom, true));
+                yield return new WaitForSeconds(0.1f);
+
+                gameObject.transform.position = originPosition;
+                Debug.Log(gameObject.transform.position == originPosition);
+                break;
+            case "Down":
+                animator.Play("PlayerRoomTransitionDown");
+                yield return new WaitForSeconds(animator.GetClip("PlayerRoomTransitionDown").length);
+
+                rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_S(currentRoom, true));
+                yield return new WaitForSeconds(0.1f);
+
+                gameObject.transform.position = originPosition;
+                Debug.Log(gameObject.transform.position == originPosition);
+                break;
         }
     }
+
+    
 }
