@@ -86,6 +86,7 @@ public class RoomManager : MonoBehaviour
 
         }
         uiRoom.UpdateUI();
+        player.GetComponent<TurnController>().SetTurn(false);
         turnManager.NewTurn();
        // turnManager.SeedSecondTurn();
        // turnManager.EnterFight();

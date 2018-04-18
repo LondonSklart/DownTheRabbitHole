@@ -140,7 +140,7 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
            turnManager.Death(gameObject);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
     public void Attack(int damage)
