@@ -16,5 +16,14 @@ MonoBehaviour:
   initiative: 0
   haste: 0
   AOE: 00000000
+  value: 0
+  weaponModel: {fileID: 1526775413261794, guid: a865be8ef0166104b84ab4736f5c47ec,
+    type: 2}
+  dotName: 
+  dotDamage: 0
+  hotRecovery: 0
+  dotLength: 0
+  armorShred: 0
+  fragileInfliction: 0
+  dotIcon: {fileID: 0}
   itemSlot: 0
-  Effect: 

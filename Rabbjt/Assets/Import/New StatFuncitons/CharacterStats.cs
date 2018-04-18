@@ -8,6 +8,7 @@ public class CharacterStats : MonoBehaviour
     public List<BaseStat> stats = new List<BaseStat>();
     public int health;
     public int power;
+    public int armor;
     public int initiative;
     public int haste;
     public bool[] AOE;
@@ -22,6 +23,7 @@ public class CharacterStats : MonoBehaviour
         stats.Add(new BaseStat(health, "Health", "Your health level"));
         stats.Add(new BaseStat(initiative, "Initiative", "Your initiative level"));
         stats.Add(new BaseStat(haste, "Haste", "Your haste level"));
+        stats.Add(new BaseStat(armor, "Armor", "Your armor level"));
     }
 
     private void Update()

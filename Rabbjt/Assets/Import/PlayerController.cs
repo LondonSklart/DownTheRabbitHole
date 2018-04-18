@@ -173,10 +173,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             Debug.Log("W pressed");
-            // animator.Play("PlayerRoomTransitionUp");
-            //if (animator.isPlaying == false)
-            //{
-            // rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_N(currentRoom, true));
+
             StartCoroutine(Move("Up"));
             
         }
@@ -184,19 +181,16 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Move("Left"));
 
-           // rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_W(currentRoom, true));
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             StartCoroutine(Move("Down"));
 
-            //rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_S(currentRoom, true));
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             StartCoroutine(Move("Right"));
 
-           // rm.OnRoomLoad(currentRoom = WorldBuilder.Calc_E(currentRoom, true));
         }
         if(Input.GetKeyDown(KeyCode.F) && currentRoom == worldBuilder.EndRoom){
             worldBuilder.CurrentFloor++;
@@ -218,13 +212,12 @@ public class PlayerController : MonoBehaviour
 
         if (affectedByArmor == true)
         {
-            damage /= armor;
+            damage -= armor;
 
             Debug.Log("Damage affected by armor " + damage);
-            if (damage % 2 != 0)
+            if (damage <= 0)
             {
-                damage = Mathf.Round(damage);
-                Debug.Log("Is rounded to " + damage);
+                damage = 1;
             }
         }
 

@@ -9,22 +9,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: BigAssSword
+  m_Name: Granite Maul
   m_EditorClassIdentifier: Assembly-CSharp::Equipment
-  power: 500
-  health: 100
-  initiative: 1
+  power: 10
+  health: 20
+  initiative: 60
   haste: 0
-  armor: 10
-  AOE: 01010100
-  value: 10
+  AOE: 01010000
+  value: 30
   weaponModel: {fileID: 1526775413261794, guid: a865be8ef0166104b84ab4736f5c47ec,
     type: 2}
-  dotName: Poison
+  dotName: Crushed Armor
   dotDamage: 0
   hotRecovery: 0
   dotLength: 3
-  armorShred: 1
+  armorShred: 5
   fragileInfliction: 0
-  dotIcon: {fileID: 1703010511988106, guid: d16381dd2b73a3349bdaa6477d50efd7, type: 2}
+  dotIcon: {fileID: 1052116256010776, guid: e6c160da8cd19b048a0c0185abf4ea07, type: 2}
   itemSlot: 0

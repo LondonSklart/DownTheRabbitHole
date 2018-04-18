@@ -10,9 +10,12 @@ public class Equipment : ScriptableObject
     public int health;
     public int initiative;
     public int haste;
+    public int armor;
     public bool[] AOE = new bool[4];
 
     public int value;
+
+    public GameObject weaponModel;
 
     public string dotName;
     public int dotDamage;

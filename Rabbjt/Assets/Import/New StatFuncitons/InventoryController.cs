@@ -52,13 +52,14 @@ public class InventoryController : MonoBehaviour
             statBlock.Add(new BaseStat(w.health, "Health", "Your health level"));
             statBlock.Add(new BaseStat(w.initiative, "Initiative", "Your initiative level"));
             statBlock.Add(new BaseStat(w.haste, "Haste", "Your haste level"));
+            statBlock.Add(new BaseStat(w.armor, "Armor", "Your armor level"));
 
 
             if (w.itemSlot == EquipmenSlot.Weapon)
             {
                 AOEchache = w.AOE;
             }
-            itemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon,w.armorShred,w.fragileInfliction),AOEchache,w.value));
+            itemList.Add(new Item(w.name, statBlock, w.weaponModel, w.itemSlot, new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon,w.armorShred,w.fragileInfliction),AOEchache,w.value));
             Instantiate(inventorySlot, itemSlotLocation);
 
             
@@ -108,11 +109,13 @@ public class InventoryController : MonoBehaviour
             statBlock.Add(new BaseStat(w.health, "Health", "Your health level"));
             statBlock.Add(new BaseStat(w.initiative, "Initiative", "Your initiative level"));
             statBlock.Add(new BaseStat(w.haste, "Haste", "Your haste level"));
+            statBlock.Add(new BaseStat(w.armor, "Armor", "Your armor level"));
+
             if (w.itemSlot == EquipmenSlot.Weapon)
             {
                 AOEchache = w.AOE;
             }
-            currentFloorItemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot,new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon,w.armorShred,w.fragileInfliction),AOEchache,w.value));
+            currentFloorItemList.Add(new Item(w.name, statBlock, w.weaponModel, w.itemSlot,new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon,w.armorShred,w.fragileInfliction),AOEchache,w.value));
 
 
         }

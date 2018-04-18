@@ -9,18 +9,18 @@ public class Item
 
     public string Name { get; set; }
     public List<BaseStat> Stats { get; set; }
-    public string ObjectSlug { get; set; }
+    public GameObject WeaponModel { get; set; }
     public EquipmenSlot Slot { get; set; }
     public Effect OnHitEffect { get; set; }
     public bool[] AOE { get; set; }
     public int Value { get; set; }
 
 
-    public Item(string name,List <BaseStat> _Stats, string _ObjectSlug, EquipmenSlot _Slot, Effect _OnHit,bool[] _AOE,int _Value)
+    public Item(string name,List <BaseStat> _Stats, GameObject weaponModel, EquipmenSlot _Slot, Effect _OnHit,bool[] _AOE,int _Value)
     {
         Name = name;
         Stats = _Stats;
-        ObjectSlug = _ObjectSlug;
+        WeaponModel = weaponModel;
         Slot = _Slot;
         AOE = _AOE;
         OnHitEffect = _OnHit;

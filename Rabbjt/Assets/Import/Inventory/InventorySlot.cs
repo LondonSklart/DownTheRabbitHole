@@ -61,7 +61,7 @@ public class InventorySlot : MonoBehaviour {
 
 
         info.transform.position = location;
-        info.GetComponent<InfoPopUp>().SetInfo(item.Name,item.Stats[0].GetCalculatedValue().ToString(),item.Stats[1].GetCalculatedValue().ToString(), item.Stats[2].GetCalculatedValue().ToString(), item.Stats[3].GetCalculatedValue().ToString(),item.AOE.Length.ToString(),( item.OnHitEffect.Name.Length >0 ? item.OnHitEffect.Name : "No Effect"),"Value: " +(item.Value/2).ToString());
+        info.GetComponent<InfoPopUp>().SetInfo(item.Name,item.Stats[0].GetCalculatedValue().ToString(),item.Stats[4].GetCalculatedValue().ToString(),item.Stats[1].GetCalculatedValue().ToString(), item.Stats[2].GetCalculatedValue().ToString(), item.Stats[3].GetCalculatedValue().ToString(),item.AOE.Length.ToString(),( item.OnHitEffect.Name.Length >0 ? item.OnHitEffect.Name : "No Effect"),"Value: " +(item.Value/2).ToString());
     }
     public void ShopInformationHover()
     {
@@ -71,7 +71,7 @@ public class InventorySlot : MonoBehaviour {
 
 
         info.transform.position = location;
-        info.GetComponent<InfoPopUp>().SetInfo(item.Name, item.Stats[0].GetCalculatedValue().ToString(), item.Stats[1].GetCalculatedValue().ToString(), item.Stats[2].GetCalculatedValue().ToString(), item.Stats[3].GetCalculatedValue().ToString(), item.AOE.Length.ToString(), (item.OnHitEffect.Name.Length > 0 ? item.OnHitEffect.Name : "No Effect"), "Cost: " +item.Value.ToString());
+        info.GetComponent<InfoPopUp>().SetInfo(item.Name, item.Stats[0].GetCalculatedValue().ToString(), item.Stats[4].GetCalculatedValue().ToString(), item.Stats[1].GetCalculatedValue().ToString(), item.Stats[2].GetCalculatedValue().ToString(), item.Stats[3].GetCalculatedValue().ToString(), item.AOE.Length.ToString(), (item.OnHitEffect.Name.Length > 0 ? item.OnHitEffect.Name : "No Effect"), "Cost: " +item.Value.ToString());
     }
     public void BuyItem()
     {

@@ -8,6 +8,7 @@ public class InfoPopUp : MonoBehaviour {
     public Text weaponName;
     public Text weaponDMG;
     public Text weaponHealth;
+    public Text weaponArmor;
     public Text weaponINT;
     public Text weaponHaste;
     public Text weaponAOE;
@@ -25,10 +26,11 @@ public class InfoPopUp : MonoBehaviour {
         gameObject.transform.position = location;
     }
 
-    public void SetInfo(string weaponname,string weapondamage,string weaponhealth,string weaponinitiative,string weaponhaste,string weaponaoe,string weaponeffect,string weaponvalue)
+    public void SetInfo(string weaponname,string weapondamage,string weaponarmor,string weaponhealth,string weaponinitiative,string weaponhaste,string weaponaoe,string weaponeffect,string weaponvalue)
     {
         weaponName.text =  weaponname;
         weaponDMG.text = "Damage: " + weapondamage;
+        weaponArmor.text = "Armor: " + weaponarmor;
         weaponHealth.text = "Health: " + weaponhealth;
         weaponINT.text = "Initiative: "+ weaponinitiative;
         weaponHaste.text = "Haste: "+ weaponhaste;

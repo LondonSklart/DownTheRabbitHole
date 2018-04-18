@@ -17,6 +17,8 @@ MonoBehaviour:
   haste: 0
   AOE: 01000000
   value: 10
+  weaponModel: {fileID: 1526775413261794, guid: a865be8ef0166104b84ab4736f5c47ec,
+    type: 2}
   dotName: 
   dotDamage: 1
   hotRecovery: 0

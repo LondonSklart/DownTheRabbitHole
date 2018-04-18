@@ -8297,6 +8297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   power: 1
+  armor: 0
   initiative: 500
   haste: 4
   AOE: 01000000

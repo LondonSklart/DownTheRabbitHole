@@ -9,18 +9,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Head
+  m_Name: Kin Slayer
   m_EditorClassIdentifier: Assembly-CSharp::Equipment
-  power: 0
-  health: 1
-  initiative: 1
+  power: 1
+  health: 0
+  initiative: 200
   haste: 0
-  AOE: 00000000
-  dotName: Burning
-  dotDamage: 2
+  armor: 0
+  AOE: 01000100
+  value: 40
+  weaponModel: {fileID: 1526775413261794, guid: a865be8ef0166104b84ab4736f5c47ec,
+    type: 2}
+  dotName: Poison
+  dotDamage: 5
   hotRecovery: 0
-  dotLength: 3
+  dotLength: 10
   armorShred: 0
   fragileInfliction: 0
-  dotIcon: {fileID: 1558813668490654, guid: 7311f5accee8a4947a95c28bddce89f6, type: 2}
-  itemSlot: 1
+  dotIcon: {fileID: 1429577227069000, guid: 723686612c5dd0a4e9e731309ad18edf, type: 2}
+  itemSlot: 0

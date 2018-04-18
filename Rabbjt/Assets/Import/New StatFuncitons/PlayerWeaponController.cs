@@ -73,7 +73,7 @@ public class PlayerWeaponController : MonoBehaviour
 
 
                 location =playerHand;
-                EquipedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), location.transform.position, location.transform.rotation);
+                EquipedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.WeaponModel.name), location.transform.position, location.transform.rotation);
                 equipedWeapon = EquipedWeapon.GetComponent<IWeapon>();
                 EquipedWeapon.GetComponent<IWeapon>().Stats = itemToEquip.Stats;
                 EquipedWeapon.transform.SetParent(playerHand.transform);
@@ -101,7 +101,7 @@ public class PlayerWeaponController : MonoBehaviour
 
 
                 location = playerHead;
-                EquipedHelmet = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), location.transform.position, location.transform.rotation);
+                EquipedHelmet = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.WeaponModel.name), location.transform.position, location.transform.rotation);
 
                 EquipedHelmet.GetComponent<IWeapon>().Stats = itemToEquip.Stats;
                 EquipedHelmet.transform.SetParent(playerHead.transform);
