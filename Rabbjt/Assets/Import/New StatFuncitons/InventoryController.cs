@@ -22,6 +22,8 @@ public class InventoryController : MonoBehaviour
     private int coins = 10;
     public Text coinText;
 
+    private bool sellMode = false;
+
     public Item sword;
     public Item helmet;
     public Item fist;
@@ -56,7 +58,7 @@ public class InventoryController : MonoBehaviour
             {
                 AOEchache = w.AOE;
             }
-            itemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon,w.armorShred,w.fragileInfliction),AOEchache));
+            itemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot, new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon,w.armorShred,w.fragileInfliction),AOEchache,w.value));
             Instantiate(inventorySlot, itemSlotLocation);
 
             
@@ -110,7 +112,7 @@ public class InventoryController : MonoBehaviour
             {
                 AOEchache = w.AOE;
             }
-            currentFloorItemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot,new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon,w.armorShred,w.fragileInfliction),AOEchache));
+            currentFloorItemList.Add(new Item(w.name, statBlock, "sword", w.itemSlot,new Effect(w.dotName,w.dotDamage,w.hotRecovery,w.dotLength,w.dotIcon,w.armorShred,w.fragileInfliction),AOEchache,w.value));
 
 
         }
@@ -129,6 +131,14 @@ public class InventoryController : MonoBehaviour
     {
         coins -= coinToLose;
         coinText.text = "Coin: " + coins;
+    }
+    public void SetSellMode(bool mode)
+    {
+        sellMode = mode;
+    }
+    public bool GetSellMode()
+    {
+        return sellMode;
     }
 
     public void ChooseItem(Item item)

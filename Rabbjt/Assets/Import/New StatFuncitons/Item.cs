@@ -13,9 +13,10 @@ public class Item
     public EquipmenSlot Slot { get; set; }
     public Effect OnHitEffect { get; set; }
     public bool[] AOE { get; set; }
+    public int Value { get; set; }
 
 
-    public Item(string name,List <BaseStat> _Stats, string _ObjectSlug, EquipmenSlot _Slot, Effect _OnHit,bool[] _AOE)
+    public Item(string name,List <BaseStat> _Stats, string _ObjectSlug, EquipmenSlot _Slot, Effect _OnHit,bool[] _AOE,int _Value)
     {
         Name = name;
         Stats = _Stats;
@@ -23,7 +24,7 @@ public class Item
         Slot = _Slot;
         AOE = _AOE;
         OnHitEffect = _OnHit;
-
+        Value = _Value;
     }
     public void UseItem(Item itemToEquip, PlayerWeaponController pwc)
     {
@@ -35,7 +36,11 @@ public class Item
     {
         inventoryController = ic;
         inventoryController.ChooseItem(itemToAdd);
-        GameObject.FindGameObjectWithTag("LootScreen").SetActive(false);
+        if (GameObject.FindGameObjectWithTag("LootScreen") != null)
+        {
+            GameObject.FindGameObjectWithTag("LootScreen").SetActive(false);
+
+        }
 
     }
 

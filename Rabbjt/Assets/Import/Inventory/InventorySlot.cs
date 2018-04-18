@@ -19,13 +19,7 @@ public class InventorySlot : MonoBehaviour {
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.H))
-        {
-            Debug.Log(item.Stats[0].GetCalculatedValue());
-        }
-    }
+
 
     public void ClearSlot()
     {
@@ -39,8 +33,21 @@ public class InventorySlot : MonoBehaviour {
 
     public void UseItem()
     {
+        InventoryController inventory = InventoryController.instance;
+        if (inventory.GetSellMode())
+        {
+            inventory.GetCoin((item.Value)/2);
+            Shop shop = FindObjectOfType<Shop>();
+            shop.ShopRecieveItem(item);
+            shop.SetSellMode(false);
+            shop.SellText.text = "Feel like lightening up your pack?";
+            Destroy(gameObject);
+        }
+        else
+        {
+            item.UseItem(item, PlayerWeaponController.instance);
 
-        item.UseItem(item, PlayerWeaponController.instance);
+        }
     }
     public void ChooseItem()
     {
@@ -54,14 +61,27 @@ public class InventorySlot : MonoBehaviour {
 
 
         info.transform.position = location;
-        info.GetComponent<InfoPopUp>().SetInfo(item.Name,item.Stats[0].GetCalculatedValue().ToString(),item.Stats[1].GetCalculatedValue().ToString(), item.Stats[2].GetCalculatedValue().ToString(), item.Stats[3].GetCalculatedValue().ToString(),item.AOE.Length.ToString(),( item.OnHitEffect.Name.Length >0 ? item.OnHitEffect.Name : "No Effect"));
+        info.GetComponent<InfoPopUp>().SetInfo(item.Name,item.Stats[0].GetCalculatedValue().ToString(),item.Stats[1].GetCalculatedValue().ToString(), item.Stats[2].GetCalculatedValue().ToString(), item.Stats[3].GetCalculatedValue().ToString(),item.AOE.Length.ToString(),( item.OnHitEffect.Name.Length >0 ? item.OnHitEffect.Name : "No Effect"),"Value: " +(item.Value/2).ToString());
+    }
+    public void ShopInformationHover()
+    {
+
+        info = Instantiate(InfoPopUp, Vector3.zero, InfoPopUp.transform.rotation, GameObject.FindGameObjectWithTag("UI").transform);
+        Vector3 location = Input.mousePosition;
+
+
+        info.transform.position = location;
+        info.GetComponent<InfoPopUp>().SetInfo(item.Name, item.Stats[0].GetCalculatedValue().ToString(), item.Stats[1].GetCalculatedValue().ToString(), item.Stats[2].GetCalculatedValue().ToString(), item.Stats[3].GetCalculatedValue().ToString(), item.AOE.Length.ToString(), (item.OnHitEffect.Name.Length > 0 ? item.OnHitEffect.Name : "No Effect"), "Cost: " +item.Value.ToString());
     }
     public void BuyItem()
     {
-        if (InventoryController.instance.ReturnCoin() > 20)
+        if (InventoryController.instance.ReturnCoin() >= item.Value)
         {
+            Shop shop = FindObjectOfType<Shop>();
             item.ChooseItem(item, InventoryController.instance);
-            InventoryController.instance.LoseCoin(20);
+            InventoryController.instance.LoseCoin(item.Value);
+            shop.GetShopStock().Remove(item);
+            shop.SellText.text = "Thank you for your patronage!";
             Destroy(gameObject);
         }
     }

@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     DamagePrint damagePrint;
     TextController textController;
     WorldBuilder worldBuilder;
+    Animation animator;
 
     public GameObject potionBelt;
     public GameObject invetoryUI;
@@ -62,6 +63,8 @@ public class PlayerController : MonoBehaviour
         turnManager = FindObjectOfType<TurnManager>();
         damagePrint = GetComponentInChildren<DamagePrint>();
         turnController = gameObject.GetComponent<TurnController>();
+        animator = gameObject.GetComponent<Animation>();
+
         LocateEnemies();
 
         startingHealth = Chstats.stats[1].GetCalculatedValue();
@@ -194,6 +197,7 @@ public class PlayerController : MonoBehaviour
     {
        // CheckEquipment(Chstats.AOE,Chstats.stats[0].GetCalculatedValue());
         LocateEnemies();
+        animator.Play("PlayerAttackAnimation");
         DealDamage(damage + bonusDamage);
 
 

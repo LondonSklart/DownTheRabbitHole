@@ -16,6 +16,7 @@ MonoBehaviour:
   initiative: 1
   haste: 0
   AOE: 01010100
+  value: 10
   dotName: Poison
   dotDamage: 0
   hotRecovery: 0

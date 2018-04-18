@@ -29,6 +29,7 @@ public class EnemyController : MonoBehaviour
     RoomManager roomManager;
     DamagePrint damagePrint;
     TurnController turnController;
+    Animation animation;
 
     List<GameObject> templist = new List<GameObject>();
     public List<Effect> afflictedList = new List<Effect>();
@@ -50,6 +51,7 @@ public class EnemyController : MonoBehaviour
         turnController = gameObject.GetComponent<TurnController>();
         turnManager = FindObjectOfType<TurnManager>();
         roomManager = FindObjectOfType<RoomManager>();
+        animation = gameObject.GetComponent<Animation>();
     }
 
     // Update is called once per frame
@@ -138,7 +140,7 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
            turnManager.Death(gameObject);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
     public void Attack(int damage)
@@ -150,7 +152,7 @@ public class EnemyController : MonoBehaviour
         player.TakeDamage(damage,true);
             player.Afflicted(new Effect(dotItem.dotName,dotItem.dotDamage,dotItem.hotRecovery,dotItem.dotLength,dotItem.dotIcon,dotItem.armorShred,dotItem.fragileInfliction));
         }
-
+        animation.Play("EnemyAttackAnimation");
 
     }
     public void Afflicted(Effect effect)
