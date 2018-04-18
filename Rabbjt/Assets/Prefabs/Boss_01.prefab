@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23199833117440158}
   - component: {fileID: 114867987703612594}
   - component: {fileID: 114825345018897094}
+  - component: {fileID: 111327202908268382}
   m_Layer: 0
   m_Name: Boss_01
   m_TagString: Character
@@ -277,6 +278,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &111327202908268382
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029844598413354}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: eb8fce4bb5c9877458a239357ad3cd6f, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: eb8fce4bb5c9877458a239357ad3cd6f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114005530441360578
 MonoBehaviour:
   m_ObjectHideFlags: 1
