@@ -41,6 +41,7 @@ public class InventorySlot : MonoBehaviour {
             shop.ShopRecieveItem(item);
             shop.SetSellMode(false);
             shop.SellText.text = "Feel like lightening up your pack?";
+            inventory.itemList.Remove(item);
             Destroy(gameObject);
         }
         else

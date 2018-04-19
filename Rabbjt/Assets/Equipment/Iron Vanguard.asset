@@ -26,5 +26,5 @@ MonoBehaviour:
   dotLength: 0
   armorShred: 0
   fragileInfliction: 0
-  dotIcon: {fileID: 0}
+  dotIcon: {fileID: 1512657019879050, guid: d16381dd2b73a3349bdaa6477d50efd7, type: 2}
   itemSlot: 1
