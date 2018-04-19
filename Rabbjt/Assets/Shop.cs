@@ -43,6 +43,8 @@ public class Shop : MonoBehaviour {
             statBlock.Add(new BaseStat(w.health, "Health", "Your health level"));
             statBlock.Add(new BaseStat(w.initiative, "Initiative", "Your initiative level"));
             statBlock.Add(new BaseStat(w.haste, "Haste", "Your haste level"));
+            statBlock.Add(new BaseStat(w.armor, "Armor", "Your armor level"));
+
             if (w.itemSlot == EquipmenSlot.Weapon)
             {
                 AOEchache = w.AOE;

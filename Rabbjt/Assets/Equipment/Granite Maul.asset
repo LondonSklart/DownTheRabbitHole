@@ -15,6 +15,7 @@ MonoBehaviour:
   health: 20
   initiative: 60
   haste: 0
+  armor: 0
   AOE: 01010000
   value: 30
   weaponModel: {fileID: 1526775413261794, guid: a865be8ef0166104b84ab4736f5c47ec,
@@ -25,5 +26,5 @@ MonoBehaviour:
   dotLength: 3
   armorShred: 5
   fragileInfliction: 0
-  dotIcon: {fileID: 1052116256010776, guid: e6c160da8cd19b048a0c0185abf4ea07, type: 2}
+  dotIcon: {fileID: 1062285389621542, guid: 1e4b2eba5f2b35a4da9ee9899cabe7e3, type: 2}
   itemSlot: 0

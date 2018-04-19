@@ -125,13 +125,12 @@ public class EnemyController : MonoBehaviour
     {
         if (affectedByArmor == true)
         {
-            damage /= armor;
+            damage -= armor;
 
             Debug.Log("Damage affected by armor " + damage);
-            if (damage % 2 != 0)
+            if (damage <= 0)
             {
-                damage = Mathf.Round(damage);
-                Debug.Log("Is rounded to " + damage);
+                damage = 1;
             }
         }
         damagePrint.PrintDamage(damage.ToString());
