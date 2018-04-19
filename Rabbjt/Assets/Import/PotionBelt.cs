@@ -8,6 +8,7 @@ public class PotionBelt : MonoBehaviour
 
     PlayerController player;
     public GameObject strIcon;
+    public GameObject hstIcon;
     public Text amount1;
     public Text amount2;
     public Text amount3;
@@ -61,7 +62,7 @@ public class PotionBelt : MonoBehaviour
     {
         if (hastePotions > 0)
         {
-            player.Afflicted(new Effect("Haste",0,0,2,strIcon,0,0));
+            player.Afflicted(new Effect("Haste",0,0,2,hstIcon,0,0));
             player.GetComponent<TurnController>().Startinghaste -= 2;
             player.GetComponent<TurnController>().haste -= 2;
             hastePotions--;

@@ -36,10 +36,7 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
-        startingHealth = Random.Range(20, 50);
-        attackDamage = Random.Range(1, 5);
-        initiative = Random.Range(1, 3);
-        armor = 2;
+
         if (startingHaste <= 0)
         {
             startingHaste = 2;//Random.Range(1, 10);
@@ -151,6 +148,7 @@ public class EnemyController : MonoBehaviour
         player.TakeDamage(damage,true);
             player.Afflicted(new Effect(dotItem.dotName,dotItem.dotDamage,dotItem.hotRecovery,dotItem.dotLength,dotItem.dotIcon,dotItem.armorShred,dotItem.fragileInfliction));
         }
+        Debug.Log("Afflicting " + player.name + " With " + dotItem.name);
         animation.Play("EnemyAttackAnimation");
 
     }
