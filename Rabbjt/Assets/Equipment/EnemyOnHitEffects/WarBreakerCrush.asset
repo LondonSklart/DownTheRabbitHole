@@ -22,7 +22,7 @@ MonoBehaviour:
   dotName: Crush
   dotDamage: 2
   hotRecovery: 0
-  dotLength: 0
+  dotLength: 10
   armorShred: 10
   fragileInfliction: 5
   dotIcon: {fileID: 1062285389621542, guid: 1e4b2eba5f2b35a4da9ee9899cabe7e3, type: 2}

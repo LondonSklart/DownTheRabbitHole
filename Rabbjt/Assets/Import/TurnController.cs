@@ -26,7 +26,7 @@ public class TurnController : MonoBehaviour
         {
             Startinghaste = 4;//Random.Range(1,100);
         }
-       // haste = Startinghaste;
+        haste = Startinghaste;
     }
 
 
