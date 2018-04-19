@@ -75,14 +75,14 @@ public class WorldBuilder : MonoBehaviour {
 
     public void GenerateFloor()
     {
-        
+        invalidIndex.Clear();
         sfr = new System.Random(floorSeed[currentFloor]); //Gets random seed based on current floor
 
         floorSizeX = floors[currentFloor].floorSizeX;
         floorSizeY = floors[currentFloor].floorSizeY;
 
         rooms = new Room[floorSizeX * floorSizeY];
-        Debug.Log("Amount of rooms: "+rooms.Length);
+        //Debug.Log("Amount of rooms: "+rooms.Length);
         //Creates empty floor (Probably exists a better solution)
         for(int i = 0; i < rooms.Length; i++)
         {
