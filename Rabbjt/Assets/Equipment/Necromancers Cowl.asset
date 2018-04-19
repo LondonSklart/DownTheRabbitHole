@@ -9,23 +9,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Fist
+  m_Name: Necromancers Cowl
   m_EditorClassIdentifier: Assembly-CSharp::Equipment
-  power: 2
-  health: 1
-  initiative: 0
+  power: 3
+  health: 12
+  initiative: 23
   haste: 0
-  armor: 0
-  AOE: 01000000
-  value: 10
-  weaponModel: {fileID: 1526775413261794, guid: a865be8ef0166104b84ab4736f5c47ec,
+  armor: 2
+  AOE: 00000000
+  value: 34
+  weaponModel: {fileID: 1891316403238642, guid: 4cadc48b88806d74c948e1c1350b0e25,
     type: 2}
-  dotName: Recovery
+  dotName: Leech
   dotAffectSelf: 1
   dotDamage: 0
   hotRecovery: 10
   dotLength: 2
   armorShred: 0
   fragileInfliction: 0
-  dotIcon: {fileID: 1512657019879050, guid: d16381dd2b73a3349bdaa6477d50efd7, type: 2}
-  itemSlot: 0
+  dotIcon: {fileID: 1561365595257570, guid: 01467c1353402a04b8627cb6565a1771, type: 2}
+  itemSlot: 1

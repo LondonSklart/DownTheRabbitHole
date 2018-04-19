@@ -5,6 +5,7 @@ using UnityEngine;
 public class Effect
 {
     public string Name { get; set; }
+    public bool AffectSelf { get; set; }
     public int Damage { get; set; }
     public int HealthRecover { get; set; }
     public int Length { get; set; }
@@ -14,9 +15,10 @@ public class Effect
     private int remainingLenght;
     private bool mentioned = false;
 
-    public  Effect (string name, int damage, int healthrecover, int length, GameObject icon,int armorshred,int fragilelevel)
+    public  Effect (string name,bool affectself, int damage, int healthrecover, int length, GameObject icon,int armorshred,int fragilelevel)
     {
         Name = name;
+        AffectSelf = affectself;
         Damage = damage;
         HealthRecover = healthrecover;
         Length = length;
@@ -39,6 +41,10 @@ public class Effect
 
 
         return Damage;
+    }
+    public float GetHOT()
+    {
+        return HealthRecover;
     }
     public virtual void TurnTick()
     {

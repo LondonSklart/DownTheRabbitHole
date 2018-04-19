@@ -71,21 +71,24 @@ public class EnemyController : MonoBehaviour
                 turnManager.DecreaseHaste();
 
                 float damageCache = 0;
+                float healthCache = 0;
 
                 foreach (Effect e in afflictedList)
                 {
                     if (e.Length > 0)
                     {
 
-                        damageCache +=e.OnEndTurn();
+                        damageCache += e.OnEndTurn();
+                        healthCache += e.GetHOT();
 
                         e.Length--;
                     }
 
                 }
-                if (afflictedList.Count > 0 && damageCache >0)
+                if (afflictedList.Count > 0 && damageCache > 0)
                 {
-                    TakeDamage(damageCache,false);
+                    TakeDamage(damageCache, false);
+                    GainHealth(healthCache);
                 }
 
                 for (int i = 0; i < afflictedList.Count; i++)
@@ -146,11 +149,29 @@ public class EnemyController : MonoBehaviour
         if (player != null)
         {
         player.TakeDamage(damage,true);
-            player.Afflicted(new Effect(dotItem.dotName,dotItem.dotDamage,dotItem.hotRecovery,dotItem.dotLength,dotItem.dotIcon,dotItem.armorShred,dotItem.fragileInfliction));
+            Effect tempdot = new Effect(dotItem.dotName, dotItem.dotAffectSelf, dotItem.dotDamage, dotItem.hotRecovery, dotItem.dotLength, dotItem.dotIcon, dotItem.armorShred, dotItem.fragileInfliction);
+            if (tempdot.AffectSelf)
+            {
+                gameObject.GetComponent<EnemyController>().Afflicted(tempdot);
+            }
+            else
+            {
+                player.Afflicted(tempdot);
+
+            }
         }
         Debug.Log("Afflicting " + player.name + " With " + dotItem.name);
         animation.Play("EnemyAttackAnimation");
 
+    }
+    public void GainHealth(float damage)
+    {
+        Debug.Log("Health before heal" + health);
+        damagePrint.PrintDamage(damage.ToString());
+        health += damage;
+        Debug.Log("Health after heal" + health);
+
+        healthbar.fillAmount = health / startingHealth;
     }
     public void Afflicted(Effect effect)
     {
@@ -171,7 +192,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             Debug.Log(gameObject.name + "Recieved dot: " + effect.Name);
-            afflictedList.Add(new Effect(effect.Name, effect.Damage, effect.HealthRecover, effect.Length, effect.Icon,effect.ArmorShred,effect.FragileLevel));
+            afflictedList.Add(new Effect(effect.Name,effect.AffectSelf, effect.Damage, effect.HealthRecover, effect.Length, effect.Icon,effect.ArmorShred,effect.FragileLevel));
             Debug.Log("Armor before shred" + armor);
             effect.OnApplied(gameObject);
             Debug.Log("Armor after shred" + armor);

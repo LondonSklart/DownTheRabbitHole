@@ -18,6 +18,7 @@ public class Equipment : ScriptableObject
     public GameObject weaponModel;
 
     public string dotName;
+    public bool dotAffectSelf;
     public int dotDamage;
     public int hotRecovery;
     public int dotLength;

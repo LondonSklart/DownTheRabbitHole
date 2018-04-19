@@ -51,7 +51,7 @@ public class PotionBelt : MonoBehaviour
     {
         if (strengthPotions > 0)
         {
-            player.Afflicted(new Effect("Strength", 0, 0, 2, strIcon, 0, 0));
+            player.Afflicted(new Effect("Strength",true, 0, 0, 2, strIcon, 0, 0));
             player.bonusDamage += 10;
             strengthPotions--;
             amount1.text = strengthPotions.ToString();
@@ -62,7 +62,7 @@ public class PotionBelt : MonoBehaviour
     {
         if (hastePotions > 0)
         {
-            player.Afflicted(new Effect("Haste",0,0,2,hstIcon,0,0));
+            player.Afflicted(new Effect("Haste",true,0,0,2,hstIcon,0,0));
             player.GetComponent<TurnController>().Startinghaste -= 2;
             player.GetComponent<TurnController>().haste -= 2;
             hastePotions--;

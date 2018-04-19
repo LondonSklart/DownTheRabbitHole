@@ -9,23 +9,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Fist
+  m_Name: EnemyLeech
   m_EditorClassIdentifier: Assembly-CSharp::Equipment
-  power: 2
-  health: 1
+  power: 0
+  health: 0
   initiative: 0
   haste: 0
   armor: 0
-  AOE: 01000000
-  value: 10
-  weaponModel: {fileID: 1526775413261794, guid: a865be8ef0166104b84ab4736f5c47ec,
-    type: 2}
-  dotName: Recovery
+  AOE: 00000000
+  value: 0
+  weaponModel: {fileID: 0}
+  dotName: Leech
   dotAffectSelf: 1
   dotDamage: 0
-  hotRecovery: 10
+  hotRecovery: 5
   dotLength: 2
   armorShred: 0
   fragileInfliction: 0
-  dotIcon: {fileID: 1512657019879050, guid: d16381dd2b73a3349bdaa6477d50efd7, type: 2}
+  dotIcon: {fileID: 1561365595257570, guid: 01467c1353402a04b8627cb6565a1771, type: 2}
   itemSlot: 0

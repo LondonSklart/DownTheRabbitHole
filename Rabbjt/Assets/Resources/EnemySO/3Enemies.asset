@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 1
   bossRoom: 0
-  coinReward: 10
+  coinReward: 30
   enemiesInRoom:
   - {fileID: 1286905763118270, guid: 4b2a5f4aa9a7fe64180076f1ae581e2d, type: 2}
-  - {fileID: 1286905763118270, guid: 4b2a5f4aa9a7fe64180076f1ae581e2d, type: 2}
-  - {fileID: 1286905763118270, guid: 4b2a5f4aa9a7fe64180076f1ae581e2d, type: 2}
+  - {fileID: 1260700073142952, guid: f7d949d351145814296ef85c5f612ea0, type: 2}
+  - {fileID: 1795576278692250, guid: f7261189d837ca84a987a97d0123e70b, type: 2}
   validFloors: 000000000100000002000000

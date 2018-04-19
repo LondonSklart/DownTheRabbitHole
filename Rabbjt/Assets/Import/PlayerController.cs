@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
                 turnManager.DecreaseHaste();
 
                 float damageCache = 0;
+                float healthCache = 0;
 
                 foreach (Effect e in afflictedList)
                 {
@@ -110,6 +111,7 @@ public class PlayerController : MonoBehaviour
                     {
 
                         damageCache += e.OnEndTurn();
+                        healthCache += e.GetHOT();
 
                         e.Length--;
                     }
@@ -118,6 +120,7 @@ public class PlayerController : MonoBehaviour
                 if (afflictedList.Count > 0 && damageCache > 0)
                 {
                     TakeDamage(damageCache, false);
+                    GainHealth(healthCache);
                 }
 
                 for (int i = 0; i < afflictedList.Count; i++)
@@ -271,8 +274,16 @@ public class PlayerController : MonoBehaviour
             if (item.OnHitEffect.Name.Length > 0)
             {
                 Debug.Log("Afflicting: " + target + " with: " + item.OnHitEffect.Name + "From weapon: " + item.Name);
-                target.Afflicted(item.OnHitEffect);
+              //  Effect tempdot = new Effect(item.OnHitEffect.Name, item.OnHitEffect.AffectSelf, item.OnHitEffect.Damage, item.OnHitEffect.HealthRecover, item.OnHitEffect.Length, item.OnHitEffect.Icon, item.OnHitEffect.ArmorShred, item.OnHitEffect.FragileLevel);
+                if (item.OnHitEffect.AffectSelf)
+                {
+                    gameObject.GetComponent<PlayerController>().Afflicted(item.OnHitEffect);
+                }
+                else
+                {
+                    target.Afflicted(item.OnHitEffect);
 
+                }
             }
         }
     }
@@ -369,7 +380,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log(gameObject.name + "Recieved dot: " + effect.Name);
-            afflictedList.Add(new Effect(effect.Name, effect.Damage, effect.HealthRecover, effect.Length, effect.Icon, effect.ArmorShred, effect.FragileLevel));
+            afflictedList.Add(new Effect(effect.Name,effect.AffectSelf, effect.Damage, effect.HealthRecover, effect.Length, effect.Icon, effect.ArmorShred, effect.FragileLevel));
             Debug.Log("Armor before shred" + armor);
             effect.OnApplied(gameObject);
             Debug.Log("Armor after shred" + armor);

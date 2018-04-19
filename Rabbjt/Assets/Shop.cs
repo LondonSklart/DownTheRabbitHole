@@ -49,7 +49,7 @@ public class Shop : MonoBehaviour {
             {
                 AOEchache = w.AOE;
             }
-            shopItems.Add(new Item(w.name, statBlock, w.weaponModel, w.itemSlot, new Effect(w.dotName, w.dotDamage, w.hotRecovery, w.dotLength, w.dotIcon, w.armorShred, w.fragileInfliction), AOEchache,w.value));
+            shopItems.Add(new Item(w.name, statBlock, w.weaponModel, w.itemSlot, new Effect(w.dotName,w.dotAffectSelf, w.dotDamage, w.hotRecovery, w.dotLength, w.dotIcon, w.armorShred, w.fragileInfliction), AOEchache,w.value));
             Instantiate(inventorySlot, itemSlotLocation);
 
 
