@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: WarBreakerCrush
+  m_EditorClassIdentifier: Assembly-CSharp::Equipment
+  power: 0
+  health: 0
+  initiative: 0
+  haste: 0
+  armor: 0
+  AOE: 00000000
+  value: 0
+  weaponModel: {fileID: 0}
+  dotName: Crush
+  dotDamage: 2
+  hotRecovery: 0
+  dotLength: 0
+  armorShred: 10
+  fragileInfliction: 5
+  dotIcon: {fileID: 1062285389621542, guid: 1e4b2eba5f2b35a4da9ee9899cabe7e3, type: 2}
+  itemSlot: 0

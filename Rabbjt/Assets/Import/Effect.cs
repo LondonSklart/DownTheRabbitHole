@@ -59,8 +59,8 @@ public class Effect
             }
             else
             {
-                target.GetComponent<EnemyController>().armor -= ArmorShred;
-                target.GetComponent<EnemyController>().fragile += FragileLevel;
+                target.GetComponent<PlayerController>().armor -= ArmorShred;
+                target.GetComponent<PlayerController>().fragile += FragileLevel;
 
             }
         }
@@ -80,8 +80,8 @@ public class Effect
             }
             else
             {
-                target.GetComponent<EnemyController>().armor += ArmorShred;
-                target.GetComponent<EnemyController>().fragile -= FragileLevel;
+                target.GetComponent<PlayerController>().armor += ArmorShred;
+                target.GetComponent<PlayerController>().fragile -= FragileLevel;
 
             }
         }

@@ -15,7 +15,7 @@ MonoBehaviour:
   bossRoom: 0
   coinReward: 10
   enemiesInRoom:
-  - {fileID: 1286905763118270, guid: 4b2a5f4aa9a7fe64180076f1ae581e2d, type: 2}
-  - {fileID: 1286905763118270, guid: 4b2a5f4aa9a7fe64180076f1ae581e2d, type: 2}
+  - {fileID: 0}
+  - {fileID: 1087400158648010, guid: e577bea8d8e52c942a6e6bf3bfe63d24, type: 2}
   - {fileID: 0}
   validFloors: 00000000
