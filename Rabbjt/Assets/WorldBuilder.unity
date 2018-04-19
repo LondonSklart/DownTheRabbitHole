@@ -3188,7 +3188,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Drink
+  m_Text: Strength
 --- !u!222 &717998081
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4325,7 +4325,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Drink
+  m_Text: Health
 --- !u!222 &973074483
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4451,7 +4451,7 @@ RectTransform:
   m_GameObject: {fileID: 1002179047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.280645, y: 1.2806447, z: 1.2806447}
   m_Children: []
   m_Father: {fileID: 2009422161}
   m_RootOrder: 3
@@ -4480,7 +4480,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3778dfff9601f9947b3a7cbdcf339046, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ddbda138ca4bf2f4da744e729fdb9c4f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5062,13 +5062,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1259036229}
-  m_LocalRotation: {x: 0.1078361, y: -0, z: -0, w: 0.9941687}
-  m_LocalPosition: {x: 0, y: 4.66, z: -8.51}
+  m_LocalRotation: {x: 0.23667838, y: -0, z: -0, w: 0.97158813}
+  m_LocalPosition: {x: 0, y: 5.27, z: -7.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 12.3810005, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 27.381, y: 0, z: 0}
 --- !u!1 &1262533488
 GameObject:
   m_ObjectHideFlags: 0
@@ -7712,7 +7712,7 @@ RectTransform:
   m_GameObject: {fileID: 1898342653}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.260645, y: 1.2606447, z: 1.2606447}
   m_Children: []
   m_Father: {fileID: 2009422161}
   m_RootOrder: 4
@@ -7741,7 +7741,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3b88d38f09ee82143af10383eae2ea9c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7251b05bbf0544543b379253dc2cd7ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8181,7 +8181,7 @@ RectTransform:
   m_GameObject: {fileID: 1938686707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2830057, y: 1.2830055, z: 1.2830055}
   m_Children: []
   m_Father: {fileID: 2009422161}
   m_RootOrder: 5
@@ -8210,7 +8210,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3778dfff9601f9947b3a7cbdcf339046, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 539b09bfa65046544b7be67d6c8731aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8383,7 +8383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc5926c8cf82194b9fffeb934c802a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strIcon: {fileID: 1558813668490654, guid: 7311f5accee8a4947a95c28bddce89f6, type: 2}
+  strIcon: {fileID: 1088813249775338, guid: 8102c432834e8eb4eaf1431dbb7d283b, type: 2}
+  hstIcon: {fileID: 1026050378026834, guid: 0ceffdc0af45e8e4d90dfbba8bca6d86, type: 2}
   amount1: {fileID: 1452451172}
   amount2: {fileID: 795654019}
   amount3: {fileID: 1486575139}
@@ -8647,9 +8648,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Drink
-
-'
+  m_Text: Haste
 --- !u!222 &2026242634
 CanvasRenderer:
   m_ObjectHideFlags: 0
