@@ -75,7 +75,7 @@ public class WorldBuilder : MonoBehaviour {
 
     public void GenerateFloor()
     {
-        invalidIndex.Clear();
+        
         sfr = new System.Random(floorSeed[currentFloor]); //Gets random seed based on current floor
 
         floorSizeX = floors[currentFloor].floorSizeX;
@@ -159,7 +159,8 @@ public class WorldBuilder : MonoBehaviour {
 
         //Load player to floor
         player.CurrentRoom = StartRoom;
-
+        invalidIndex.Clear();
+        Debug.Log("Invalid index: " + invalidIndex.Count);
     }
 
     public Room LoadRoom(int currentRoom)
@@ -273,11 +274,23 @@ public class WorldBuilder : MonoBehaviour {
 
     private int SeedRooms()
     {
+        
         int newIndex = sfr.Next(0, floorSizeX * floorSizeY);
-        while(invalidIndex.Contains(newIndex))
+
+        for(int i = 0; invalidIndex.Contains(newIndex); i++)
         {
+            if(i > floorSizeX * floorSizeY)
+            {
+                Debug.Log("invalid index is fucked");
+                break;
+            }
             newIndex = sfr.Next(0, floorSizeX * floorSizeY);
         }
+
+        //while (invalidIndex.Contains(newIndex))
+        //{
+        //    newIndex = sfr.Next(0, floorSizeX * floorSizeY);
+        //}
         return newIndex;
     }
 
