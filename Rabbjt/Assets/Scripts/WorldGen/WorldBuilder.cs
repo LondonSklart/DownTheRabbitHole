@@ -336,8 +336,8 @@ public class WorldBuilder : MonoBehaviour {
     public static int Calc_W(int index, bool isLooping)
     {
         int newIndex = 0;
-
-        if(index % floorSizeX == 0) //Checks if index is along left wall of Grid
+        Debug.Log("index in: " + index);
+        if (index % floorSizeX == 0) //Checks if index is along left wall of Grid
         {
             if (isLooping) newIndex = index + floorSizeX - 1;
             else return floorSizeX * floorSizeY; //Should be outside array range and will be used for invalid rooms
@@ -346,19 +346,21 @@ public class WorldBuilder : MonoBehaviour {
         {
             newIndex = index - 1;
         }
-
+        Debug.Log("index out: " + newIndex);
         return newIndex;
     }
 
     public static int Calc_N(int index, bool isLooping)
     {
         int newIndex = 0;
+        Debug.Log("index in: " + index);
         if (index + floorSizeX > (floorSizeX * floorSizeY - 1))
         {
             if (isLooping) newIndex = index + floorSizeX - (floorSizeX * floorSizeY);
             else return floorSizeX * floorSizeY;//Used for invalid positions
         }
         else newIndex = index + floorSizeX;
+        Debug.Log("index out: " + newIndex);
 
         return newIndex;
     }
@@ -366,7 +368,7 @@ public class WorldBuilder : MonoBehaviour {
     public static int Calc_E(int index, bool isLooping)
     {
         int newIndex = 0;
-
+        Debug.Log("index in: " + index);
         if ((index - (floorSizeX - 1)) % floorSizeX == 0)
         {
             if (isLooping) newIndex = index - (floorSizeX - 1);
@@ -375,23 +377,24 @@ public class WorldBuilder : MonoBehaviour {
         {
             newIndex = index + 1;
         }
-
+        Debug.Log("index out: " + newIndex);
         return newIndex;
     }
 
     public static int Calc_S(int index, bool isLooping)
     {
         int newIndex = 0;
-
-        if(index - floorSizeX < 0)
+        Debug.Log("index in: " + index);
+        if (index - floorSizeX < 0)
         {
-            if (isLooping) newIndex = (floorSizeX * floorSizeY - 1) - Mathf.Abs(index - floorSizeX);
+            if (isLooping) newIndex = ((floorSizeX * floorSizeY) - 1) - Mathf.Abs(index - (floorSizeX -1));
             else return floorSizeX * floorSizeY;
         } else
         {
             newIndex = index - floorSizeX;
 
         }
+        Debug.Log("index out: " + newIndex);
         return newIndex;
     }
 

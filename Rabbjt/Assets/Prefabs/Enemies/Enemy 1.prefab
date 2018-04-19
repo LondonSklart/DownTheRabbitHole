@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ed202750b6aaa428430a1be9a44c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiIcon: {fileID: 21300000, guid: 0ea12d688bae25849a18ec6ea2ccba5d, type: 3}
+  uiIcon: {fileID: 21300000, guid: 9308c8a68f4707b4ea7654798243031e, type: 3}
   startingHealth: 10
   attackDamage: 1
   initiative: 2
