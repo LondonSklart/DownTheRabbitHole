@@ -21,9 +21,11 @@ MonoBehaviour:
   wallsVis:
   - {fileID: 1475027113362612, guid: 65a037cdaea59e84d8a1dcd0823f95d5, type: 2}
   - {fileID: 1475027113362612, guid: 8fc7ec8e7dc88654fa3de14a0a022573, type: 2}
+  - {fileID: 1475027113362612, guid: 4cce0512e611029419cf975e441bd688, type: 2}
   cornerWallsVis:
   - {fileID: 1799468497125900, guid: 309e4ab21363cbb4089e8bf1de55469c, type: 2}
   doorVis:
   - {fileID: 100000, guid: f480fbf0bd154124eba547c8cabbe8ac, type: 3}
+  - {fileID: 1021904691075490, guid: 2cff927d23bc7194d80138392b4787a4, type: 2}
   floorVis:
   - {fileID: 1230018325290618, guid: 80ac24affa70b244cbb59b82399d9d0e, type: 2}

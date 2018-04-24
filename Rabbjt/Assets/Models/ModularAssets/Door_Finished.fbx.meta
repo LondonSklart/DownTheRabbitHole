@@ -1,23 +1,18 @@
 fileFormatVersion: 2
-guid: f480fbf0bd154124eba547c8cabbe8ac
-timeCreated: 1517101303
+guid: 9f6f056a054bddc44bafb41c9ff91dc1
+timeCreated: 1524586140
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
+    2100000: lambert30
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Door_place
+    4300000: FrameLow1
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: fe3a5c4a3da86a94b91f0f9b531fc6b2, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
