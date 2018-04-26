@@ -282,6 +282,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\amusedART\Mushroom_Monster\Script\MushroomMon_Ani_Test.cs" />
     <Compile Include="Assets\Import\DamagePrint.cs" />
     <Compile Include="Assets\Import\Effect.cs" />
     <Compile Include="Assets\Import\Effectcontroller.cs" />
